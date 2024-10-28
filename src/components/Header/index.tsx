@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 interface HeaderProps {
   activeSection: string;
@@ -12,9 +13,9 @@ const Header = ({ activeSection, name }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b-4 border-black p-4 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <a href="#home">
-          <h1 className="text-2xl font-bold"> {name ?? "John Doe"}</h1>
-        </a>
+        <Link href="#home" className="inline-block">
+          <h1 className="text-2xl font-bold">{name}</h1>
+        </Link>
         <nav className="hidden md:flex space-x-6">
           {["home", "skills", "portfolio", "contact"].map((item) => (
             <a
