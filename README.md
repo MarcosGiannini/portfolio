@@ -2,13 +2,13 @@
 
 Just me testing v0 over the weekend.
 
-Podés visitar el sitio aquí: [Frontend Portfolio Template](https://frontend-portfolio-template.vercel.app/)
+You can visit the site here: [Frontend Portfolio Template](https://frontend-portfolio-template.vercel.app/)
 
 ---
 
-⭐ **Cloná y usá libremente** ⭐ A.
+⭐ Feel free to clone and use ⭐ - A.
 
 ---
 
-### Vista de escritorio
+### Desktop View
 ![Vista de escritorio](./src/img/desktop.png)
