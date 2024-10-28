@@ -27,8 +27,8 @@ export const portfolioData = {
       },
     },
     skills_info:{
-        yoe:"3+",
-        number_of_projects:"35+"
+        yoe:"1+",
+        number_of_projects:"25+"
     },
     skills: [
       {
