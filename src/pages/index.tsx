@@ -4,6 +4,7 @@ import { Inter, Montserrat } from "next/font/google";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TechStack from "@/components/TechStack";
+import AboutMe from "@/components/AboutMe";
 import Skills from "@/components/Skills";
 import ProjectPortfolio from "@/components/ProjectPortfolio";
 import Contact from "@/components/Contact";
@@ -53,7 +54,7 @@ const Portfolio = () => {
   return (
     <>
       <SEO
-        title="Portfolio"
+        title="Marcos Giannini | Desarrollador Frontend"
         description="Welcome to my portfolio showcasing my skills, projects, and experience as a web developer."
       />
       <div
@@ -61,8 +62,13 @@ const Portfolio = () => {
       >
         <Header activeSection={activeSection} name={portfolioData?.name} />
         <main className="overflow-clip">
-          <Hero data={portfolioData?.sections?.hero} />
+          <Hero data={{
+            ...portfolioData.sections.hero,
+            title: portfolioData.sections.hero.title,
+            subtitle: portfolioData.sections.hero.subtitle,
+          }} />
           <TechStack data={portfolioData?.sections?.tech_stack} />
+          <AboutMe />
           <Skills
             data={portfolioData?.sections?.skills}
             skillsInfo={portfolioData?.sections?.skills_info}

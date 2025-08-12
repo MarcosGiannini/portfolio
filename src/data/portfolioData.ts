@@ -1,13 +1,14 @@
 export const portfolioData = {
-  name: "John Doe",
+  name: "Marcos Giannini",
   contact: {
     phone: "+1 (234) 567-890",
     email: "hola@john.com",
   },
   sections: {
     hero: {
-      subtitle: "  Transforming ideas into seamless digital experiences",
-      button: "Explore My Work",
+  title: "Desarrollador Frontend",
+  subtitle: "Apasionado por crear experiencias web con React, Next.js y TypeScript.",
+  button: "Ver mis proyectos",
     },
     contact: {
       title: {
@@ -59,24 +60,28 @@ export const portfolioData = {
     ],
     projects: [
       {
-        title: "E-commerce Platform",
-        desc: "React, Next.js, Stripe",
-        //image:
+        title: "Quick Mock (Open Source)",
+        desc: "Herramienta de prototipado rápido para UIs de baja fidelidad en la que colaboro activamente.",
+        tech: ["React", "TypeScript", "Konva", "Playwright", "Vitest"],
+        url: "https://www.quickmock.net/",
+        repo: "https://github.com/Lemoncode/quickmock",
+        image: "/quickmock.png"
       },
       {
-        title: "Social Media Dashboard",
-        desc: "Vue.js, Vuex, Chart.js",
-        //image:
+        title: "Sistema de Diseño (Stack&Flow)",
+        desc: "Creación de un sistema de diseño para unificar la estética y funcionalidad de productos web, documentado con Storybook.",
+        tech: ["React", "TypeScript", "Storybook", "TailwindCSS", "RadixUI"],
+        url: "https://egdev6-design-system.netlify.app/",
+        repo: "https://github.com/egdev6/design-system",
+        image: "/designSystem.png"
       },
       {
-        title: "Task Management App",
-        desc: "React Native, Firebase",
-        //image:
-      },
-      {
-        title: "Portfolio Website",
-        desc: "HTML, CSS, JavaScript",
-        //image:
+        title: "Portal de Datos de Embalses (TFM)",
+        desc: "Desarrollo de un portal de datos para centralizar información de embalses, implementado como un monorepo con frontend en Next.js y backend en NestJS.",
+        tech: ["Next.js", "d3.js", "NestJS", "MongoDB", "Turborepo"],
+        url: "",
+        repo: "https://github.com/Lemoncode/embalse-info",
+        image: "/embalses.jpeg"
       },
     ],
     tech_stack: {
