@@ -1,74 +1,97 @@
-import { Code, Layout, Zap, Sparkles } from "lucide-react";
+import { motion, Variants } from 'framer-motion';
 
-interface Skill {
-  icon: string;
-  name: string;
-  color: string;
-  subtitle: string;
+interface Category {
+  title: string;
+  items: string[];
 }
 
-interface SkillProps {
-  data: Skill[];
-  skillsInfo: {
-    yoe: string;
-    number_of_projects: string;
-  };
-}
+const categories: Category[] = [
+  {
+    title: 'Frontend',
+    items: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'JavaScript',
+      'HTML5',
+      'CSS3',
+      'TailwindCSS',
+      'Framer Motion'
+    ]
+  },
+  {
+    title: 'Backend',
+    items: ['Node.js', 'NestJS', 'MongoDB']
+  },
+  {
+    title: 'Herramientas',
+    items: ['Git', 'GitHub', 'Docker', 'Jest', 'Vitest', 'Playwright']
+  }
+];
 
-const Skills = ({ data, skillsInfo }: SkillProps) => {
-  const iconMap: { [key: string]: JSX.Element } = {
-    Code: <Code className="w-8 h-8" />,
-    Layout: <Layout className="w-8 h-8" />,
-    Zap: <Zap className="w-8 h-8" />,
-    Sparkles: <Sparkles className="w-8 h-8" />,
-  };
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08
+    }
+  }
+};
 
-  const getColorStyle = (color: string) => {
-    const colorMap: { [key: string]: string } = {
-      "yellow": "#fde047",
-      "purple": "#d8b4fe",
-      "red": "#fca5a5",
-      "blue": "#93c5fd",
-    };
-    return colorMap[color] || color;
-  };
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16,0.84,0.44,1] } }
+};
 
+const Skills = () => {
   return (
-    <section id="skills" className="py-20 border-b-4 border-black bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My Frontend Skills
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="space-y-4">
-            <div className="border-2 border-black p-6 rounded-lg shadow-md bg-yellow-200">
-              <h3 className="text-5xl font-bold">{skillsInfo.yoe}</h3>
-              <p className="text-xl">Years Experience</p>
-            </div>
-            <div className="border-2 border-black p-6 rounded-lg shadow-md bg-blue-200">
-              <h3 className="text-5xl font-bold">
-                {skillsInfo.number_of_projects}
+    <section id="skills" className="py-24 bg-gradient-to-b from-white to-gray-50 border-t border-gray-200">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.h2
+          className="text-3xl md:text-4xl font-extrabold text-center mb-16 tracking-tight"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.9 }}
+        >
+          Mis Habilidades
+        </motion.h2>
+
+        <div className="grid md:grid-cols-3 gap-10">
+          {categories.map((cat, i) => (
+            <motion.div
+              key={cat.title}
+              className="p-6 rounded-2xl border-2 border-black bg-white shadow-sm hover:shadow-xl transition-shadow duration-300"
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                {cat.title}
               </h3>
-              <p className="text-xl">Personal Projects Completed</p>
-            </div>
-          </div>
-          <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-            {data.map((skill, idx) => (
-              <div
-                key={idx}
-                className="border-2 border-black p-6 rounded-lg shadow-md"
+              <motion.ul
+                className="flex flex-wrap gap-3"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: false, amount: 0.3 }}
               >
-                <div
-                  className="rounded-full p-3 inline-block mb-4"
-                  style={{ backgroundColor: getColorStyle(skill.color) }}
-                >
-                  {iconMap[skill.icon] || null}
-                </div>
-                <h3 className="text-xl font-bold mb-2">{skill.name}</h3>
-                <p className="mb-2 text-gray-600">{skill.subtitle}</p>
-              </div>
-            ))}
-          </div>
+                {cat.items.map((tech) => (
+                  <motion.li
+                    key={tech}
+                    className="px-4 py-2 rounded-full border border-gray-300 bg-gray-100 text-sm font-medium hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-colors duration-300"
+                    variants={itemVariants}
+                  >
+                    {tech}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

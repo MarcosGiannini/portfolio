@@ -1,5 +1,22 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+// Variants para animaciones de las categorías de habilidades
+const skillsContainer: Variants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.08 } }
+};
+
+const skillItem: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 0.84, 0.44, 1] } }
+};
+
+const skillCategories = [
+  { title: 'Frontend', items: ['React','Next.js','TypeScript','JavaScript','HTML5','CSS3','TailwindCSS','Framer Motion'] },
+  { title: 'Backend', items: ['Node.js','NestJS','MongoDB'] },
+  { title: 'Herramientas', items: ['Git','GitHub','Docker','Jest','Vitest','Playwright'] },
+  { title: 'IA & Productividad', items: ['GitHub Copilot','Cursor','Prompt Engineering'] }
+];
 const AboutMe = () => {
   return (
   <section id="about" className="min-h-screen flex items-center justify-center bg-white border-b-4 border-black scroll-snap-align-start">
@@ -46,32 +63,56 @@ const AboutMe = () => {
             <a
               href="/CV_MarcosGiannini_Frontend.pdf"
               download
-              className="bg-blue-500 text-white font-bold px-8 py-4 rounded-full border-4 border-black shadow hover:bg-blue-600 transition-colors duration-300 mb-8"
+              className="bg-blue-500 text-white font-bold px-8 py-4 rounded-full border-4 border-black shadow hover:bg-blue-600 transition-colors duration-300 mb-12"
             >
               Descargar CV
             </a>
-            <div className="w-full">
-                <motion.h3
-                  className="text-2xl font-bold mb-6 text-center md:text-left"
-                  initial={{ opacity: 0, y: 100 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1.2 }}
-                >
-                  Tech Stack
-                </motion.h3>
-                <ul className="flex flex-wrap justify-center md:justify-start items-center gap-2 md:gap-4">
-                  {["React", "React Native", "TypeScript", "Next.js", "Tailwind CSS"].map((tech, i) => (
-                    <motion.li
-                      key={tech}
-                      className="text-lg md:text-xl font-bold bg-white md:px-4 px-2 py-2 rounded-full border-2 border-black"
-                      initial={{ opacity: 0, y: 80 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: i * 0.15 }}
+            {/* Bloque de habilidades fusionado desde el antiguo componente Skills */}
+            <div id="skills" className="w-full">
+              <motion.h3
+                className="text-2xl font-bold mb-8 text-center md:text-left"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.9 }}
+              >
+                Mis Habilidades
+              </motion.h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                {skillCategories.map((cat, i) => (
+                  <motion.div
+                    key={cat.title}
+                    className="p-4 rounded-xl border-2 border-black bg-white shadow-sm hover:shadow-lg transition-shadow duration-300"
+                    variants={skillItem}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
+                      <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                      {cat.title}
+                    </h4>
+                    <motion.ul
+                      className="flex flex-wrap gap-2"
+                      variants={skillsContainer}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: false, amount: 0.3 }}
                     >
-                      {tech}
-                    </motion.li>
-                  ))}
-                </ul>
+                      {cat.items.map((tech) => (
+                        <motion.li
+                          key={tech}
+                          className="px-3 py-1 rounded-full border border-gray-300 bg-gray-100 text-xs font-medium hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-colors duration-300"
+                          variants={skillItem}
+                        >
+                          {tech}
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

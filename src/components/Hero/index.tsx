@@ -1,5 +1,4 @@
-import { Code, Lightbulb } from "lucide-react";
-import Image from "next/image";
+// Removed unused imports
 import { motion } from "framer-motion";
 
 interface HeroProps {

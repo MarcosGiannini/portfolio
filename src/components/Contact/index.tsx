@@ -1,27 +1,20 @@
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 interface ContactProps {
   data: {
-    title: {
-      desktop: string;
-      mobile: string;
-    };
+    title: { desktop: string; mobile: string };
     description: string;
     form: {
       title: string;
-      fields: Array<{
-        name: string;
-        label: string;
-        type: string;
-      }>;
+      fields: Array<{ name: string; label: string; type: string }>;
       submitButton: string;
     };
   };
-  contactInfo: {
-    phone: string;
-    email: string;
-  };
+  contactInfo: { email: string; phone?: string };
 }
 
 const Contact = ({ data, contactInfo }: ContactProps) => {
+  const [state, handleSubmit] = useForm("mldlzykj");
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -68,7 +61,14 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
             </svg>
           </div>
           <p className="text-xl mb-8 text-gray-600">{data?.description}</p>
-          <form className="space-y-6 block md:hidden">
+          {state.succeeded && (
+            <div className="mb-10 p-6 border-2 border-black rounded-lg bg-green-100 text-green-800 font-semibold text-center" role="status" aria-live="polite">
+              ¡Gracias por tu mensaje! Te responderé pronto.
+            </div>
+          )}
+          <ValidationError prefix="Form" field="form" errors={state.errors} className="mb-6 text-sm text-red-600" />
+      {!state.succeeded && (
+      <form className="space-y-6 block md:hidden" onSubmit={handleSubmit} noValidate>
             <div>
               <label
                 htmlFor="name"
@@ -81,6 +81,7 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 id="name"
                 name="name"
                 className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                required
               />
             </div>
             <div>
@@ -95,7 +96,9 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 id="email"
                 name="email"
                 className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                required
               />
+        <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-600" />
             </div>
             <div>
               <label
@@ -109,120 +112,71 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 name="message"
                 rows={4}
                 className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                required
               ></textarea>
+        <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-sm text-red-600" />
             </div>
-            <button className="bg-blue-500 text-white text-lg font-bold px-8 py-4 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full">
-              {data?.form?.submitButton}
+            <button
+              type="submit"
+        disabled={state.submitting}
+              className="bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white text-lg font-bold px-8 py-4 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full"
+            >
+        {state.submitting ? 'Enviando...' : data?.form?.submitButton}
             </button>
           </form>
-          <div className="grid-cols-1 md:grid-cols-3 gap-8 hidden md:grid">
-            <div>
-              <div className="space-y-4 text-center"></div>
-              <div className="space-y-4">
-                <div className="border-2 border-black p-6 rounded-lg  bg-purple-200">
-                  <p className="text-xl">Phone:</p>
-                  <h4 className="text-4xl font-bold mb-6">
-                    <a
-                      href={`tel:${contactInfo?.phone}`}
-                      className="break-words hover:underline"
-                    >
-                      {contactInfo?.phone}
-                    </a>
-                  </h4>
-                </div>
-                <div className="border-2 border-black p-6 rounded-lg bg-yellow-200">
-                  <p className="text-xl">Email:</p>
-                  <h4 className="text-4xl font-bold mb-6">
-                    <a
-                      href={`mailto:${contactInfo?.email}`}
-                      className="break-words hover:underline"
-                    >
-                      {contactInfo?.email}
-                    </a>
-                  </h4>
-                </div>
-                <div className="flex justify-center items-center h-32">
-                  <svg
-                    width="73"
-                    height="69"
-                    viewBox="0 0 73 69"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
+          )}
+          <div className="grid-cols-1 md:grid-cols-2 gap-8 hidden md:grid">
+            <div className="space-y-6">
+              <div className="border-2 border-black p-8 rounded-lg bg-yellow-200">
+                <p className="text-xl mb-4">Email</p>
+                <h4 className="text-3xl font-bold break-words">
+                  <a
+                    href={`mailto:${contactInfo?.email}`}
+                    className="hover:underline"
                   >
-                    <path
-                      d="M38.6181 8.36637C36.8542 11.1818 39.3811 19.2499 42.9486 22.2228C45.6852 24.4461 47.71 23.4265 48.2431 19.5231C48.8556 15.409 45.841 9.56867 42.4096 8.10076C39.795 6.95345 39.4802 7.01133 38.6181 8.36637Z"
-                      fill="black"
-                    />
-                    <path
-                      d="M15.0585 10.239C13.2947 13.0544 15.8215 21.1225 19.389 24.0953C22.1256 26.3187 24.1504 25.2991 24.6835 21.3957C25.296 17.2816 22.2814 11.4413 18.8501 9.97335C16.2354 8.82604 15.9206 8.88392 15.0585 10.239Z"
-                      fill="black"
-                    />
-                    <path
-                      d="M5.08328 33.1238C5.80646 37.5808 14.0815 45.7884 21.4377 49.2808C23.7064 50.4133 27.6199 51.2237 31.0796 51.3722C36.5131 51.5697 37.2844 51.3886 44.3031 48.1562C51.0382 45.0543 52.0789 44.3137 55.3089 40.5618C59.4237 35.7056 63.354 25.2734 62.1062 22.3644C61.0144 19.819 59.4292 21.0716 56.2531 27.3244C52.7367 34.1694 50.7772 36.7266 46.6851 39.6563C42.7745 42.4153 35.4609 44.5643 30.8612 44.3312C25.3965 44.061 15.1222 38.516 9.53555 32.8151C6.69117 29.9447 4.60683 30.0337 5.08328 33.1238Z"
-                      fill="black"
-                    />
-                  </svg>
-                </div>
+                    {contactInfo?.email}
+                  </a>
+                </h4>
+              </div>
+              <div className="flex justify-center items-center h-32">
+                <svg
+                  width="73"
+                  height="69"
+                  viewBox="0 0 73 69"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M38.6181 8.36637C36.8542 11.1818 39.3811 19.2499 42.9486 22.2228C45.6852 24.4461 47.71 23.4265 48.2431 19.5231C48.8556 15.409 45.841 9.56867 42.4096 8.10076C39.795 6.95345 39.4802 7.01133 38.6181 8.36637Z" fill="black" />
+                  <path d="M15.0585 10.239C13.2947 13.0544 15.8215 21.1225 19.389 24.0953C22.1256 26.3187 24.1504 25.2991 24.6835 21.3957C25.296 17.2816 22.2814 11.4413 18.8501 9.97335C16.2354 8.82604 15.9206 8.88392 15.0585 10.239Z" fill="black" />
+                  <path d="M5.08328 33.1238C5.80646 37.5808 14.0815 45.7884 21.4377 49.2808C23.7064 50.4133 27.6199 51.2237 31.0796 51.3722C36.5131 51.5697 37.2844 51.3886 44.3031 48.1562C51.0382 45.0543 52.0789 44.3137 55.3089 40.5618C59.4237 35.7056 63.354 25.2734 62.1062 22.3644C61.0144 19.819 59.4292 21.0716 56.2531 27.3244C52.7367 34.1694 50.7772 36.7266 46.6851 39.6563C42.7745 42.4153 35.4609 44.5643 30.8612 44.3312C25.3965 44.061 15.1222 38.516 9.53555 32.8151C6.69117 29.9447 4.60683 30.0337 5.08328 33.1238Z" fill="black" />
+                </svg>
               </div>
             </div>
-            <div className="md:col-span-2">
-              <form className="bg-white border-2 border-black p-8 rounded-lg">
+            <div>
+              {!state.succeeded && (
+              <form className="bg-white border-2 border-black p-8 rounded-lg" onSubmit={handleSubmit} noValidate>
                 <h3 className="text-2xl font-bold mb-6">{data?.form?.title}</h3>
                 <div className="space-y-6">
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300"
-                      />
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                      <input type="text" id="name" name="name" required className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300" />
                     </div>
                     <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300"
-                      />
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                      <input type="email" id="email" name="email" required className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300" />
+                      <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-600" />
                     </div>
                   </div>
-
                   <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300"
-                    ></textarea>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea id="message" name="message" rows={4} required className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300" />
+                    <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-sm text-red-600" />
                   </div>
-                  <button
-                    type="submit"
-                    className=" bg-blue-500 text-white text-lg font-bold px-8 py-3 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-300 w-auto"
-                  >
-                    {data?.form?.submitButton}
-                  </button>
+                  <button type="submit" disabled={state.submitting} className=" bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white text-lg font-bold px-8 py-3 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-300 w-auto">{state.submitting ? 'Enviando...' : data?.form?.submitButton}</button>
                 </div>
-              </form>
+              </form>) }
             </div>
           </div>
         </div>

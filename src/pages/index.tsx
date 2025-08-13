@@ -14,15 +14,10 @@ import Contact from '@/components/Contact'; // Asumo que existe un componente Co
 const Portfolio = () => {
   // --- LÓGICA DEL COMPONENTE ---
   const [activeSection, setActiveSection] = useState('home');
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  // Eliminado showScrollTop no utilizado
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
-    window.addEventListener('scroll', handleScroll);
-
-    const sectionIds = ['home', 'about', 'portfolio', 'contact'];
+  const sectionIds = ['home', 'about', 'portfolio', 'contact'];
     const sectionElements = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => !!el);
@@ -54,7 +49,6 @@ const Portfolio = () => {
     sectionElements.forEach((el) => observer.observe(el));
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       sectionElements.forEach((el) => observer.unobserve(el));
       observer.disconnect();
     };
@@ -81,12 +75,12 @@ const Portfolio = () => {
         <div id="portfolio">
           <ProjectPortfolio data={portfolioData.sections.projects} />
         </div>
-        
+
         <div id="contact">
-          <Contact data={portfolioData.sections.contact}/>
+          <Contact data={portfolioData.sections.contact} contactInfo={portfolioData.contact} />
         </div>
 
-        <Footer data={portfolioData.sections.contact} />
+        <Footer contactInfo={portfolioData.contact} name={portfolioData.name} />
         <ScrollToTop />
       </main>
     </>

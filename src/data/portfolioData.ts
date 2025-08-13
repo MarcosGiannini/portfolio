@@ -2,7 +2,7 @@ export const portfolioData = {
   name: "Marcos Giannini",
   contact: {
     phone: "+1 (234) 567-890",
-    email: "hola@john.com"
+    email: "hola@john.com" // TODO: Actualizar con email real si cambia
   },
   sections: {
     hero: {
@@ -12,11 +12,11 @@ export const portfolioData = {
     },
     contact: {
       title: {
-        desktop: "Let's create something amazing together",
-        mobile: "Let's Connect!",
+        desktop: "Hablemos",
+        mobile: "Hablemos",
       },
       description:
-        "Ready to transform your ideas into reality? Let's chat about your project!",
+        "¿Interesado en mi perfil? ¡Envíame un mensaje!",
       form: {
         title: "Send me a message",
         fields: [
