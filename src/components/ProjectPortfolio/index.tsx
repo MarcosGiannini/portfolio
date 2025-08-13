@@ -18,20 +18,20 @@ const ProjectPortfolio = ({ data }: ProjectsProps) => {
   return (
     <section
       id="portfolio"
-      className="py-20 bg-gray-100 border-b-4 border-black"
+      className="min-h-screen flex items-center justify-center bg-gray-100 border-b-4 border-black scroll-snap-align-start"
     >
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center justify-center">
-          My Projects
+          <span className="mt-12 block">My Projects</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {data?.map((project, index) => (
-            <motion.div
-              key={index}
-              className="group relative border-2 border-black p-6 rounded-lg bg-white shadow-md"
-              initial={{ opacity: 0, y: 80 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              <motion.div
+                key={index}
+                className="group relative border-2 border-black p-6 rounded-lg bg-white shadow-md"
+                initial={{ opacity: 0, y: 120 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: index * 0.25 }}
             >
               {project.image ? (
                 <Image
@@ -54,9 +54,9 @@ const ProjectPortfolio = ({ data }: ProjectsProps) => {
                     <motion.span
                       key={i}
                       className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold border border-blue-300"
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 60 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: i * 0.1 }}
+                      transition={{ duration: 0.8, delay: i * 0.15 }}
                     >
                       {tech}
                     </motion.span>

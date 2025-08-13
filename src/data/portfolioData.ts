@@ -2,13 +2,13 @@ export const portfolioData = {
   name: "Marcos Giannini",
   contact: {
     phone: "+1 (234) 567-890",
-    email: "hola@john.com",
+    email: "hola@john.com"
   },
   sections: {
     hero: {
-  title: "Desarrollador Frontend",
-  subtitle: "Apasionado por crear experiencias web con React, Next.js y TypeScript.",
-  button: "Ver mis proyectos",
+      title: "Desarrollador Frontend",
+      subtitle: "Apasionado por crear experiencias web con React, Next.js y TypeScript.",
+      button: "Ver mis proyectos",
     },
     contact: {
       title: {
@@ -27,9 +27,9 @@ export const portfolioData = {
         submitButton: "Send Message",
       },
     },
-    skills_info:{
-        yoe:"1+",
-        number_of_projects:"25+"
+    skills_info: {
+      yoe: "1+",
+      number_of_projects: "25+"
     },
     skills: [
       {
@@ -54,19 +54,10 @@ export const portfolioData = {
         icon: "Sparkles",
         name: "UI/UX Integration",
         color: "blue",
-        subtitle:
-          "Merging visuals with functionality for user-friendly interfaces",
+        subtitle: "Merging visuals with functionality for user-friendly interfaces",
       },
     ],
     projects: [
-      {
-        title: "Quick Mock (Open Source)",
-        desc: "Herramienta de prototipado rápido para UIs de baja fidelidad en la que colaboro activamente.",
-        tech: ["React", "TypeScript", "Konva", "Playwright", "Vitest"],
-        url: "https://www.quickmock.net/",
-        repo: "https://github.com/Lemoncode/quickmock",
-        image: "/quickmock.png"
-      },
       {
         title: "Sistema de Diseño (Stack&Flow)",
         desc: "Creación de un sistema de diseño para unificar la estética y funcionalidad de productos web, documentado con Storybook.",
@@ -76,12 +67,28 @@ export const portfolioData = {
         image: "/designSystem.png"
       },
       {
+        title: "Quick Mock (Open Source)",
+        desc: "Herramienta de prototipado rápido para UIs de baja fidelidad en la que colaboro activamente.",
+        tech: ["React", "TypeScript", "Konva", "Playwright", "Vitest"],
+        url: "https://www.quickmock.net/",
+        repo: "https://github.com/Lemoncode/quickmock",
+        image: "/quickmock.png"
+      },
+      {
         title: "Portal de Datos de Embalses (TFM)",
         desc: "Desarrollo de un portal de datos para centralizar información de embalses, implementado como un monorepo con frontend en Next.js y backend en NestJS.",
         tech: ["Next.js", "d3.js", "NestJS", "MongoDB", "Turborepo"],
         url: "",
         repo: "https://github.com/Lemoncode/embalse-info",
         image: "/embalses.jpeg"
+      },
+      {
+        title: "Mi Portfolio Personal",
+        desc: "Portfolio interactivo personal para mostrar mis proyectos y habilidades. Construido con Next.js y TailwindCSS, animado con Framer Motion y asistido por IA.",
+        tech: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion"],
+        url: "",
+        repo: "https://github.com/MarcosGiannini/portfolio",
+        image: "/portfolio.png"
       },
     ],
     tech_stack: {

@@ -17,19 +17,24 @@ const Header = ({ activeSection, name }: HeaderProps) => {
           <h1 className="text-2xl font-bold">{name}</h1>
         </Link>
         <nav className="hidden md:flex space-x-6">
-          {["home", "skills", "portfolio", "contact"].map((item) => (
+          {[
+            { id: "home", label: "Inicio" },
+            { id: "about", label: "Sobre Mí" },
+            { id: "portfolio", label: "Proyectos" },
+            { id: "contact", label: "Contacto" }
+          ].map((item) => (
             <a
-              key={item}
-              href={`#${item}`}
+              key={item.id}
+              href={`#${item.id}`}
               className={`hover:underline transition-colors duration-300 ${
-                activeSection === item ? "font-bold text-blue-500" : ""
+                activeSection === item.id ? "font-bold text-blue-500" : ""
               }`}
+              style={{ scrollBehavior: "smooth" }}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
+              {item.label}
             </a>
           ))}
-        </nav>
-        <button
+        </nav>        <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden"
         >
@@ -39,16 +44,22 @@ const Header = ({ activeSection, name }: HeaderProps) => {
       {isMenuOpen && (
         <div className="md:hidden mt-4 bg-white border-t-2 border-black">
           <nav className="flex flex-col space-y-2 p-4">
-            {["home", "skills", "portfolio", "contact"].map((item) => (
+            {[
+              { id: "home", label: "Inicio" },
+              { id: "about", label: "Sobre Mí" },
+              { id: "portfolio", label: "Proyectos" },
+              { id: "contact", label: "Contacto" }
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item}`}
+                key={item.id}
+                href={`#${item.id}`}
                 className={`hover:underline ${
-                  activeSection === item ? "font-bold text-blue-500" : ""
+                  activeSection === item.id ? "font-bold text-blue-500" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
+                style={{ scrollBehavior: "smooth" }}
               >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
+                {item.label}
               </a>
             ))}
           </nav>

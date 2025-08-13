@@ -1,98 +1,94 @@
-import { useState, useEffect } from "react";
-import { ChevronUp } from "lucide-react";
-import { Inter, Montserrat } from "next/font/google";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import TechStack from "@/components/TechStack";
-import AboutMe from "@/components/AboutMe";
-import Skills from "@/components/Skills";
-import ProjectPortfolio from "@/components/ProjectPortfolio";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import { portfolioData } from "../data/portfolioData";
-import SEO from "@/components/Seo";
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-montserrat",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
+// Importar nuestros componentes y datos
+import { portfolioData } from '../data/portfolioData';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import AboutMe from '@/components/AboutMe';
+import ProjectPortfolio from '@/components/ProjectPortfolio';
+import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
+import Contact from '@/components/Contact'; // Asumo que existe un componente Contact
 
 const Portfolio = () => {
-  const [activeSection, setActiveSection] = useState("home");
+  // --- LÓGICA DEL COMPONENTE ---
+  const [activeSection, setActiveSection] = useState('home');
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "skills", "portfolio", "contact"];
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (currentSection) setActiveSection(currentSection);
-      setShowScrollTop(window.pageYOffset > 300);
+      setShowScrollTop(window.scrollY > 300);
     };
+    window.addEventListener('scroll', handleScroll);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const sectionIds = ['home', 'about', 'portfolio', 'contact'];
+    const sectionElements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    console.log('[Observer Setup] Secciones registradas:', sectionElements.map(el => el.id));
 
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        // 1. Log de todas las entradas observadas con su estado
+        console.log('[Observer Tick] Entradas:', entries.map(e => ({
+          id: e.target.id,
+          isIntersecting: e.isIntersecting,
+          ratio: Number(e.intersectionRatio.toFixed(3))
+        })));
+
+        const visibleSections = entries.filter((e) => e.isIntersecting);
+        if (visibleSections.length > 0) {
+          const mostVisible = visibleSections.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b));
+          // 2. Log claro de la sección seleccionada
+          if (mostVisible.target.id !== activeSection) {
+            console.log('[ActiveSection] Cambiando a:', mostVisible.target.id);
+          }
+          setActiveSection(mostVisible.target.id);
+        }
+      },
+      { rootMargin: '-40% 0px -60% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    sectionElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      sectionElements.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+    };
+  }, [activeSection]);
+
+  // --- PARTE VISUAL (JSX) ---
   return (
     <>
-      <SEO
-        title="Marcos Giannini | Desarrollador Frontend"
-        description="Welcome to my portfolio showcasing my skills, projects, and experience as a web developer."
-      />
-      <div
-        className={`min-h-screen bg-white text-black ${montserrat.variable} ${inter.variable} font-sans`}
-      >
+      <Head>
+        <title>Marcos Giannini | Desarrollador Frontend</title>
+      </Head>
+
+      <main>
         <Header activeSection={activeSection} name={portfolioData?.name} />
-        <main className="overflow-clip">
-          <Hero data={{
-            ...portfolioData.sections.hero,
-            title: portfolioData.sections.hero.title,
-            subtitle: portfolioData.sections.hero.subtitle,
-          }} />
-          <TechStack data={portfolioData?.sections?.tech_stack} />
+        
+        <div id="home">
+          <Hero data={portfolioData.sections.hero} />
+        </div>
+        
+        <div id="about">
           <AboutMe />
-          <Skills
-            data={portfolioData?.sections?.skills}
-            skillsInfo={portfolioData?.sections?.skills_info}
-          />
-          <ProjectPortfolio data={portfolioData?.sections?.projects} />
-          <Contact
-            data={portfolioData?.sections?.contact}
-            contactInfo={portfolioData?.contact}
-          />
-        </main>
-        <Footer
-          contactInfo={portfolioData?.contact}
-          name={portfolioData?.name}
-        />
-        {showScrollTop && (
-          <button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-300"
-            aria-label="Scroll to top"
-          >
-            <ChevronUp className="w-6 h-6" />
-          </button>
-        )}
-      </div>
+        </div>
+        
+        <div id="portfolio">
+          <ProjectPortfolio data={portfolioData.sections.projects} />
+        </div>
+        
+        <div id="contact">
+          <Contact data={portfolioData.sections.contact}/>
+        </div>
+
+        <Footer data={portfolioData.sections.contact} />
+        <ScrollToTop />
+      </main>
     </>
   );
 };
