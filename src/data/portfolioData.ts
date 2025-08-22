@@ -1,7 +1,7 @@
 export const portfolioData = {
   name: "Marcos Giannini",
   contact: {
-  email: "hola@john.com" // TODO: Actualizar con email real si cambia
+  email: "marcogfa@gmail.com"
   },
   sections: {
     hero: {
