@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 // Variants para animaciones de las categorías de habilidades
 const skillsContainer: Variants = {
@@ -25,10 +26,13 @@ const AboutMe = () => {
           <div className="md:w-1/2 w-full flex justify-center mb-8 md:mb-0">
             <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
               <div className="w-full h-full border-4 border-black rounded-lg overflow-hidden flex items-center justify-center bg-gray-200">
-                <img
+                <Image
                   src="/mifoto.jpg"
                   alt="Foto personal de Marcos Giannini"
-                  className="object-cover w-full h-full rounded-lg"
+                  fill
+                  sizes="(max-width: 768px) 256px, 320px"
+                  className="object-cover rounded-lg"
+                  priority
                 />
               </div>
               <div className="absolute -top-4 -left-4 bg-yellow-300 rounded-full p-2 border-4 border-black shadow-lg">
