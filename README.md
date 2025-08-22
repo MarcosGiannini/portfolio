@@ -10,5 +10,5 @@ You can visit the site here: [Frontend Portfolio Template](https://frontend-port
 
 ---
 
-### Desktop View
-![Vista de escritorio](./src/img/desktop.png)
+### Vista
+Capturas próximamente.

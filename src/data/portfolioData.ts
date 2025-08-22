@@ -1,8 +1,7 @@
 export const portfolioData = {
   name: "Marcos Giannini",
   contact: {
-    phone: "+1 (234) 567-890",
-    email: "hola@john.com" // TODO: Actualizar con email real si cambia
+  email: "hola@john.com" // TODO: Actualizar con email real si cambia
   },
   sections: {
     hero: {
@@ -27,36 +26,7 @@ export const portfolioData = {
         submitButton: "Send Message",
       },
     },
-    skills_info: {
-      yoe: "1+",
-      number_of_projects: "25+"
-    },
-    skills: [
-      {
-        icon: "Code",
-        name: "HTML/CSS/JS",
-        color: "yellow",
-        subtitle: "Foundation of web structure and styling",
-      },
-      {
-        icon: "Layout",
-        name: "Responsive Design",
-        color: "purple",
-        subtitle: "Ensuring seamless display across devices",
-      },
-      {
-        icon: "Zap",
-        name: "React/Next.js",
-        color: "red",
-        subtitle: "Dynamic and component-based frontend framework",
-      },
-      {
-        icon: "Sparkles",
-        name: "UI/UX Integration",
-        color: "blue",
-        subtitle: "Merging visuals with functionality for user-friendly interfaces",
-      },
-    ],
+    
     projects: [
       {
         title: "Sistema de Diseño (Stack&Flow)",
@@ -91,15 +61,7 @@ export const portfolioData = {
         image: "/portfolio.png"
       },
     ],
-    tech_stack: {
-      technologies: [
-        "React",
-        "React Native",
-        "TypeScript",
-        "Next.js",
-        "Tailwind CSS",
-      ],
-    },
+    
   },
   footer: {
     socialLinks: [
