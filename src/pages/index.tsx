@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
 // Importar nuestros componentes y datos
@@ -14,33 +14,41 @@ import Contact from '@/components/Contact'; // Asumo que existe un componente Co
 const Portfolio = () => {
   // --- LÓGICA DEL COMPONENTE ---
   const [activeSection, setActiveSection] = useState('home');
+  const currentSectionRef = useRef('home');
   // Eliminado showScrollTop no utilizado
 
   useEffect(() => {
-  const sectionIds = ['home', 'about', 'portfolio', 'contact'];
+    const sectionIds = ['home', 'about', 'portfolio', 'contact'];
     const sectionElements = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => !!el);
 
-    console.log('[Observer Setup] Secciones registradas:', sectionElements.map(el => el.id));
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('[Observer Setup] Secciones registradas:', sectionElements.map(el => el.id));
+    }
 
     const observer = new window.IntersectionObserver(
       (entries) => {
-        // 1. Log de todas las entradas observadas con su estado
-        console.log('[Observer Tick] Entradas:', entries.map(e => ({
-          id: e.target.id,
-          isIntersecting: e.isIntersecting,
-          ratio: Number(e.intersectionRatio.toFixed(3))
-        })));
+        // 1. Log de todas las entradas observadas con su estado (solo en desarrollo)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('[Observer Tick] Entradas:', entries.map(e => ({
+            id: e.target.id,
+            isIntersecting: e.isIntersecting,
+            ratio: Number(e.intersectionRatio.toFixed(3))
+          })));
+        }
 
         const visibleSections = entries.filter((e) => e.isIntersecting);
         if (visibleSections.length > 0) {
           const mostVisible = visibleSections.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b));
-          // 2. Log claro de la sección seleccionada
-          if (mostVisible.target.id !== activeSection) {
-            console.log('[ActiveSection] Cambiando a:', mostVisible.target.id);
+          const nextId = mostVisible.target.id;
+          if (nextId !== currentSectionRef.current) {
+            if (process.env.NODE_ENV !== 'production') {
+              console.log('[ActiveSection] Cambiando a:', nextId);
+            }
+            currentSectionRef.current = nextId;
+            setActiveSection(nextId);
           }
-          setActiveSection(mostVisible.target.id);
         }
       },
       { rootMargin: '-40% 0px -60% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
@@ -52,7 +60,7 @@ const Portfolio = () => {
       sectionElements.forEach((el) => observer.unobserve(el));
       observer.disconnect();
     };
-  }, [activeSection]);
+  }, []);
 
   // --- PARTE VISUAL (JSX) ---
   return (
@@ -64,21 +72,13 @@ const Portfolio = () => {
       <main>
         <Header activeSection={activeSection} name={portfolioData?.name} />
         
-        <div id="home">
-          <Hero data={portfolioData.sections.hero} />
-        </div>
+  <Hero data={portfolioData.sections.hero} />
         
-        <div id="about">
-          <AboutMe />
-        </div>
+  <AboutMe />
         
-        <div id="portfolio">
-          <ProjectPortfolio data={portfolioData.sections.projects} />
-        </div>
+  <ProjectPortfolio data={portfolioData.sections.projects} />
 
-        <div id="contact">
-          <Contact data={portfolioData.sections.contact} contactInfo={portfolioData.contact} />
-        </div>
+  <Contact data={portfolioData.sections.contact} contactInfo={portfolioData.contact} />
 
         <Footer contactInfo={portfolioData.contact} name={portfolioData.name} />
         <ScrollToTop />
