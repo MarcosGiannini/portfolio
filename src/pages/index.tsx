@@ -80,7 +80,7 @@ const Portfolio = () => {
 
   <Contact data={portfolioData.sections.contact} contactInfo={portfolioData.contact} />
 
-        <Footer contactInfo={portfolioData.contact} name={portfolioData.name} />
+  <Footer name={portfolioData.name} socialLinks={portfolioData.footer.socialLinks} />
         <ScrollToTop />
       </main>
     </>
