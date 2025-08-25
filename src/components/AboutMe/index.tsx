@@ -20,10 +20,11 @@ const skillCategories = [
 ];
 const AboutMe = () => {
   return (
-  <section id="about" className="min-h-screen flex items-center justify-center bg-white border-b-4 border-black scroll-snap-align-start">
+  <section id="about" className="min-h-screen py-24 flex items-center justify-center bg-white border-b-4 border-black scroll-snap-align-start">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
-          <div className="md:w-1/2 w-full flex justify-center mb-8 md:mb-0">
+        {/* Fila superior: dos columnas (foto izquierda, texto+CTA derecha) */}
+  <div className="grid md:grid-cols-2 items-center md:items-start justify-center gap-12 md:gap-20 max-w-6xl mx-auto">
+          <div className="w-full flex justify-center mb-8 md:mb-0">
             <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
               <div className="w-full h-full border-4 border-black rounded-lg overflow-hidden flex items-center justify-center bg-gray-200">
                 <Image
@@ -59,65 +60,68 @@ const AboutMe = () => {
               ></motion.div>
             </div>
           </div>
-          <div className="md:w-1/2 w-full flex flex-col justify-center items-center md:items-start">
+          <div className="w-full flex flex-col justify-center items-center md:items-start">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left">Sobre Mí</h2>
-            <p className="text-lg text-gray-700 mb-8 text-center md:text-left max-w-xl">
-              Desarrollador Frontend con una sólida trayectoria profesional de 9 años, especializado recientemente en el ecosistema moderno de JavaScript a través de un Máster. Potencio mi productividad con herramientas de IA como GitHub Copilot y Cursor. Colaborador en proyectos Open Source, con profundo conocimiento en React, TypeScript, Vite y Docker.
-            </p>
-            <a
-              href="/CV_MarcosGiannini_Frontend.pdf"
-              download
-              className="bg-blue-500 text-white font-bold px-8 py-4 rounded-full border-4 border-black shadow hover:bg-blue-600 transition-colors duration-300 mb-12"
-            >
-              Descargar CV
-            </a>
-            {/* Bloque de habilidades fusionado desde el antiguo componente Skills */}
-            <div id="skills" className="w-full">
-              <motion.h3
-                className="text-2xl font-bold mb-8 text-center md:text-left"
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.9 }}
+            {/* Grupo de presentación + CTA */}
+            <div className="w-full max-w-xl space-y-6 text-center md:text-left">
+              <p className="text-lg text-gray-700">
+                Desarrollador Frontend con una sólida trayectoria profesional de 9 años, especializado recientemente en el ecosistema moderno de JavaScript a través de un Máster. Potencio mi productividad con herramientas de IA como GitHub Copilot y Cursor. Colaborador en proyectos Open Source, con profundo conocimiento en React, TypeScript, Vite y Docker.
+              </p>
+              <a
+                href="/CV_MarcosGiannini_Frontend.pdf"
+                download
+                className="inline-block bg-blue-500 text-white font-bold px-8 py-4 rounded-full border-4 border-black shadow hover:bg-blue-600 transition-colors duration-300"
               >
-                Mis Habilidades
-              </motion.h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                {skillCategories.map((cat, i) => (
-                  <motion.div
-                    key={cat.title}
-                    className="p-4 rounded-xl border-2 border-black bg-white shadow-sm hover:shadow-lg transition-shadow duration-300"
-                    variants={skillItem}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
-                      <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                      {cat.title}
-                    </h4>
-                    <motion.ul
-                      className="flex flex-wrap gap-2"
-                      variants={skillsContainer}
-                      initial="hidden"
-                      whileInView="show"
-                      viewport={{ once: false, amount: 0.3 }}
-                    >
-                      {cat.items.map((tech) => (
-                        <motion.li
-                          key={tech}
-                          className="px-3 py-1 rounded-full border border-gray-300 bg-gray-100 text-xs font-medium hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-colors duration-300"
-                          variants={skillItem}
-                        >
-                          {tech}
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  </motion.div>
-                ))}
-              </div>
+                Descargar CV
+              </a>
             </div>
+          </div>
+        </div>
+        {/* Fila inferior: habilidades a ancho completo */}
+        <div id="skills" className="w-full mt-16">
+          <motion.h3
+            className="text-2xl md:text-3xl font-bold mb-10 text-center"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.9 }}
+          >
+            Mis Habilidades
+          </motion.h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 auto-rows-fr">
+            {skillCategories.map((cat, i) => (
+              <motion.div
+                key={cat.title}
+                className="h-full p-4 rounded-xl border-2 border-black bg-white shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col"
+                variants={skillItem}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                  {cat.title}
+                </h4>
+                <motion.ul
+                  className="flex flex-wrap gap-2"
+                  variants={skillsContainer}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: false, amount: 0.3 }}
+                >
+                  {cat.items.map((tech) => (
+                    <motion.li
+                      key={tech}
+                      className="px-3 py-1 rounded-full border border-gray-300 bg-gray-100 text-xs font-medium hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-colors duration-300"
+                      variants={skillItem}
+                    >
+                      {tech}
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
