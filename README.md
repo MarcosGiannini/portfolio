@@ -55,4 +55,4 @@ npm start
 
 ## Agradecimientos
 
-Gracias a Ailín Nakaganeku por la plantilla original que inspiró este proyecto.
+Gracias a Ailín Nakaganeku (@ailinnakaganeku) por la plantilla original que inspiró este proyecto.

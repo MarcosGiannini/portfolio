@@ -65,8 +65,8 @@ export const portfolioData = {
   },
   footer: {
     socialLinks: [
-      { name: "GitHub", url: "#" },
-      { name: "LinkedIn", url: "#" },
+  { name: "GitHub", url: "https://github.com/MarcosGiannini" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/marcosgiannini-dev/" },
     ],
   },
 };
