@@ -4,11 +4,16 @@ Un portfolio interactivo y moderno para desarrolladores frontend, construido con
 
 ---
 
-![Portfolio Demo]![alt text](public/GifPortfolio.gif)
+![Portfolio Demo](/GifPortfolio.gif)
 
 ---
 
-## 🌐 [Live Demo](https://portfolio-pi-vert-12.vercel.app/)
+
+<p align="center">
+  <a href="https://portfolio-pi-vert-12.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live%20Demo-00C853?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
+</p>
 
 ---
 
