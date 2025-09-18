@@ -1,6 +1,6 @@
 # 🚀 Marcos Giannini Portfolio
 
-Un portfolio interactivo y moderno para desarrolladores frontend, construido con tecnologías de vanguardia. Muestra tus proyectos, habilidades y personalidad con una experiencia visual única y profesional.
+Un portfolio interactivo y moderno para desarrolladores frontend, construido con tecnologías de vanguardia. Muestra mis proyectos, habilidades y personalidad con una experiencia visual única y profesional.
 
 ---
 
