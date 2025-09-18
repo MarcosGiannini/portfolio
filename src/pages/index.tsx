@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import Head from 'next/head';
 
 // Importar nuestros componentes y datos
@@ -9,15 +10,18 @@ import AboutMe from '@/components/AboutMe';
 import ProjectPortfolio from '@/components/ProjectPortfolio';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
-import Contact from '@/components/Contact'; // Asumo que existe un componente Contact
+import Contact from '@/components/Contact';
+import SplashScreen from '@/components/SplashScreen';
 
 const Portfolio = () => {
-  // --- LÓGICA DEL COMPONENTE ---
+  // Estado para SplashScreen
+  const [showSplash, setShowSplash] = useState(true);
+  // Estado para sección activa (mantengo tu lógica original)
   const [activeSection, setActiveSection] = useState('home');
   const currentSectionRef = useRef('home');
-  // Eliminado showScrollTop no utilizado
 
   useEffect(() => {
+    if (showSplash) return; // No observar secciones si está el splash
     const sectionIds = ['home', 'about', 'portfolio', 'contact'];
     const sectionElements = sectionIds
       .map((id) => document.getElementById(id))
@@ -29,7 +33,6 @@ const Portfolio = () => {
 
     const observer = new window.IntersectionObserver(
       (entries) => {
-        // 1. Log de todas las entradas observadas con su estado (solo en desarrollo)
         if (process.env.NODE_ENV !== 'production') {
           console.log('[Observer Tick] Entradas:', entries.map(e => ({
             id: e.target.id,
@@ -37,7 +40,6 @@ const Portfolio = () => {
             ratio: Number(e.intersectionRatio.toFixed(3))
           })));
         }
-
         const visibleSections = entries.filter((e) => e.isIntersecting);
         if (visibleSections.length > 0) {
           const mostVisible = visibleSections.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b));
@@ -53,16 +55,13 @@ const Portfolio = () => {
       },
       { rootMargin: '-40% 0px -60% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
-
     sectionElements.forEach((el) => observer.observe(el));
-
     return () => {
       sectionElements.forEach((el) => observer.unobserve(el));
       observer.disconnect();
     };
-  }, []);
+  }, [showSplash]);
 
-  // --- PARTE VISUAL (JSX) ---
   return (
     <>
       <Head>
@@ -70,18 +69,30 @@ const Portfolio = () => {
       </Head>
 
       <main>
-        <Header activeSection={activeSection} name={portfolioData?.name} />
-        
-  <Hero data={portfolioData.sections.hero} />
-        
-  <AboutMe />
-        
-  <ProjectPortfolio data={portfolioData.sections.projects} />
+        <AnimatePresence>
+          {showSplash && (
+            <SplashScreen onStart={() => setShowSplash(false)} />
+          )}
+        </AnimatePresence>
 
-  <Contact data={portfolioData.sections.contact} contactInfo={portfolioData.contact} />
-
-  <Footer name={portfolioData.name} socialLinks={portfolioData.footer.socialLinks} />
-        <ScrollToTop />
+        <AnimatePresence>
+          {!showSplash && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <Header activeSection={activeSection} name={portfolioData?.name} />
+              <Hero data={portfolioData.sections.hero} />
+              <AboutMe />
+              <ProjectPortfolio data={portfolioData.sections.projects} />
+              <Contact data={portfolioData.sections.contact} contactInfo={portfolioData.contact} />
+              <Footer name={portfolioData.name} socialLinks={portfolioData.footer.socialLinks} />
+              <ScrollToTop />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </>
   );

@@ -29,6 +29,14 @@ export const portfolioData = {
     
     projects: [
       {
+        title: "Redux E-commerce Showcase",
+        desc: "Aplicación de carrito de la compra para demostrar el manejo avanzado de estado global en React utilizando Redux Toolkit y TypeScript de forma profesional.",
+        tech: ["React", "Redux Toolkit", "TypeScript", "TailwindCSS", "Vite"],
+        url: "https://redux-ecommerce-showcase.vercel.app/",
+        repo: "https://github.com/MarcosGiannini/redux-ecommerce-showcase",
+        image: "/redux-showcase.png"
+      },
+      {
         title: "Sistema de Diseño (Stack&Flow)",
         desc: "Creación de un sistema de diseño para unificar la estética y funcionalidad de productos web, documentado con Storybook.",
         tech: ["React", "TypeScript", "Storybook", "TailwindCSS", "RadixUI"],
@@ -43,14 +51,6 @@ export const portfolioData = {
         url: "https://www.quickmock.net/",
         repo: "https://github.com/Lemoncode/quickmock",
         image: "/quickmock.png"
-      },
-      {
-        title: "Portal de Datos de Embalses (TFM)",
-        desc: "Desarrollo de un portal de datos para centralizar información de embalses, implementado como un monorepo con frontend en Next.js y backend en NestJS.",
-        tech: ["Next.js", "d3.js", "NestJS", "MongoDB", "Turborepo"],
-        url: "",
-        repo: "https://github.com/Lemoncode/embalse-info",
-        image: "/embalses.jpeg"
       },
       {
         title: "Mi Portfolio Personal",
