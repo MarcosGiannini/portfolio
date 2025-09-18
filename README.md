@@ -4,7 +4,7 @@ Un portfolio interactivo y moderno para desarrolladores frontend, construido con
 
 ---
 
-![Portfolio Demo](/GifPortfolio.gif)
+![Portfolio Demo](./GifPortfolio.gif)
 
 ---
 
