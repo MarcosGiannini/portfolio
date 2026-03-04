@@ -100,3 +100,23 @@ export interface FormState {
     message: string;
   }>;
 }
+
+// ============ HOOKS ============
+
+/**
+ * Configuración de entrada para el hook useActiveSection.
+ * Define QUÉ secciones observar y CÓMO hacerlo.
+ */
+export interface UseActiveSectionConfig {
+  readonly sectionIds: readonly string[];
+  readonly rootMargin?: string;
+  readonly threshold?: readonly number[];
+}
+
+/**
+ * Contrato de salida del hook useActiveSection.
+ * Define QUÉ devuelve el hook al componente que lo consume.
+ */
+export interface UseActiveSectionReturn {
+  readonly activeSection: string;
+}
