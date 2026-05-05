@@ -13,5 +13,4 @@
 
 html {
   scroll-padding-top: 72px; /* Ajusta este valor si la barra de navegación cambia de altura */
-  scroll-snap-type: y mandatory;
 }

@@ -119,10 +119,19 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Error de consola rojo.
 > **Si algo falla:** pantallazo y parar.
 
-### 0.4 — Correcciones de bugs de UX
-- ⬜ Eliminar `style={{ scrollBehavior: "smooth" }}` en los `<a>` del Header (no tiene efecto)
-- ⬜ Eliminar `scroll-snap-type: y mandatory` de `globals.css` (rompe el scroll en móvil)
-- ⬜ Eliminar los `console.log` de debug del `IntersectionObserver` en `index.tsx`
+### 0.4 — Correcciones de bugs de UX ✅
+- ✅ Eliminar `style={{ scrollBehavior: "smooth" }}` en los `<a>` del Header
+- ✅ Eliminar `scroll-snap-type: y mandatory` de `globals.css`
+- ✅ Eliminar los `console.log` de debug del `IntersectionObserver` en `index.tsx`
+
+> **Commit:** `36bd2e7` — rama `chore/0.4-ux-bug-fixes`
+>
+> **Verificación manual:**
+> - `npm run dev` → `http://localhost:3000`
+> - Scroll entre secciones debe ser fluido (sin saltos de snap)
+> - Consola del navegador debe estar vacía (sin logs de Observer)
+> - Sin cambios visuales
+> - **NO debe pasar:** scroll roto, logs en consola, error rojo.
 
 ### 0.5 — Contenido actualizado (datos)
 - ⬜ Añadir proyecto **Super Teacher** a `portfolioData.ts`

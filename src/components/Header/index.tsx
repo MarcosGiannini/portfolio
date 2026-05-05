@@ -29,7 +29,6 @@ const Header = ({ activeSection, name }: HeaderProps) => {
               className={`hover:underline transition-colors duration-300 ${
                 activeSection === item.id ? "font-bold text-blue-500" : ""
               }`}
-              style={{ scrollBehavior: "smooth" }}
             >
               {item.label}
             </a>
@@ -60,7 +59,6 @@ const Header = ({ activeSection, name }: HeaderProps) => {
                   activeSection === item.id ? "font-bold text-blue-500" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
-                style={{ scrollBehavior: "smooth" }}
               >
                 {item.label}
               </a>
