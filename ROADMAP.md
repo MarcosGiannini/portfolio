@@ -231,6 +231,35 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Respetar `prefers-reduced-motion`: skip automático si está activo
 - ⬜ Aplicar nuevos tokens de color
 
+#### 3.1.A — Rediseño del botón START (aprobado para diseño)
+> El botón START actual funciona pero no convierte. Flota en un vacío negro con un glow básico.
+> El objetivo es que el primer frame del portfolio genere la misma anticipación que
+> la pantalla de título de un videojuego de los 80. Que no te den ganas de irse — que
+> te den ganas de pulsar.
+>
+> **Implementación: CSS puro + Framer Motion (ya instalado). Zero dependencias nuevas.**
+
+- ⬜ **Fondo — "Arcade Space"**: tres capas apiladas con `position: absolute`
+  - Capa 1: starfield estático con `box-shadow` en pseudo-elemento (100+ puntos blancos de 1–2px). Sin canvas, sin JS. Referencia: intro de Star Wars.
+  - Capa 2: perspective grid convergente hacia el horizonte. SVG inline o `background` con `linear-gradient` en perspectiva. Referencia: Tron, synthwave floor.
+  - Capa 3: scanlines CRT. `repeating-linear-gradient` con opacidad 3–5%. `pointer-events: none`.
+
+- ⬜ **Contexto narrativo alrededor del botón** (disposición vertical centrada):
+  - Arriba: `MARCOS GIANNINI` en tipografía display grande — como el título de un juego. Efecto glitch único al cargar (no en loop).
+  - Centro: el botón START rediseñado (ver abajo).
+  - Abajo: `PRESS START TO CONTINUE` en JetBrains Mono con parpadeo auténtico (ya existe).
+  - Esquina inferior: `© 2026 MARCOS.DEV` en mono pequeño, referencia a la pantalla de créditos arcade.
+
+- ⬜ **El botón START en sí**:
+  - Shape: rectangular con esquinas apenas redondeadas (4px). Más "físico", menos pill.
+  - Decoración: corchetes de HUD sci-fi en las esquinas (`◤ ◥ ◣ ◢`) en CSS puro. No decorativos — comunican "interfaz técnica".
+  - Glow base: ya existe (cyan). Mejorar con doble capa: glow exterior difuso + inner shadow cálido.
+  - Hover: efecto "carga" — un `@keyframes` de 300ms barre una línea de luz de izquierda a derecha por el botón. Luego el glow se intensifica. Sensación de que el sistema te está reconociendo.
+  - Active/Press: micro-flash de pantalla (`brightness(1.5)` en todo el splash, 80ms) + ligero `scale(0.97)`. Retroalimentación física de que algo ha ocurrido.
+  - Aberración cromática en hover: `text-shadow` con offset rojo/cian de 2px en el texto "START". Like VHS.
+
+- ⬜ Verificar que todos los efectos respetan `prefers-reduced-motion` (fallback: solo fade)
+
 ### 3.2 — Header
 - ⬜ Añadir skip-to-content link (primer elemento del DOM)
 - ⬜ Mostrar fondo `--bg-base` con efecto transparencia en scroll (CSS scroll-driven)
