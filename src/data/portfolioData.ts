@@ -17,17 +17,35 @@ export const portfolioData = {
       description:
         "¿Interesado en mi perfil? ¡Envíame un mensaje!",
       form: {
-        title: "Send me a message",
+        title: "Envíame un mensaje",
         fields: [
-          { name: "name", label: "Name", type: "text" },
+          { name: "name", label: "Nombre", type: "text" },
           { name: "email", label: "Email", type: "email" },
-          { name: "message", label: "Message", type: "textarea" },
+          { name: "message", label: "Mensaje", type: "textarea" },
         ],
-        submitButton: "Send Message",
+        submitButton: "Enviar mensaje",
       },
     },
     
     projects: [
+      {
+        title: "Super Teacher",
+        desc: "Plataforma SaaS de aprendizaje para docentes. Gestión de clases, alumnos y pagos con Stripe. En desarrollo activo.",
+        tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "TailwindCSS"],
+        url: "",
+        repo: "https://github.com/MarcosGiannini/v0-teacher-starter-kit-maite",
+        image: "/super-teacher.png",
+        badge: "EN DESARROLLO"
+      },
+      {
+        title: "Lenoy Editorial",
+        desc: "Sitio web corporativo para editorial independiente. Catálogo de libros, sección de autores y formulario de contacto.",
+        tech: ["Next.js", "TypeScript", "TailwindCSS"],
+        url: "",
+        repo: "https://github.com/MarcosGiannini/lenoy-editorial-web",
+        image: "/lenoy-editorial.png",
+        badge: "EN DESARROLLO"
+      },
       {
         title: "Redux E-commerce Showcase",
         desc: "Aplicación de carrito de la compra para demostrar el manejo avanzado de estado global en React utilizando Redux Toolkit y TypeScript de forma profesional.",
@@ -52,14 +70,7 @@ export const portfolioData = {
         repo: "https://github.com/Lemoncode/quickmock",
         image: "/quickmock.png"
       },
-      {
-        title: "Mi Portfolio Personal",
-        desc: "Portfolio interactivo personal para mostrar mis proyectos y habilidades. Construido con Next.js y TailwindCSS, animado con Framer Motion y asistido por IA.",
-        tech: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion"],
-        url: "",
-        repo: "https://github.com/MarcosGiannini/portfolio",
-        image: "/portfolio.png"
-      },
+
     ],
     
   },
