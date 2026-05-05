@@ -1,5 +1,5 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-05 — sub-fase 0.1 completada (limpieza de archivos muertos)
+> Última actualización: 2026-05-05 — protocolo de verificación manual añadido
 > Estado general: 🔵 Fase 0 aprobada — pendiente de implementación
 
 ## CONTEXTO DEL PROYECTO
@@ -51,6 +51,24 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ✅ Eliminar `src/components/SkillsNew/` (archivo vacío)
 - ✅ Eliminar `src/components/TechStack/` (componente placeholder eliminado)
 - ✅ Eliminar `public/embalses.jpeg` (imagen sin uso)
+
+#### ✅ VERIFICACIÓN MANUAL — 0.1 (ejemplo de referencia para sub-fases futuras)
+
+> **Cuándo verificar:** inmediatamente después del commit, antes de cerrar la sesión.
+> **Comando exacto:** `npm run dev` (ejecutar solo cuando la IA lo indique explícitamente)
+> **Dónde abrir:** `http://localhost:3000`
+> **Qué debes ver:**
+> - La SplashScreen con el botón "START" aparece al cargar
+> - Tras pulsar START, se cargan todas las secciones: Hero, About, Projects, Contact
+> - No hay errores visibles en pantalla ni mensajes de error de React
+> **Qué NO debe pasar:**
+> - Pantalla en blanco
+> - Error "Module not found" en consola del navegador
+> - Cualquier texto que mencione "Skills", "TechStack" o "SkillsNew"
+> **Si algo falla:** hacer pantallazo de la consola del navegador y detener la ejecución.
+
+> ⚠️ **PROTOCOLO PERMANENTE:** Este bloque de verificación es **obligatorio en todas las sub-fases futuras**.
+> La IA siempre lo redactará con instrucciones exactas antes de cerrar cada sub-fase.
 
 ### 0.2 — Correcciones críticas de TypeScript
 - ⬜ Actualizar `@types/react` de `^18` a `^19`
@@ -392,8 +410,20 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - Cada fase se aprueba antes de implementarse.
 - Al completar un paso, se marca como ✅ en este documento.
 - Si surge un bloqueante, se documenta aquí con ❌ y la razón.
-- El ROADMAP se actualiza al inicio de cada sesión de trabajo.
+- El ROADMAP se actualiza al inicio y al cierre de cada sesión de trabajo.
 - **Ninguna fase posterior puede iniciarse si la anterior tiene pasos ⬜ no decididos.**
+
+### Reglas de verificación humana
+
+- **Marcos ejecuta `npm run dev` ÚNICAMENTE cuando la IA lo indique de forma explícita.**
+- La IA es responsable de decidir si la verificación es visual, de consola, o ambas.
+- Antes de cerrar cada sub-fase, la IA debe proporcionar:
+  1. El comando exacto a ejecutar.
+  2. La URL exacta que abrir en el navegador.
+  3. Una lista clara de lo que debe verse.
+  4. Una lista de lo que NO debe ocurrir.
+- La IA se detiene hasta recibir confirmación de Marcos de que la verificación fue exitosa.
+- Si Marcos detecta algo inesperado, describe el síntoma y la IA analiza antes de continuar.
 
 ---
 
