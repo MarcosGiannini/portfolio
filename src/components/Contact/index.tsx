@@ -74,7 +74,7 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
-                Name
+                Nombre
               </label>
               <input
                 type="text"
@@ -105,7 +105,7 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700"
               >
-                Message
+                Mensaje
               </label>
               <textarea
                 id="message"
@@ -160,7 +160,7 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 <div className="space-y-6">
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nombre</label>
                       <input type="text" id="name" name="name" required className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300" />
                     </div>
                     <div>
@@ -170,7 +170,7 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Mensaje</label>
                     <textarea id="message" name="message" rows={4} required className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300" />
                     <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-sm text-red-600" />
                   </div>

@@ -65,7 +65,10 @@ const AboutMe = () => {
             {/* Grupo de presentación + CTA */}
             <div className="w-full max-w-xl space-y-6 text-center md:text-left">
               <p className="text-lg text-gray-700">
-                Desarrollador Frontend con una sólida trayectoria profesional de 9 años, especializado recientemente en el ecosistema moderno de JavaScript a través de un Máster. Potencio mi productividad con herramientas de IA como GitHub Copilot y Cursor. Colaborador en proyectos Open Source, con profundo conocimiento en React, TypeScript, Vite y Docker.
+                Frontend Engineer en el equipo de Digital Experience de NTT DATA, con más de 8 años construyendo interfaces y productos web. Trabajo en el ciclo completo: desde la arquitectura de componentes hasta el deploy en producción.
+              </p>
+              <p className="text-lg text-gray-700">
+                En paralelo, desarrollo proyectos propios: <strong>Super Teacher</strong>, una plataforma SaaS de aprendizaje con Next.js, Supabase y Stripe, y <strong>Lenoy Editorial</strong>, el sitio web de una editorial independiente. Proyectos reales, con usuarios reales.
               </p>
               <a
                 href="/CV_MarcosGiannini_Frontend.pdf"

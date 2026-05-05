@@ -9,6 +9,7 @@ interface Project {
   tech?: string[];
   url?: string;
   repo?: string;
+  badge?: string;
 }
 
 interface ProjectsProps {
