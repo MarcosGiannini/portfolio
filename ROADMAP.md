@@ -1,5 +1,5 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-05 — protocolo de verificación manual añadido
+> Última actualización: 2026-05-05 — sub-fase 0.2 completada (TypeScript crítico)
 > Estado general: 🔵 Fase 0 aprobada — pendiente de implementación
 
 ## CONTEXTO DEL PROYECTO
@@ -71,10 +71,29 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > La IA siempre lo redactará con instrucciones exactas antes de cerrar cada sub-fase.
 
 ### 0.2 — Correcciones críticas de TypeScript
-- ⬜ Actualizar `@types/react` de `^18` a `^19`
-- ⬜ Actualizar `react` y `react-dom` de la RC a la versión estable de React 19
-- ⬜ Añadir el campo `repo` al tipo `Project` en `ProjectPortfolio/index.tsx`
-- ⬜ Eliminar `title?: string` opcional sin uso en `HeroProps`
+> ✅ **Completada — 2026-05-05. Build verificado: OK. Cero errores TS/lint.**
+- ✅ Actualizar `@types/react` de `^18` a `^19.2.14`
+- ✅ Actualizar `react` y `react-dom` de la RC `19.0.0-rc-69d4b800-20241021` a `^19.2.5` (estable)
+- ✅ Añadir el campo `repo?: string` al tipo `Project` en `ProjectPortfolio/index.tsx`
+- ✅ Eliminar `title?: string` opcional sin uso de `HeroProps` en `Hero/index.tsx`
+> Nota: `@formspree/react@3.0.0` sigue requiriendo `--legacy-peer-deps` (no declara soporte a React 19).
+> Se eliminará en Fase 4 al migrar al formulario propio con Resend.
+
+#### ✅ VERIFICACIÓN MANUAL — 0.2
+
+> **Cuándo verificar:** inmediatamente, antes de cerrar la sesión.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** `http://localhost:3000`
+> **Qué debes ver:**
+> - SplashScreen con botón START aparece correctamente.
+> - Tras pulsar START, todas las secciones cargan sin errores: Hero, About, Projects, Contact.
+> - En la consola del navegador: **cero errores rojos**. Puede haber warnings amarillos de Next.js (son normales).
+> - El portfolio se ve visualmente idéntico a antes de esta sub-fase.
+> **Qué NO debe pasar:**
+> - Pantalla en blanco.
+> - Error "invalid hook call" o cualquier mención a versión de React incompatible.
+> - Mensajes sobre `title` en Hero (el campo fue eliminado del tipo).
+> **Si algo falla:** pantallazo de consola del navegador y parar.
 
 ### 0.3 — Correcciones de accesibilidad inmediatas
 - ⬜ Cambiar `lang="en"` a `lang="es"` en `src/pages/_document.tsx`
