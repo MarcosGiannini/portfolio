@@ -27,28 +27,14 @@ const Portfolio = () => {
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => !!el);
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.log('[Observer Setup] Secciones registradas:', sectionElements.map(el => el.id));
-    }
-
     const observer = new window.IntersectionObserver(
       (entries) => {
-        if (process.env.NODE_ENV !== 'production') {
-          console.log('[Observer Tick] Entradas:', entries.map(e => ({
-            id: e.target.id,
-            isIntersecting: e.isIntersecting,
-            ratio: Number(e.intersectionRatio.toFixed(3))
-          })));
-        }
         const visibleSections = entries.filter((e) => e.isIntersecting);
         if (visibleSections.length > 0) {
           const mostVisible = visibleSections.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b));
           const nextId = mostVisible.target.id;
           if (nextId !== currentSectionRef.current) {
-            if (process.env.NODE_ENV !== 'production') {
-              console.log('[ActiveSection] Cambiando a:', nextId);
-            }
-            currentSectionRef.current = nextId;
+              currentSectionRef.current = nextId;
             setActiveSection(nextId);
           }
         }
