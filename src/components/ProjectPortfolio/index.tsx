@@ -8,6 +8,7 @@ interface Project {
   image?: string;
   tech?: string[];
   url?: string;
+  repo?: string;
 }
 
 interface ProjectsProps {

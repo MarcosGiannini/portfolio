@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 interface HeroProps {
   data: {
-    title?: string;
     subtitle: string;
     button: string;
   };
