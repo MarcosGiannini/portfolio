@@ -1,5 +1,5 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-05 — sub-fase 0.2 completada (TypeScript crítico)
+> Última actualización: 2026-05-05 — sub-fase 0.3 completada (accesibilidad inmediata)
 > Estado general: 🔵 Fase 0 aprobada — pendiente de implementación
 
 ## CONTEXTO DEL PROYECTO
@@ -96,9 +96,28 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > **Si algo falla:** pantallazo de consola del navegador y parar.
 
 ### 0.3 — Correcciones de accesibilidad inmediatas
-- ⬜ Cambiar `lang="en"` a `lang="es"` en `src/pages/_document.tsx`
-- ⬜ Añadir `aria-label` al botón hamburger del Header
-- ⬜ Corregir jerarquía de headings: `<h1>` en Header (nombre) debe ser `<span>` o `<p>`
+> ✅ **Completada — 2026-05-05. Build verificado: OK.**
+- ✅ Cambiar `lang="en"` a `lang="es"` en `src/pages/_document.tsx`
+- ✅ Añadir `aria-label` dinámico + `aria-expanded` + `aria-controls="mobile-menu"` al botón hamburger del Header
+- ✅ Añadir `aria-hidden="true"` al icono `<Menu>` del botón hamburger
+- ✅ Añadir `id="mobile-menu"` al `<nav>` móvil (destino de `aria-controls`)
+- ✅ Corregir jerarquía de headings: `<h1>` en Header (nombre) → `<span>` con misma apariencia
+
+#### ✅ VERIFICACIÓN MANUAL — 0.3
+
+> **Cuándo verificar:** inmediatamente, antes de cerrar la sesión.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** `http://localhost:3000`
+> **Qué debes ver:**
+> - El portfolio carga y se comporta exactamente igual visualmente.
+> - "Marcos Giannini" en el header sigue con el mismo tamaño y estilo (era `<h1>`, ahora `<span>` — mismas clases CSS).
+> - El botón hamburger (móvil, < 768px) sigue funcionando: abre y cierra el menú.
+> - En DevTools (pestaña Elementos), el `<html>` debe tener `lang="es"` (antes era `lang="en"`).
+> **Qué NO debe pasar:**
+> - Cambio visual en el header.
+> - Menú móvil que no abre o no cierra.
+> - Error de consola rojo.
+> **Si algo falla:** pantallazo y parar.
 
 ### 0.4 — Correcciones de bugs de UX
 - ⬜ Eliminar `style={{ scrollBehavior: "smooth" }}` en los `<a>` del Header (no tiene efecto)
