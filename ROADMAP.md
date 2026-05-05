@@ -133,18 +133,22 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Sin cambios visuales
 > - **NO debe pasar:** scroll roto, logs en consola, error rojo.
 
-### 0.5 — Contenido actualizado (datos)
-- ⬜ Añadir proyecto **Super Teacher** a `portfolioData.ts`
-  - Stack: Next.js App Router, TypeScript, Supabase, Stripe
-  - Repo: `https://github.com/MarcosGiannini/v0-teacher-starter-kit-maite`
-  - Badge: `EN DESARROLLO`
-- ⬜ Añadir proyecto **Lenoy Editorial** a `portfolioData.ts`
-  - Repo: `https://github.com/MarcosGiannini/lenoy-editorial-web`
-  - Badge: `EN DESARROLLO`
-- ⬜ Actualizar la bio en `AboutMe/index.tsx` para reflejar rol actual en NTT DATA
-- ⬜ Eliminar el proyecto "Mi Portfolio Personal" de la lista de proyectos
-- ⬜ Corregir textos mezclados ES/EN en `portfolioData.ts` (formulario en inglés → español)
-- ⬜ Añadir categoría `"En producción"` a `skillCategories` en `AboutMe`
+### 0.5 — Contenido actualizado (datos) ✅
+- ✅ Añadir proyecto **Super Teacher** a `portfolioData.ts`
+- ✅ Añadir proyecto **Lenoy Editorial** a `portfolioData.ts`
+- ✅ Actualizar la bio en `AboutMe/index.tsx` con texto canónico aprobado (NTT DATA)
+- ✅ Eliminar el proyecto "Mi Portfolio Personal" de la lista de proyectos
+- ✅ Corregir textos mezclados ES/EN en `portfolioData.ts` (formulario → español)
+- ↪ Añadir categoría `"En producción"` a `skillCategories` → diferido a 0.6 (skillCategories se mueve allí)
+
+> **Commit:** `66db5a8` — rama `chore/0.5-content-update`
+>
+> **Verificación manual:**
+> - `npm run dev` → `http://localhost:3001`
+> - Sección Proyectos: Super Teacher y Lenoy Editorial aparecen primero (sin imagen = placeholder)
+> - Sección Sobre Mí: bio actualizada con "NTT DATA" y "Super Teacher / Lenoy Editorial"
+> - Formulario de contacto: campos en español ("Nombre", "Mensaje", "Enviar mensaje")
+> - **NO debe pasar:** error rojo en consola, proyectos duplicados o "Mi Portfolio Personal" visible.
 
 ### 0.6 — Preparación de estructura de datos para i18n futuro
 > ⚠️ Esta sub-fase NO implementa i18n. Únicamente prepara la estructura de datos
