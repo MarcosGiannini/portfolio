@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-06 — sub-fase 1.4 completada
-> Estado general: 🟡 Fase 1 en progreso — siguiente sub-fase: 1.5
+> Última actualización: 2026-05-06 — sub-fase 1.5 completada
+> Estado general: 🟡 Fase 1 en progreso — siguiente sub-fase: 1.6
 
 ## CONTEXTO DEL PROYECTO
 
@@ -305,10 +305,32 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Error de hidratación.
 > **Si algo falla:** pantallazo de consola del navegador y parar.
 
-### 1.5 — Extracción de lógica a hooks
-- ⬜ Crear `src/hooks/useActiveSection.ts` con el `IntersectionObserver` extraído de `index.tsx`
-- ⬜ Crear `src/hooks/useReducedMotion.ts` (wrapper de `window.matchMedia`)
-- ⬜ Actualizar `Header` y `layout.tsx` para consumir `useActiveSection`
+### 1.5 — Extracción de lógica a hooks ✅
+> ✅ **Completada — 2026-05-06. Build/lint verificados: OK.**
+- ✅ Crear `src/hooks/useActiveSection.ts` con el `IntersectionObserver` extraído de `app/page.tsx`
+- ✅ Crear `src/hooks/useReducedMotion.ts` (wrapper de `window.matchMedia`)
+- ✅ Actualizar `app/page.tsx` para consumir `useActiveSection`
+- ✅ Usar `useReducedMotion` en el fade principal tras la SplashScreen
+- ✅ Mantener `Header` como componente presentacional que recibe `activeSection` por props
+- ✅ No mover lógica a `layout.tsx`, porque el root layout es Server Component y no debe usar hooks de cliente
+
+#### ✅ VERIFICACIÓN MANUAL — 1.5
+
+> **Cuándo verificar:** inmediatamente, antes de cerrar la sesión.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** la URL indicada por Next.js en consola, normalmente `http://localhost:3000`.
+> **Qué debes ver:**
+> - La SplashScreen aparece al cargar.
+> - Al pulsar START, el portfolio carga igual que antes.
+> - Al hacer scroll, el item activo del Header cambia entre Inicio, Sobre Mí, Proyectos y Contacto.
+> - El menú mobile abre/cierra correctamente.
+> - No hay errores rojos en consola.
+> **Qué NO debe pasar:**
+> - Header sin estado activo.
+> - Error de `IntersectionObserver`.
+> - Error de `window is not defined`.
+> - Pantalla en blanco o error de hidratación.
+> **Si algo falla:** pantallazo de consola del navegador y parar.
 
 ### 1.6 — Reorganización de carpetas (estructura propuesta)
 - ⬜ Crear `src/components/sections/` y mover Hero, AboutMe, Projects, Contact
