@@ -18,6 +18,34 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: portfolioData.seo.title,
+  description: portfolioData.seo.description,
+  metadataBase: new URL(portfolioData.seo.siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: "/",
+    siteName: portfolioData.name,
+    title: portfolioData.seo.title,
+    description: portfolioData.seo.description,
+    images: [
+      {
+        url: portfolioData.seo.ogImage,
+        alt: portfolioData.seo.ogImageAlt,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: portfolioData.seo.title,
+    description: portfolioData.seo.description,
+    images: [portfolioData.seo.ogImage],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

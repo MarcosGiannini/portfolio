@@ -3,6 +3,11 @@ export const portfolioData = {
   name: "Marcos Giannini",
   seo: {
     title: "Marcos Giannini | Desarrollador Frontend",
+    description:
+      "Portfolio de Marcos Giannini, Frontend Engineer especializado en React, Next.js, TypeScript y productos digitales reales.",
+    siteUrl: "https://portfolio-pi-vert-12.vercel.app",
+    ogImage: "/og-image.jpg",
+    ogImageAlt: "Marcos Giannini, Frontend Engineer",
   },
   contact: {
     email: "marcogfa@gmail.com",

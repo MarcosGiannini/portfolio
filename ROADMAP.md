@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-06 — sub-fase 1.1 completada
-> Estado general: 🟡 Fase 1 en progreso — siguiente sub-fase: 1.2
+> Última actualización: 2026-05-06 — sub-fase 1.3 completada
+> Estado general: 🟡 Fase 1 en progreso — siguiente sub-fase: 1.4
 
 ## CONTEXTO DEL PROYECTO
 
@@ -256,10 +256,28 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Pérdida de estilos o animaciones.
 > **Si algo falla:** pantallazo de consola del navegador y parar.
 
-### 1.3 — Metadata API
-- ⬜ Reemplazar `<Head>` en `index.tsx` por `export const metadata` en `app/page.tsx`
-- ⬜ Eliminar el componente `Seo/index.tsx` (reemplazado por Metadata API)
-- ⬜ Configurar OG image estática básica en `public/og-image.jpg`
+### 1.3 — Metadata API ✅
+> ✅ **Completada — 2026-05-06. Build/lint verificados: OK.**
+- ✅ Reemplazar la responsabilidad de `<Head>`/SEO por `export const metadata` en `app/layout.tsx`
+- ✅ Eliminar el componente `Seo/index.tsx` (reemplazado por Metadata API)
+- ✅ Configurar metadata básica: title, description, canonical, Open Graph, Twitter card y favicon
+- ✅ Configurar OG image estática básica en `public/og-image.jpg`
+
+#### ✅ VERIFICACIÓN MANUAL — 1.3
+
+> **Cuándo verificar:** inmediatamente, antes de cerrar la sesión.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** la URL indicada por Next.js en consola, normalmente `http://localhost:3000`.
+> **Qué debes ver:**
+> - El portfolio carga igual que antes.
+> - La pestaña del navegador muestra `Marcos Giannini | Desarrollador Frontend`.
+> - En DevTools > Elements, dentro de `<head>`, aparecen meta tags de description, Open Graph y Twitter.
+> - No hay referencias visibles a `John Doe` ni `yourportfolio.com`.
+> **Qué NO debe pasar:**
+> - Pantalla en blanco.
+> - Error `next/head` en App Router.
+> - Error de metadata o de ruta `/og-image.jpg`.
+> **Si algo falla:** pantallazo de consola del navegador y parar.
 
 ### 1.4 — Eliminar Pages Router
 - ⬜ Eliminar `src/pages/` una vez que App Router funciona correctamente
