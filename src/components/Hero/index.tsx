@@ -1,4 +1,5 @@
-// Removed unused imports
+"use client";
+
 import { motion } from "framer-motion";
 
 interface HeroProps {

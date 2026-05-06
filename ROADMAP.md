@@ -8,12 +8,23 @@ Portfolio personal de **Marcos Giannini**, Frontend Engineer en el equipo Digita
 
 Objetivos del portfolio:
 1. Comunicar seniority de forma visual y técnicamente ejemplar.
-2. Mostrar proyectos reales en producción (Super Teacher, Lenoy Editorial).
+2. Mostrar proyectos propios reales y en evolución (Super Teacher, Lenoy Editorial, este Portfolio e Ines Game).
 3. Generar leads de negocio a través de la sección de Website Packs.
 4. Ser memorable, accesible y técnicamente impecable.
 
 Audiencia principal: reclutadores tech, CTOs, potenciales clientes freelance.
 Idioma por defecto: **español**. Soporte futuro: inglés, italiano.
+
+### Decisión canónica — Proyectos destacados
+
+La sección Proyectos debe centrarse en proyectos propios con narrativa de producto:
+
+1. **Super Teacher** — SaaS educativo con Next.js, Supabase y Stripe.
+2. **Lenoy Editorial** — sitio web para editorial independiente.
+3. **Portfolio Marcos Giannini** — este portfolio como producto vivo en evolución constante.
+4. **Ines Game** — videojuego 2D en Godot 4, a largo plazo, con visión comercial y posible publicación futura en Steam.
+
+Los proyectos antiguos de showcase o colaboración pueden volver en una vista secundaria futura, pero no son el foco principal de la sección destacada.
 
 ---
 
@@ -169,12 +180,12 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ✅ **Bio aprobada (sección About):**
   > Frontend Engineer en el equipo de Digital Experience de NTT DATA, con más de 8 años construyendo interfaces y productos web. Trabajo en el ciclo completo: desde la arquitectura de componentes hasta el deploy en producción.
   >
-  > En paralelo, desarrollo proyectos propios: **Super Teacher**, una plataforma SaaS de aprendizaje con Next.js, Supabase y Stripe, y **Lenoy Editorial**, el sitio web de una editorial independiente. Proyectos reales, con usuarios reales.
+  > En paralelo, desarrollo proyectos propios: **Super Teacher**, una plataforma SaaS de aprendizaje con Next.js, Supabase y Stripe; **Lenoy Editorial**, el sitio web de una editorial independiente; este **portfolio**, que evoluciona como producto vivo; e **Ines Game**, un videojuego 2D en Godot con visión comercial a largo plazo.
   >
   > Me interesa el cruce entre diseño de producto y ingeniería de frontend: código que funciona, que escala y que alguien sabe mantener.
 
 - ✅ **Título principal:** `"Frontend Engineer"` (unificado, sin mezcla de idiomas)
-- ✅ **Orden de proyectos:** Super Teacher → Lenoy Editorial → Redux Showcase → Quick Mock
+- ✅ **Orden de proyectos:** Super Teacher → Lenoy Editorial → Portfolio Marcos Giannini → Ines Game
 - ✅ Textos pendientes de volcar a `portfolioData.ts` (se ejecuta en sub-fase 0.5)
 
 ### 0.8 — Cargar las fuentes correctamente ✅
@@ -217,12 +228,33 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Error "Module not found".
 > - Pérdida de estilos o fuentes.
 
-### 1.2 — Migración de componentes a RSC donde corresponda
-- ⬜ Identificar qué componentes requieren `"use client"` (los que usan hooks o eventos)
-  - Requieren client: `Header`, `SplashScreen`, `ScrollToTop`, `Contact`
-  - Pueden ser Server Components: `Hero`, `Footer`, `ProjectPortfolio`, `AboutMe`
-- ⬜ Añadir directiva `"use client"` a los componentes que corresponden
-- ⬜ Validar que no hay errores de hidratación
+### 1.2 — Migración de componentes a RSC donde corresponda ✅
+> ✅ **Completada — 2026-05-06. Build/lint verificados: OK.**
+- ✅ Identificar qué componentes requieren `"use client"` por hooks, eventos, APIs de navegador o `framer-motion`
+  - Requieren client: `app/page.tsx`, `Header`, `SplashScreen`, `ScrollToTop`, `Contact`, `Hero`, `ProjectPortfolio`, `AboutMe`
+  - Pueden ser Server Components ahora mismo: `Footer`, `not-found`
+- ✅ Añadir directiva `"use client"` a los componentes que corresponden
+- ✅ Quitar `"use client"` de `app/not-found.tsx`, porque no usa hooks ni eventos de cliente
+- ✅ Validar que no hay errores de hidratación en build
+
+#### ✅ VERIFICACIÓN MANUAL — 1.2
+
+> **Cuándo verificar:** inmediatamente, antes de cerrar la sesión.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** la URL indicada por Next.js en consola, normalmente `http://localhost:3000`.
+> **Qué debes ver:**
+> - La SplashScreen aparece al cargar.
+> - Al pulsar START, cargan Header, Hero, About, Projects, Contact, Footer y ScrollToTop.
+> - Las animaciones de Hero, About y Projects siguen funcionando igual que antes.
+> - El menú mobile abre/cierra correctamente.
+> - El formulario de contacto sigue renderizando sus campos.
+> - La consola del navegador no muestra errores rojos de hidratación.
+> **Qué NO debe pasar:**
+> - Pantalla en blanco.
+> - Error de hidratación de React.
+> - Error sobre hooks usados en Server Components.
+> - Pérdida de estilos o animaciones.
+> **Si algo falla:** pantallazo de consola del navegador y parar.
 
 ### 1.3 — Metadata API
 - ⬜ Reemplazar `<Head>` en `index.tsx` por `export const metadata` en `app/page.tsx`
@@ -360,12 +392,14 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Aplicar nuevos tokens de color
 
 ### 3.5 — Projects
-- ⬜ Reordenar proyectos: Super Teacher → Lenoy → Redux Showcase → Quick Mock
+- ⬜ Reordenar proyectos destacados: Super Teacher → Lenoy Editorial → Portfolio Marcos Giannini → Ines Game
 - ⬜ Añadir badge de estado (`EN PRODUCCIÓN`, `EN DESARROLLO`, `OPEN SOURCE`)
 - ⬜ Añadir campo `repo` visible en tarjetas (icono GitHub + link)
 - ⬜ Corregir animaciones: usar `whileInView` en lugar de `animate` en las tarjetas
 - ⬜ Añadir botón "Ver todos en GitHub →" al final de la sección
 - ⬜ Aplicar componente `Card` del design system
+- ⬜ Diseñar una arquitectura visual más memorable para mostrar proyectos futuros: explorar formato retro-moderno tipo TV ochentera, consola arcade, canal selector o gabinete interactivo.
+- ⬜ Definir cómo escalar la sección cuando haya más proyectos: destacados visibles, proyectos archivados/secundarios y enlace a GitHub sin saturar la primera pantalla.
 
 ### 3.6 — Contact
 - ⬜ Unificar formulario mobile/desktop (eliminar duplicado)
