@@ -35,7 +35,8 @@ const Header = ({ activeSection, name, navigation }: HeaderProps) => {
               {item.label}
             </a>
           ))}
-        </nav>        <button
+        </nav>
+        <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden"
           aria-label={isMenuOpen ? navigation.menuLabels.close : navigation.menuLabels.open}
