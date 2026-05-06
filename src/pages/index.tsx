@@ -51,13 +51,13 @@ const Portfolio = () => {
   return (
     <>
       <Head>
-        <title>Marcos Giannini | Desarrollador Frontend</title>
+        <title>{portfolioData.seo.title}</title>
       </Head>
 
       <main>
         <AnimatePresence>
           {showSplash && (
-            <SplashScreen onStart={() => setShowSplash(false)} />
+            <SplashScreen data={portfolioData.splash} onStart={() => setShowSplash(false)} />
           )}
         </AnimatePresence>
 
@@ -69,12 +69,12 @@ const Portfolio = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <Header activeSection={activeSection} name={portfolioData?.name} />
+              <Header activeSection={activeSection} name={portfolioData.name} navigation={portfolioData.navigation} />
               <Hero data={portfolioData.sections.hero} />
-              <AboutMe />
-              <ProjectPortfolio data={portfolioData.sections.projects} />
+              <AboutMe data={portfolioData.sections.about} />
+              <ProjectPortfolio data={portfolioData.sections.projects.items} title={portfolioData.sections.projects.title} underConstructionLabel={portfolioData.sections.projects.underConstructionLabel} underConstructionAriaLabel={portfolioData.sections.projects.underConstructionAriaLabel} />
               <Contact data={portfolioData.sections.contact} contactInfo={portfolioData.contact} />
-              <Footer name={portfolioData.name} socialLinks={portfolioData.footer.socialLinks} />
+              <Footer name={portfolioData.name} credit={portfolioData.footer.credit} socialLinks={portfolioData.footer.socialLinks} />
               <ScrollToTop />
             </motion.div>
           )}

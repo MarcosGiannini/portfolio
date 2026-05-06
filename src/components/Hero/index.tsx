@@ -3,8 +3,15 @@ import { motion } from "framer-motion";
 
 interface HeroProps {
   data: {
+    title: {
+      beforeIcon: string;
+      afterIcon: string;
+      iconTitle: string;
+      iconAriaLabel: string;
+    };
     subtitle: string;
     button: string;
+    buttonAriaLabel: string;
   };
 }
 
@@ -22,12 +29,12 @@ const Hero = ({ data }: HeroProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
           >
-            Desarrollador
+            {data.title.beforeIcon}
             <motion.span
               className="inline-block transition-transform duration-300 cursor-pointer"
-              title="Frontend Power!"
+              title={data.title.iconTitle}
               role="img"
-              aria-label="Rayo dinámico"
+              aria-label={data.title.iconAriaLabel}
               initial={{ opacity: 0, y: 80 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -52,7 +59,7 @@ const Hero = ({ data }: HeroProps) => {
             >
               ⚡
             </motion.span>
-            Frontend
+            {data.title.afterIcon}
           </motion.h1>
           <motion.p
             className="text-xl mb-8 text-gray-600 text-center"
@@ -64,7 +71,7 @@ const Hero = ({ data }: HeroProps) => {
           </motion.p>
           <motion.a
             href="#portfolio"
-            aria-label="Navigate to Projects section"
+            aria-label={data.buttonAriaLabel}
             className="bg-blue-500 text-white text-lg font-bold px-8 py-4 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all"
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}

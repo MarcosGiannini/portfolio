@@ -4,10 +4,15 @@ interface ContactProps {
   data: {
     title: { desktop: string; mobile: string };
     description: string;
+    successMessage: string;
     form: {
       title: string;
       fields: Array<{ name: string; label: string; type: string }>;
       submitButton: string;
+      submittingButton: string;
+      validationLabels: {
+        form: string;
+      };
     };
   };
   contactInfo: { email: string; phone?: string };
@@ -15,6 +20,13 @@ interface ContactProps {
 
 const Contact = ({ data, contactInfo }: ContactProps) => {
   const [state, handleSubmit] = useForm("mldlzykj");
+  const getField = (name: string) => {
+    return data.form.fields.find((field) => field.name === name) ?? { name, label: name, type: "text" };
+  };
+  const nameField = getField("name");
+  const emailField = getField("email");
+  const messageField = getField("message");
+
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -63,10 +75,10 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
           <p className="text-xl mb-8 text-gray-600">{data?.description}</p>
           {state.succeeded && (
             <div className="mb-10 p-6 border-2 border-black rounded-lg bg-green-100 text-green-800 font-semibold text-center" role="status" aria-live="polite">
-              ¡Gracias por tu mensaje! Te responderé pronto.
+              {data.successMessage}
             </div>
           )}
-          <ValidationError prefix="Form" field="form" errors={state.errors} className="mb-6 text-sm text-red-600" />
+          <ValidationError prefix={data.form.validationLabels.form} field="form" errors={state.errors} className="mb-6 text-sm text-red-600" />
       {!state.succeeded && (
       <form className="space-y-6 block md:hidden" onSubmit={handleSubmit} noValidate>
             <div>
@@ -74,7 +86,7 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
-                Nombre
+                {nameField?.label}
               </label>
               <input
                 type="text"
@@ -89,7 +101,7 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email
+                {emailField?.label}
               </label>
               <input
                 type="email"
@@ -98,14 +110,14 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 required
               />
-        <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-600" />
+        <ValidationError prefix={emailField?.label} field="email" errors={state.errors} className="mt-1 text-sm text-red-600" />
             </div>
             <div>
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700"
               >
-                Mensaje
+                {messageField?.label}
               </label>
               <textarea
                 id="message"
@@ -114,21 +126,21 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 required
               ></textarea>
-        <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-sm text-red-600" />
+        <ValidationError prefix={messageField?.label} field="message" errors={state.errors} className="mt-1 text-sm text-red-600" />
             </div>
             <button
               type="submit"
         disabled={state.submitting}
               className="bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white text-lg font-bold px-8 py-4 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full"
             >
-        {state.submitting ? 'Enviando...' : data?.form?.submitButton}
+        {state.submitting ? data.form.submittingButton : data.form.submitButton}
             </button>
           </form>
           )}
           <div className="grid-cols-1 md:grid-cols-2 gap-8 hidden md:grid">
             <div className="space-y-6">
               <div className="border-2 border-black p-8 rounded-lg bg-yellow-200">
-                <p className="text-xl mb-4">Email</p>
+                <p className="text-xl mb-4">{emailField?.label}</p>
                 <h4 className="text-3xl font-bold break-words">
                   <a
                     href={`mailto:${contactInfo?.email}`}
@@ -160,21 +172,21 @@ const Contact = ({ data, contactInfo }: ContactProps) => {
                 <div className="space-y-6">
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nombre</label>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700">{nameField?.label}</label>
                       <input type="text" id="name" name="name" required className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700">{emailField?.label}</label>
                       <input type="email" id="email" name="email" required className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300" />
-                      <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-600" />
+                      <ValidationError prefix={emailField?.label} field="email" errors={state.errors} className="mt-1 text-sm text-red-600" />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Mensaje</label>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">{messageField?.label}</label>
                     <textarea id="message" name="message" rows={4} required className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300" />
-                    <ValidationError prefix="Message" field="message" errors={state.errors} className="mt-1 text-sm text-red-600" />
+                    <ValidationError prefix={messageField?.label} field="message" errors={state.errors} className="mt-1 text-sm text-red-600" />
                   </div>
-                  <button type="submit" disabled={state.submitting} className=" bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white text-lg font-bold px-8 py-3 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-300 w-auto">{state.submitting ? 'Enviando...' : data?.form?.submitButton}</button>
+                  <button type="submit" disabled={state.submitting} className=" bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white text-lg font-bold px-8 py-3 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-300 w-auto">{state.submitting ? data.form.submittingButton : data.form.submitButton}</button>
                 </div>
               </form>) }
             </div>

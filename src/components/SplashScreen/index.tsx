@@ -1,6 +1,14 @@
 import { motion } from "framer-motion";
 
-export default function SplashScreen({ onStart }: { onStart: () => void }) {
+interface SplashScreenProps {
+  data: {
+    startButton: string;
+    continuePrompt: string;
+  };
+  onStart: () => void;
+}
+
+export default function SplashScreen({ data, onStart }: SplashScreenProps) {
   return (
   <motion.div
     className="fixed inset-0 z-50 flex items-center justify-center bg-black"
@@ -35,12 +43,12 @@ export default function SplashScreen({ onStart }: { onStart: () => void }) {
         "
         whileTap={{ scale: 0.95 }}
       >
-        START
+        {data.startButton}
       </motion.button>
       
       {/* El 'p' ahora está dentro del div con flex-col */}
       <p className="mt-4 text-sm font-mono text-gray-400 animate-blink text-center">
-        PRESS START TO CONTINUE
+        {data.continuePrompt}
       </p>
     </div>
     {/* --- FIN DEL DIV CLAVE --- */}

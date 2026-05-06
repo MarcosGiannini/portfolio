@@ -1,6 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
+
+interface AboutMeProps {
+  data: {
+    title: string;
+    imageAlt: string;
+    bio: string[];
+    cvButton: string;
+    skillsTitle: string;
+    skillCategories: Array<{ title: string; items: string[] }>;
+  };
+}
+
 // Variants para animaciones de las categorías de habilidades
 const skillsContainer: Variants = {
   hidden: { opacity: 0 },
@@ -12,13 +24,20 @@ const skillItem: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 0.84, 0.44, 1] } }
 };
 
-const skillCategories = [
-  { title: 'Frontend', items: ['React','Next.js','TypeScript','JavaScript','HTML5','CSS3','TailwindCSS','Framer Motion'] },
-  { title: 'Backend', items: ['Node.js','NestJS','MongoDB'] },
-  { title: 'Herramientas', items: ['Git','GitHub','Docker','Jest','Vitest','Playwright'] },
-  { title: 'IA & Productividad', items: ['GitHub Copilot','Cursor','Prompt Engineering'] }
-];
-const AboutMe = () => {
+const renderBio = (paragraph: string) => {
+  const parts = paragraph.split(/(\*\*[^*]+\*\*)/g);
+
+  return parts.map((part) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      const text = part.slice(2, -2);
+      return <strong key={part}>{text}</strong>;
+    }
+
+    return part;
+  });
+};
+
+const AboutMe = ({ data }: AboutMeProps) => {
   return (
   <section id="about" className="min-h-screen py-24 flex items-center justify-center bg-white border-b-4 border-black scroll-snap-align-start">
       <div className="container mx-auto px-4">
@@ -29,7 +48,7 @@ const AboutMe = () => {
               <div className="w-full h-full border-4 border-black rounded-lg overflow-hidden flex items-center justify-center bg-gray-200">
                 <Image
                   src="/mifoto.jpg"
-                  alt="Foto personal de Marcos Giannini"
+                  alt={data.imageAlt}
                   fill
                   sizes="(max-width: 768px) 256px, 320px"
                   className="object-cover rounded-lg"
@@ -61,21 +80,20 @@ const AboutMe = () => {
             </div>
           </div>
           <div className="w-full flex flex-col justify-center items-center md:items-start">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left">Sobre Mí</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left">{data.title}</h2>
             {/* Grupo de presentación + CTA */}
             <div className="w-full max-w-xl space-y-6 text-center md:text-left">
-              <p className="text-lg text-gray-700">
-                Frontend Engineer en el equipo de Digital Experience de NTT DATA, con más de 8 años construyendo interfaces y productos web. Trabajo en el ciclo completo: desde la arquitectura de componentes hasta el deploy en producción.
-              </p>
-              <p className="text-lg text-gray-700">
-                En paralelo, desarrollo proyectos propios: <strong>Super Teacher</strong>, una plataforma SaaS de aprendizaje con Next.js, Supabase y Stripe, y <strong>Lenoy Editorial</strong>, el sitio web de una editorial independiente. Proyectos reales, con usuarios reales.
-              </p>
+              {data.bio.map((paragraph) => (
+                <p key={paragraph} className="text-lg text-gray-700">
+                  {renderBio(paragraph)}
+                </p>
+              ))}
               <a
                 href="/CV_MarcosGiannini_Frontend.pdf"
                 download
                 className="inline-block bg-blue-500 text-white font-bold px-8 py-4 rounded-full border-4 border-black shadow hover:bg-blue-600 transition-colors duration-300"
               >
-                Descargar CV
+                {data.cvButton}
               </a>
             </div>
           </div>
@@ -89,10 +107,10 @@ const AboutMe = () => {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.9 }}
           >
-            Mis Habilidades
+            {data.skillsTitle}
           </motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 auto-rows-fr">
-            {skillCategories.map((cat, i) => (
+            {data.skillCategories.map((cat, i) => (
               <motion.div
                 key={cat.title}
                 className="h-full p-4 rounded-xl border-2 border-black bg-white shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col"

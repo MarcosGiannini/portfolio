@@ -14,9 +14,12 @@ interface Project {
 
 interface ProjectsProps {
   data: Project[];
+  title: string;
+  underConstructionLabel: string;
+  underConstructionAriaLabel: string;
 }
 
-const ProjectPortfolio = ({ data }: ProjectsProps) => {
+const ProjectPortfolio = ({ data, title, underConstructionLabel, underConstructionAriaLabel }: ProjectsProps) => {
   return (
     <section
       id="portfolio"
@@ -24,7 +27,7 @@ const ProjectPortfolio = ({ data }: ProjectsProps) => {
     >
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center justify-center">
-          <span className="mt-12 block">My Projects</span>
+          <span className="mt-12 block">{title}</span>
         </h2>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-10 md:gap-y-14">
           {data?.map((project, index) => (
@@ -84,8 +87,8 @@ const ProjectPortfolio = ({ data }: ProjectsProps) => {
                 </motion.a>
               ) : (
                 <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-yellow-100 border border-yellow-400 p-2 rounded-full text-yellow-700 text-xs font-semibold shadow-md">
-                  <span role="img" aria-label="En construcción">🚧</span>
-                  Web en construcción
+                  <span role="img" aria-label={underConstructionAriaLabel}>🚧</span>
+                  {underConstructionLabel}
                 </div>
               )}
             </motion.div>

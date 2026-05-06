@@ -1,5 +1,5 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-05 — sub-fase 0.3 completada (accesibilidad inmediata)
+> Última actualización: 2026-05-06 — sub-fase 0.6 completada (preparación i18n)
 > Estado general: 🔵 Fase 0 aprobada — pendiente de implementación
 
 ## CONTEXTO DEL PROYECTO
@@ -150,14 +150,14 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Formulario de contacto: campos en español ("Nombre", "Mensaje", "Enviar mensaje")
 > - **NO debe pasar:** error rojo en consola, proyectos duplicados o "Mi Portfolio Personal" visible.
 
-### 0.6 — Preparación de estructura de datos para i18n futuro
-> ⚠️ Esta sub-fase NO implementa i18n. Únicamente prepara la estructura de datos
-> para que la Fase 6 pueda ejecutarse sin tocar lógica de componentes.
-- ⬜ Mover la bio hardcodeada en `AboutMe/index.tsx` a `portfolioData.ts`
-- ⬜ Mover `skillCategories` hardcodeado en `AboutMe/index.tsx` a `portfolioData.ts`
-- ⬜ Verificar que ningún componente renderiza texto que no venga de `portfolioData.ts` o de props
-- ⬜ Asegurarse de que **todos los textos editables** del portfolio tienen un único punto de origen
-- ⬜ Añadir comentario en `portfolioData.ts` marcando los campos que serán traducibles en Fase 6
+### 0.6 — Preparación de estructura de datos para i18n futuro ✅
+> ✅ **Completada — 2026-05-06. Build/lint verificados: OK. Verificación manual: OK.**
+> Nota: todos los textos editables visibles del portfolio han sido centralizados en `portfolioData.ts` para preparar la Fase 6.
+- ✅ Mover la bio hardcodeada en `AboutMe/index.tsx` a `portfolioData.ts`
+- ✅ Mover `skillCategories` hardcodeado en `AboutMe/index.tsx` a `portfolioData.ts`
+- ✅ Verificar que ningún componente renderiza texto que no venga de `portfolioData.ts` o de props
+- ✅ Asegurarse de que **todos los textos editables** del portfolio tienen un único punto de origen
+- ✅ Añadir comentario en `portfolioData.ts` marcando los campos que serán traducibles en Fase 6
 
 ### 0.7 — Mensaje profesional y propuesta de valor
 > ✅ **Completada — textos aprobados el 2026-05-05.**

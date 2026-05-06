@@ -5,9 +5,16 @@ import Link from "next/link";
 interface HeaderProps {
   activeSection: string;
   name: string;
+  navigation: {
+    menuLabels: {
+      open: string;
+      close: string;
+    };
+    items: Array<{ id: string; label: string }>;
+  };
 }
 
-const Header = ({ activeSection, name }: HeaderProps) => {
+const Header = ({ activeSection, name, navigation }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -17,12 +24,7 @@ const Header = ({ activeSection, name }: HeaderProps) => {
           <span className="text-2xl font-bold">{name}</span>
         </Link>
         <nav className="hidden md:flex space-x-6">
-          {[
-            { id: "home", label: "Inicio" },
-            { id: "about", label: "Sobre Mí" },
-            { id: "portfolio", label: "Proyectos" },
-            { id: "contact", label: "Contacto" }
-          ].map((item) => (
+          {navigation.items.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -36,7 +38,7 @@ const Header = ({ activeSection, name }: HeaderProps) => {
         </nav>        <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden"
-          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={isMenuOpen ? navigation.menuLabels.close : navigation.menuLabels.open}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
         >
@@ -46,12 +48,7 @@ const Header = ({ activeSection, name }: HeaderProps) => {
       {isMenuOpen && (
         <div className="md:hidden mt-4 bg-white border-t-2 border-black">
           <nav id="mobile-menu" className="flex flex-col space-y-2 p-4">
-            {[
-              { id: "home", label: "Inicio" },
-              { id: "about", label: "Sobre Mí" },
-              { id: "portfolio", label: "Proyectos" },
-              { id: "contact", label: "Contacto" }
-            ].map((item) => (
+            {navigation.items.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
