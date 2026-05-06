@@ -23,6 +23,11 @@ export const portfolioData = {
     startButton: "START",
     continuePrompt: "PRESS START TO CONTINUE",
   },
+  notFound: {
+    title: "Página no encontrada",
+    description: "La página que buscas no existe.",
+    backHome: "Volver al inicio",
+  },
   sections: {
     hero: {
       title: {
@@ -83,7 +88,6 @@ export const portfolioData = {
           tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "TailwindCSS"],
           url: "",
           repo: "https://github.com/MarcosGiannini/v0-teacher-starter-kit-maite",
-          image: "/super-teacher.png",
           badge: "EN DESARROLLO",
         },
         {
@@ -92,7 +96,6 @@ export const portfolioData = {
           tech: ["Next.js", "TypeScript", "TailwindCSS"],
           url: "",
           repo: "https://github.com/MarcosGiannini/lenoy-editorial-web",
-          image: "/lenoy-editorial.png",
           badge: "EN DESARROLLO",
         },
         {

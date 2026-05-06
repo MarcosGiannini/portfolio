@@ -66,6 +66,7 @@ REGLAS ABSOLUTAS (extraídas de AI_WORKFLOW.md):
 - NO toques código todavía.
 - Una sub-fase por iteración, con verificación manual obligatoria antes de la siguiente.
 - Responder SIEMPRE en castellano.
+- Explicar cada cambio como a un Junior Engineer: por qué, cómo y cuándo.
 - ROADMAP.md + AI_WORKFLOW.md son la fuente de verdad canónica.
 
 Detente tras la confirmación. Espera instrucción de Marcos.
@@ -94,7 +95,7 @@ Detente tras la confirmación. Espera instrucción de Marcos.
 
 ## Estado rápido del proyecto (actualizar tras cada sesión)
 
-> **Última actualización:** 2026-05-05
-> **Última sub-fase completada:** 0.5 — Contenido actualizado
-> **Rama activa tras merge:** `main`
-> **Siguiente sub-fase:** 0.6 — Preparación estructura de datos para i18n
+> **Última actualización:** 2026-05-06
+> **Última sub-fase completada:** 1.1 — Preparación de la migración
+> **Rama activa:** `chore/1.1-app-router-prep`
+> **Siguiente paso:** 1.2 — Migración de componentes a RSC donde corresponda

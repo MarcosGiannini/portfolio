@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-06 — sub-fase 0.8 completada (fuentes cargadas correctamente)
-> Estado general: 🔵 Fase 0 aprobada — pendiente de implementación
+> Última actualización: 2026-05-06 — sub-fase 1.1 completada
+> Estado general: 🟡 Fase 1 en progreso — siguiente sub-fase: 1.2
 
 ## CONTEXTO DEL PROYECTO
 
@@ -36,7 +36,7 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 ---
 
 ## FASE 0 — ESTABILIZACIÓN (sin migración, sin rediseño)
-> **Estado: 🔵 APROBADA — lista para implementar.**
+> **Estado: ✅ COMPLETADA.**
 > Objetivo: hacer el proyecto actual honesto, limpio y sin bugs silenciosos.
 > Esta fase no introduce nuevas features ni cambia el aspecto visual del portfolio.
 > Es el prerequisito obligatorio para cualquier fase siguiente.
@@ -186,16 +186,36 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 ---
 
 ## FASE 1 — ARQUITECTURA BASE (App Router)
-> **Estado: ⬜ No iniciada. Prerequisito: Fase 0 completada al 100%.**
+> **Estado: 🟡 EN PROGRESO. Prerequisito cumplido: Fase 0 completada al 100%.**
 > Objetivo: migrar de Pages Router a App Router sin cambiar nada visual.
 > El portfolio debe verse exactamente igual al finalizar esta fase.
 > Estimación: 2–3 sesiones de trabajo.
 
-### 1.1 — Preparación de la migración
-- ⬜ Crear la estructura de carpetas `src/app/` en paralelo a `src/pages/`
-- ⬜ Crear `src/app/layout.tsx` (root layout: `<html>`, `<body>`, providers)
-- ⬜ Crear `src/app/page.tsx` (página principal — equivalente a `pages/index.tsx`)
-- ⬜ Crear `src/app/not-found.tsx`
+### 1.1 — Preparación de la migración ✅
+> ✅ **Completada — 2026-05-06. Build/lint verificados: OK. Verificación manual: OK.**
+> Rama activa: `chore/1.1-app-router-prep`.
+- ✅ Crear la estructura de carpetas `src/app/` en paralelo a `src/pages/`
+- ✅ Crear `src/app/layout.tsx` (root layout: `<html>`, `<body>`, providers)
+- ✅ Crear `src/app/page.tsx` (página principal — equivalente a `pages/index.tsx`)
+- ✅ Crear `src/app/not-found.tsx`
+- ✅ Verificación manual aprobada por Marcos: `OK 1.1`
+
+#### ✅ VERIFICACIÓN MANUAL — 1.1
+
+> **Resultado:** OK manual confirmado por Marcos el 2026-05-06.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** la URL indicada por Next.js en consola, normalmente `http://localhost:3000`.
+> **Qué se verificó:**
+> - La SplashScreen aparece al cargar.
+> - Al pulsar START, cargan Header, Hero, About, Projects, Contact, Footer y ScrollToTop.
+> - El portfolio se ve visualmente igual que antes de preparar App Router.
+> - La navegación por secciones sigue actualizando el estado activo del Header.
+> - La consola del navegador no muestra errores rojos.
+> **Qué no ocurrió:**
+> - Pantalla en blanco.
+> - Error de hidratación de React.
+> - Error "Module not found".
+> - Pérdida de estilos o fuentes.
 
 ### 1.2 — Migración de componentes a RSC donde corresponda
 - ⬜ Identificar qué componentes requieren `"use client"` (los que usan hooks o eventos)

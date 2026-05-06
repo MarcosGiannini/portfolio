@@ -45,7 +45,7 @@ const AboutMe = ({ data }: AboutMeProps) => {
   <div className="grid md:grid-cols-2 items-center md:items-start justify-center gap-12 md:gap-20 max-w-6xl mx-auto">
           <div className="w-full flex justify-center mb-8 md:mb-0">
             <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
-              <div className="w-full h-full border-4 border-black rounded-lg overflow-hidden flex items-center justify-center bg-gray-200">
+              <div className="relative w-full h-full border-4 border-black rounded-lg overflow-hidden flex items-center justify-center bg-gray-200">
                 <Image
                   src="/mifoto.jpg"
                   alt={data.imageAlt}

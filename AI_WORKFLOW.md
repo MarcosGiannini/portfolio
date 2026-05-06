@@ -73,6 +73,19 @@ Si la IA detecta algo fuera del alcance que merece atención, lo **anota y lo re
 
 ---
 
+## REGLA 6 — EXPLICACIÓN DIDÁCTICA PARA JUNIOR ENGINEER
+
+- Cada vez que la IA proponga, ejecute o revise un cambio, debe explicar a Marcos el **porqué**, el **cómo** y el **cuándo**.
+- La explicación debe estar escrita como para un **Junior Engineer**: clara, práctica, sin jerga innecesaria y conectada con el código real del proyecto.
+- La IA debe distinguir entre:
+  - **Por qué:** qué problema resuelve o qué riesgo evita.
+  - **Cómo:** qué archivos, APIs, patrones o comandos intervienen.
+  - **Cuándo:** en qué momento del flujo se aplica y qué señales indican que toca hacerlo.
+- La explicación no sustituye a la ejecución: si la sub-fase está aprobada, la IA ejecuta el cambio y además enseña el razonamiento.
+- Si algo es un warning normal de desarrollo o un error real, la IA debe explicarlo explícitamente para que Marcos aprenda a diferenciar ruido de problemas importantes.
+
+---
+
 ## FLUJO ESTÁNDAR DE CADA SUB-FASE
 
 ```
