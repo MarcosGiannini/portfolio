@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
-        heading: ['var(--font-montserrat)', 'sans-serif'],
+        heading: ['var(--font-heading)', 'sans-serif'],
       },
       keyframes: {
         'pulse-glow': {

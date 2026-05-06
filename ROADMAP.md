@@ -1,5 +1,5 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-06 — sub-fase 0.6 completada (preparación i18n)
+> Última actualización: 2026-05-06 — sub-fase 0.8 completada (fuentes cargadas correctamente)
 > Estado general: 🔵 Fase 0 aprobada — pendiente de implementación
 
 ## CONTEXTO DEL PROYECTO
@@ -177,10 +177,11 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ✅ **Orden de proyectos:** Super Teacher → Lenoy Editorial → Redux Showcase → Quick Mock
 - ✅ Textos pendientes de volcar a `portfolioData.ts` (se ejecuta en sub-fase 0.5)
 
-### 0.8 — Cargar las fuentes correctamente
-- ⬜ Implementar `next/font` en `src/pages/_app.tsx` para Inter y Space Grotesk
-- ⬜ Asegurarse de que las variables `--font-inter` y `--font-heading` se inyectan en `<body>`
-- ⬜ Reemplazar Montserrat por Space Grotesk en `tailwind.config.ts` (nueva tipografía propuesta)
+### 0.8 — Cargar las fuentes correctamente ✅
+> ✅ **Completada — 2026-05-06. Build/lint verificados: OK. Verificación manual: OK.**
+- ✅ Implementar `next/font` en `src/pages/_app.tsx` para Inter y Space Grotesk
+- ✅ Asegurarse de que las variables `--font-inter` y `--font-heading` se inyectan en `<body>`
+- ✅ Reemplazar Montserrat por Space Grotesk en `tailwind.config.ts` (nueva tipografía propuesta)
 
 ---
 
