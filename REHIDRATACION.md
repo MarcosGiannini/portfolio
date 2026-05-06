@@ -96,6 +96,6 @@ Detente tras la confirmación. Espera instrucción de Marcos.
 ## Estado rápido del proyecto (actualizar tras cada sesión)
 
 > **Última actualización:** 2026-05-06
-> **Última sub-fase completada:** 1.3 — Metadata API
+> **Última sub-fase completada:** 1.4 — Eliminar Pages Router
 > **Rama activa:** `chore/1.1-app-router-prep`
-> **Siguiente paso:** 1.4 — Eliminar Pages Router
+> **Siguiente paso:** 1.5 — Extracción de lógica a hooks

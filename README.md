@@ -11,9 +11,9 @@ React, TypeScript y Tailwind CSS.
 
 La fuente de verdad del proyecto es [ROADMAP.md](./ROADMAP.md).
 
-- Ultima sub-fase completada: 1.3 - Metadata API.
+- Ultima sub-fase completada: 1.4 - Eliminar Pages Router.
 - Rama activa: `chore/1.1-app-router-prep`.
-- Siguiente paso segun roadmap: 1.4 - Eliminar Pages Router.
+- Siguiente paso segun roadmap: 1.5 - Extraccion de logica a hooks.
 
 ## Stack
 
@@ -58,7 +58,6 @@ src/
   app/
   components/
   data/
-  pages/
   styles/
 ```
 

@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-06 — sub-fase 1.3 completada
-> Estado general: 🟡 Fase 1 en progreso — siguiente sub-fase: 1.4
+> Última actualización: 2026-05-06 — sub-fase 1.4 completada
+> Estado general: 🟡 Fase 1 en progreso — siguiente sub-fase: 1.5
 
 ## CONTEXTO DEL PROYECTO
 
@@ -279,10 +279,31 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Error de metadata o de ruta `/og-image.jpg`.
 > **Si algo falla:** pantallazo de consola del navegador y parar.
 
-### 1.4 — Eliminar Pages Router
-- ⬜ Eliminar `src/pages/` una vez que App Router funciona correctamente
-- ⬜ Eliminar la dependencia de `next/head` si ya no se usa
-- ⬜ Verificar `next.config.ts` (no requiere cambios para App Router)
+### 1.4 — Eliminar Pages Router ✅
+> ✅ **Completada — 2026-05-06. Build/lint verificados: OK.**
+- ✅ Eliminar `src/pages/` una vez que App Router funciona correctamente
+- ✅ Eliminar la API demo `src/pages/api/hello.ts`
+- ✅ Eliminar fuentes antiguas de `src/pages/fonts/` (las fuentes activas cargan desde `app/layout.tsx` con `next/font`)
+- ✅ Verificar que no quedan usos de `next/head`, `next/app` ni `next/document`
+- ✅ Verificar `next.config.ts` (no requiere cambios para App Router)
+
+#### ✅ VERIFICACIÓN MANUAL — 1.4
+
+> **Cuándo verificar:** inmediatamente, antes de cerrar la sesión.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** la URL indicada por Next.js en consola, normalmente `http://localhost:3000`.
+> **Qué debes ver:**
+> - La SplashScreen aparece al cargar.
+> - Al pulsar START, cargan Header, Hero, About, Projects, Contact, Footer y ScrollToTop.
+> - La ruta `/` funciona desde App Router.
+> - La ruta inexistente, por ejemplo `/no-existe`, muestra la página 404 personalizada.
+> - El portfolio mantiene estilos y fuentes.
+> **Qué NO debe pasar:**
+> - Pantalla en blanco.
+> - Error `pages/` o `next/document`.
+> - Error de fuentes.
+> - Error de hidratación.
+> **Si algo falla:** pantallazo de consola del navegador y parar.
 
 ### 1.5 — Extracción de lógica a hooks
 - ⬜ Crear `src/hooks/useActiveSection.ts` con el `IntersectionObserver` extraído de `index.tsx`
