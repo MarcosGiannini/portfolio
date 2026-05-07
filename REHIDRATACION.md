@@ -1,180 +1,150 @@
-# Protocolo de Rehidratación — Portfolio Marcos Giannini
+# REHIDRATACION — Portfolio Marcos Giannini
 
-> Usar al inicio de CADA nueva sesión de chat con GitHub Copilot.
-> Copia el bloque de abajo y pégalo como primer mensaje del chat.
-
----
-
-## Por qué existe este protocolo
-
-Cada sesión de chat con un agente IA es independiente — no recuerda la sesión anterior.
-Sin rehidratación, el agente puede proponer arquitecturas erróneas, repetir trabajo ya hecho o peor: deshacer cambios que funcionan.
-
-Este protocolo obliga al agente a leer los documentos canónicos antes de tocar nada.
+Usar este documento al iniciar una nueva sesión para recuperar contexto sin reabrir decisiones ya tomadas.
 
 ---
 
-## Bloque a copiar y pegar
+## Protocolo de Inicio
 
-```
-NUEVA SESIÓN — PORTFOLIO (REHIDRATACIÓN TOTAL DE CONTEXTO)
+Antes de proponer o tocar código, la IA debe leer en este orden:
 
-El chat anterior quedó inválido por límite interno del agente.
-El proyecto NO está roto. El estado está documentado.
+1. `AI_WORKFLOW.md`
+2. `ROADMAP.md`
+3. `REHIDRATACION.md`
+4. `README.md`
 
-PROTOCOLO OBLIGATORIO (NO SALTARSE NADA):
+Después debe confirmar:
 
-PASO 1
-Lee COMPLETAMENTE el archivo:
-→ AI_WORKFLOW.md
-(Reglas permanentes de colaboración: flujo, restricciones, formato de respuesta)
-
-PASO 2
-Lee COMPLETAMENTE el archivo:
-→ ROADMAP.md
-(Fuente de verdad: fases completadas ✅, en progreso 🔵, pendientes ⬜)
-
-PASO 3
-Lee el archivo:
-→ README.md
-(Stack técnico, propuesta de diseño SplashScreen, notas de instalación)
-
-PASO 4
-Confirma explícitamente el estado actual SIN ejecutar nada ni tocar código:
-
-Formato de respuesta OBLIGATORIO:
-
----
+```text
 ✅ He leído AI_WORKFLOW.md
 ✅ He leído ROADMAP.md
+✅ He leído REHIDRATACION.md
 ✅ He leído README.md
 
 Estado actual del proyecto:
-- Última sub-fase completada: [indicar exactamente, ej: "0.5 — Contenido actualizado"]
-- Rama activa: [indicar rama git actual]
-- Branch actual vs main: [indicar si hay rama pendiente de merge]
-
-Siguiente paso permitido según ROADMAP:
-→ [sub-fase y descripción exacta]
-
-Pregunta pendiente de Marcos para esta sesión:
-→ No hay pregunta pendiente de diseño. Continuar con el siguiente paso permitido: crear `Card` en `src/components/ui/Card.tsx`.
+- Último bloque completado: 3.6 Contact + 3.6.B Calendly integration
+- Rama activa: chore/1.1-app-router-prep
+- Siguiente paso recomendado: Fase 3.8 — Packs
 
 ¿Confirmas que empecemos ese paso?
----
-
-REGLAS ABSOLUTAS (extraídas de AI_WORKFLOW.md):
-- NO analices el proyecto desde cero.
-- NO repropongas arquitectura ya decidida.
-- NO toques código todavía.
-- Una sub-fase por iteración, con verificación manual obligatoria antes de la siguiente.
-- Responder SIEMPRE en castellano.
-- Explicar cada cambio como a un Junior Engineer: por qué, cómo y cuándo.
-- Siempre que exista una decisión posible, ofrecer 3 opciones concretas para elegir: recomendada, conservadora y ambiciosa/estratégica.
-- Cada vez que se actualice REHIDRATACION.md, añadir o reemplazar la sección "Último cierre de sesión" con el último mensaje de cierre escrito por la IA.
-- ROADMAP.md + AI_WORKFLOW.md son la fuente de verdad canónica.
-
-Detente tras la confirmación. Espera instrucción de Marcos.
 ```
 
----
-
-## Cuándo usarlo
-
-- Al abrir una sesión nueva tras cerrar el navegador / Codespace
-- Cuando el agente empieza a proponer cosas que ya están hechas
-- Cuando el agente dice "no tengo contexto de lo anterior"
-- Al retomar el proyecto después de días sin trabajar en él
+Reglas clave:
+- Una sola sub-fase por interacción.
+- No avanzar sin confirmación explícita de Marcos.
+- No modificar código fuera del alcance aprobado.
+- Toda UI visible termina con bloque de verificación manual.
+- Al actualizar este archivo, reemplazar la sección `Último cierre de sesión`.
 
 ---
 
-## Documentos canónicos (leer en este orden)
+## Estado Actual del Proyecto
 
-| Prioridad | Fichero | Contenido |
-|-----------|---------|-----------|
-| 1 | `AI_WORKFLOW.md` | Reglas de colaboración, flujo de trabajo, restricciones del agente |
-| 2 | `ROADMAP.md` | Fases completadas, en progreso, pendientes, bloques de verificación |
-| 3 | `README.md` | Stack técnico, propuesta de diseño START button, instalación |
+Última actualización: 2026-05-07
+
+Fases completadas:
+- Fase 0 ✅ Estabilización
+- Fase 1 ✅ Arquitectura base con App Router
+- Fase 2 ✅ Tokens + base UI operativa
+- Fase 3 🟡 Rediseño de secciones en progreso, completado hasta 3.6 Contact ✅
+
+Último bloque completado:
+- 3.6 Contact
+- 3.6.B Calendly integration
+
+Rama activa:
+- `chore/1.1-app-router-prep`
+
+Estado de persistencia:
+- Últimos commits relevantes:
+  - `9d9e637 feat(projects): add conversion microinteractions`
+  - `6c49d40 feat(projects): add project role hierarchy`
+  - `307cca1 feat(projects): refine project cards as system modules`
+  - `44f00ae feat(hero): redesign hero for splash continuity`
+  - `0cf4176 feat(about): redesign credibility section`
+- Contact + Calendly está funcional y documentado.
+- Queda pendiente crear commit si Marcos lo autoriza para los cambios de Contact/Calendly y documentación de cierre.
 
 ---
 
-## Estado rápido del proyecto (actualizar tras cada sesión)
+## Estado Funcional del Portfolio
 
-> **Última actualización:** 2026-05-07
-> **Última sub-fase completada:** 2.4 — Badge UI atómico
-> **Estado UI atoms:** Tokens ✅ completados · Button ✅ completado · Badge ✅ completado
-> **Rama activa:** `chore/1.1-app-router-prep`
-> **Siguiente paso:** Crear `Card` en `src/components/ui/Card.tsx`
+Hero:
+- OK.
+- Continuidad visual con Splash.
+- Fondo oscuro, narrativa de sistema y CTAs claros.
 
-## Pregunta pendiente para la próxima sesión
+About:
+- OK.
+- Sección convertida en bloque de credibilidad profesional.
+- Bio, foto, datos rápidos y skills organizados.
 
-No hay pregunta pendiente de diseño antes de continuar. La decisión de tokens de 2.2 ya está implementada y documentada.
+Projects:
+- OK.
+- Jerarquía implementada:
+  - Ines Game como hero project.
+  - Super Teacher como production / primary project.
+  - Lenoy Editorial y Portfolio como support projects.
+- ProjectCards con estilo system module.
+- Micro-interacciones CSS añadidas.
 
-### Cómo encaja con el ROADMAP
+Contact:
+- OK.
+- Un único formulario responsive.
+- Campo `tipo_proyecto` activo.
+- Email visible como canal directo.
+- Calendly integrado:
+  - `https://calendly.com/marcosgianninidev`
+- CTA actualizado:
+  - `Agendar sesión`
+- Copy alineado con captación profesional.
 
-- **Fase 2** sigue en progreso con el sistema base: tokens, dark/light mode, componentes UI y efectos CRT.
-- **2.2** está completada: tokens definidos en `globals.css` y fuentes configuradas en `layout`.
-- **2.4** está en curso: `Button` y `Badge` completados; faltan `Card` y `SectionTitle`.
-- **Fase 3** no debe empezar hasta completar Fase 2.
+Flujo de captación:
+- Projects → Contact → Calendly.
+- Sistema de captación ya funcional.
 
-## Último cierre de sesión
+---
 
-> Hecho: documentación sincronizada tras crear `Badge` en `src/components/ui/Badge.tsx`.
->
-> Estado real: tokens 2.2 completados, `Button` completado y `Badge` completado. El `Badge` soporta variantes `cyan`, `magenta`, `yellow` y `green`, usa tokens de `globals.css`, borde brutalista y fondo sutil con `color-mix`, sin colores hardcodeados.
->
-> Verificación realizada para Badge: `npm run build` OK y `npm run lint` OK.
->
-> Siguiente paso recomendado: crear `Card` en `src/components/ui/Card.tsx`. No avanzar a Fase 3 ni reabrir decisiones de arquitectura o negocio.
+## Siguiente Paso Claro
 
-## CONTEXTO DE NEGOCIO (BLOQUE FIJO)
+Recomendado:
+- Fase 3.8 — Packs (monetización directa)
 
-Este portfolio NO es solo showcase técnico.
+Objetivo de esa fase:
+- Crear sección Packs entre Projects y Contact.
+- Mostrar oferta comercial de servicios.
+- Conectar el posicionamiento del portfolio con conversión directa.
 
-Objetivos:
-- Marca personal
-- Captación de clientes freelance limitada (2–5/año)
-- Posicionamiento diferencial (no portfolio genérico)
+No iniciar Fase 3.8 sin aprobación explícita de Marcos.
 
-Restricciones:
-- No parecer agencia
-- No captación masiva
-- Compatible con empleo actual
+---
 
-Cualquier decisión de diseño o desarrollo debe respetar esto.
+## Notas Importantes
 
-## 🔁 REHIDRATACIÓN — Próxima sesión
+- No usar el proveedor anterior de agenda. Queda descartado.
+- Calendly activo: `https://calendly.com/marcosgianninidev`
+- El sistema de captación ya funciona con email + formulario + Calendly.
+- No reabrir decisiones visuales de Splash, Hero, About, Projects o Contact sin autorización.
+- Mantener estética CRT / brutalist con tokens existentes.
+- Mantener textos editables centralizados en `portfolioData.ts`.
 
-- Estado actual:
-  - Tokens ✅ completados
-  - Button ✅ completado
-  - Badge ✅ completado
-  - Diseño y arquitectura cerrados
+---
 
-- Siguiente paso:
-  → Crear `Card` en `src/components/ui/Card.tsx`
+## Último Cierre de Sesión
 
-- Orden de ejecución confirmado:
-  Button → Badge → Card → SectionTitle → Hero → About → Projects → Packs → Contact
+✅ ROADMAP actualizado con Fase 3.6 Contact completada.
+✅ REHIDRATACION sincronizado con estado actual.
+✅ Proyecto listo para retomar en siguiente sesión.
 
-- No se deben reabrir decisiones de arquitectura ni negocio
-- Continuar en modo ejecución directa
+Estado final documentado:
+- Contact tiene formulario responsive único.
+- `tipo_proyecto` está integrado.
+- Calendly reemplaza al proveedor anterior de agenda.
+- CTA de conversión: `Agendar sesión`.
+- Siguiente paso recomendado: Fase 3.8 — Packs.
 
-### ✅ Reglas de validación
+Verificación documental:
+- No deben quedar referencias activas al proveedor anterior de agenda.
+- No se introdujeron nuevas features durante el cierre documental.
 
-Antes de avanzar:
-- Comprobar si el componente afecta a UI visible.
-- Si afecta a UI visible o se va a integrar después en UI, generar bloque de verificación manual.
-- Marcos debe ejecutar `npm run dev`, abrir la URL indicada y confirmar que el comportamiento visual es correcto.
-- No continuar a integración ni al siguiente componente sin validación explícita del usuario.
-
-### ✅ Estado de persistencia
-
-Antes de cerrar sesión:
-- Verificar que todos los cambios están commiteados
-- Separar commits si hay código y documentación:
-  - `feat` → código
-  - `docs` → documentación
-- Hacer push de la rama activa
-- NO mergear automáticamente a main
-- Dejar un commit claro que defina el estado del proyecto
+STOP.

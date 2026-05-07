@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-07 — Badge documentado
-> Estado general: 🟡 Fase 2 en progreso — siguiente sub-fase: 2.4 Card
+> Última actualización: 2026-05-07 — Contact + Calendly documentado
+> Estado general: 🟡 Fase 3 en progreso — completado hasta 3.6 Contact
 
 ## CONTEXTO DEL PROYECTO
 
@@ -606,10 +606,13 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Definir cómo escalar la sección cuando haya más proyectos: destacados visibles, proyectos archivados/secundarios y enlace a GitHub sin saturar la primera pantalla.
 
 ### 3.6 — Contact
-- ⬜ Unificar formulario mobile/desktop (eliminar duplicado)
-- ⬜ Añadir campo `tipo_proyecto` (select: Proyecto web / Colaboración / Consulta)
-- ⬜ Añadir link a Cal.com para reservar llamada
-- ⬜ Aplicar nuevos tokens de color
+> ✅ **Completada — 2026-05-07. Build/lint verificados: OK. Verificación manual: OK Marcos.**
+- ✅ Unificar formulario mobile/desktop en un único formulario responsive
+- ✅ Añadir campo `tipo_proyecto` (Proyecto web / Colaboración / Consulta)
+- ✅ Integrar Calendly funcional: `https://calendly.com/marcosgianninidev`
+- ✅ Optimizar CTA de conversión a `"Agendar sesión"`
+- ✅ Alinear copy a captación profesional
+- ✅ Aplicar tokens existentes y estética CRT / brutalist coherente con Hero, About y Projects
 
 ### 3.7 — Footer
 - ⬜ Añadir año dinámico (`new Date().getFullYear()`)
@@ -707,7 +710,7 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Configurar variables de entorno en Vercel (RESEND_API_KEY, etc.)
 - ⬜ Hacer smoke testing en producción (formulario, todos los links, todas las rutas)
 - ⬜ Verificar Lighthouse en producción (no en dev)
-- ⬜ Configurar Cal.com con disponibilidad real
+- ⬜ Configurar Calendly con disponibilidad real
 - ⬜ Anunciar en LinkedIn con link al portfolio
 
 ---

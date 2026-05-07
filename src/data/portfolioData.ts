@@ -70,11 +70,23 @@ export const portfolioData = {
       },
       description: "¿Interesado en mi perfil? ¡Envíame un mensaje!",
       successMessage: "¡Gracias por tu mensaje! Te responderé pronto.",
+      calendarUrl: "https://calendly.com/marcosgianninidev",
+      calendarButton: "Agendar sesión",
+      channelLabel: "Canal directo",
+      scheduleLabel: "Agenda",
+      scheduleDescription: "Agenda una breve sesión para revisar tu proyecto, objetivos y próximos pasos.",
       form: {
         title: "Envíame un mensaje",
+        projectTypePlaceholder: "Selecciona una opción",
         fields: [
           { name: "name", label: "Nombre", type: "text" },
           { name: "email", label: "Email", type: "email" },
+          {
+            name: "tipo_proyecto",
+            label: "Tipo de proyecto",
+            type: "select",
+            options: ["Proyecto web", "Colaboración", "Consulta"],
+          },
           { name: "message", label: "Mensaje", type: "textarea" },
         ],
         submitButton: "Enviar mensaje",
