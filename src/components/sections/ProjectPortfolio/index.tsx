@@ -4,15 +4,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface Project {
-  title: string;
-  desc: string;
-  image?: string;
-  tech?: string[];
-  url?: string;
-  repo?: string;
-  badge?: string;
-}
+import type { Project } from "@/types/portfolio";
 
 interface ProjectsProps {
   data: Project[];

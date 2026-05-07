@@ -95,7 +95,7 @@ Detente tras la confirmación. Espera instrucción de Marcos.
 
 ## Estado rápido del proyecto (actualizar tras cada sesión)
 
-> **Última actualización:** 2026-05-06
-> **Última sub-fase completada:** 1.5 — Extracción de lógica a hooks
+> **Última actualización:** 2026-05-07
+> **Última sub-fase completada:** 1.6 — Reorganización de carpetas
 > **Rama activa:** `chore/1.1-app-router-prep`
-> **Siguiente paso:** 1.6 — Reorganización de carpetas
+> **Siguiente paso:** 2.1 — Actualizar Tailwind a v4

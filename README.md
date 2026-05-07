@@ -11,9 +11,9 @@ React, TypeScript y Tailwind CSS.
 
 La fuente de verdad del proyecto es [ROADMAP.md](./ROADMAP.md).
 
-- Ultima sub-fase completada: 1.5 - Extraccion de logica a hooks.
+- Ultima sub-fase completada: 1.6 - Reorganizacion de carpetas.
 - Rama activa: `chore/1.1-app-router-prep`.
-- Siguiente paso segun roadmap: 1.6 - Reorganizacion de carpetas.
+- Siguiente paso segun roadmap: 2.1 - Actualizar Tailwind a v4.
 
 ## Stack
 
@@ -57,9 +57,13 @@ public/
 src/
   app/
   components/
+    layout/
+    sections/
+    ui/
   data/
   hooks/
   styles/
+  types/
 ```
 
 ## Configuracion
@@ -67,7 +71,7 @@ src/
 - Los datos editables del portfolio viven en `src/data/portfolioData.ts`.
 - Los estilos globales viven en `src/styles/globals.css`.
 - El formulario usa `@formspree/react` con el ID configurado en
-  `src/components/Contact/index.tsx`. Se migrara a API Route propia en Fase 4.
+  `src/components/sections/Contact/index.tsx`. Se migrara a API Route propia en Fase 4.
 
 ## SplashScreen - propuesta de rediseño del boton START
 

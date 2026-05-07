@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import AboutMe from "@/components/AboutMe";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import ProjectPortfolio from "@/components/ProjectPortfolio";
-import ScrollToTop from "@/components/ScrollToTop";
-import SplashScreen from "@/components/SplashScreen";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import ScrollToTop from "@/components/layout/ScrollToTop";
+import SplashScreen from "@/components/layout/SplashScreen";
+import AboutMe from "@/components/sections/AboutMe";
+import Contact from "@/components/sections/Contact";
+import Hero from "@/components/sections/Hero";
+import ProjectPortfolio from "@/components/sections/ProjectPortfolio";
 import { portfolioData } from "@/data/portfolioData";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useReducedMotion } from "@/hooks/useReducedMotion";

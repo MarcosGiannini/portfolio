@@ -1,3 +1,5 @@
+import type { Project, SkillCategory, SocialLink } from "@/types/portfolio";
+
 // Translatable fields for Phase 6.
 export const portfolioData = {
   name: "Marcos Giannini",
@@ -59,7 +61,7 @@ export const portfolioData = {
         { title: "Backend", items: ["Node.js", "NestJS", "MongoDB"] },
         { title: "Herramientas", items: ["Git", "GitHub", "Docker", "Jest", "Vitest", "Playwright"] },
         { title: "IA & Productividad", items: ["GitHub Copilot", "Cursor", "Prompt Engineering"] },
-      ],
+      ] satisfies SkillCategory[],
     },
     contact: {
       title: {
@@ -120,7 +122,7 @@ export const portfolioData = {
           repo: "https://github.com/MarcosGiannini/ines-game",
           badge: "LARGO PLAZO",
         },
-      ],
+      ] satisfies Project[],
     },
   },
   footer: {
@@ -128,6 +130,6 @@ export const portfolioData = {
     socialLinks: [
       { name: "GitHub", url: "https://github.com/MarcosGiannini" },
       { name: "LinkedIn", url: "https://www.linkedin.com/in/marcosgiannini-dev/" },
-    ],
+    ] satisfies SocialLink[],
   },
 };

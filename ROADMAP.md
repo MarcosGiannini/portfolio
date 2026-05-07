@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-06 — sub-fase 1.5 completada
-> Estado general: 🟡 Fase 1 en progreso — siguiente sub-fase: 1.6
+> Última actualización: 2026-05-07 — Fase 1 completada
+> Estado general: 🟢 Fase 1 completada — siguiente sub-fase: 2.1
 
 ## CONTEXTO DEL PROYECTO
 
@@ -197,7 +197,7 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 ---
 
 ## FASE 1 — ARQUITECTURA BASE (App Router)
-> **Estado: 🟡 EN PROGRESO. Prerequisito cumplido: Fase 0 completada al 100%.**
+> **Estado: ✅ COMPLETADA. Prerequisito cumplido: Fase 0 completada al 100%.**
 > Objetivo: migrar de Pages Router a App Router sin cambiar nada visual.
 > El portfolio debe verse exactamente igual al finalizar esta fase.
 > Estimación: 2–3 sesiones de trabajo.
@@ -332,12 +332,33 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Pantalla en blanco o error de hidratación.
 > **Si algo falla:** pantallazo de consola del navegador y parar.
 
-### 1.6 — Reorganización de carpetas (estructura propuesta)
-- ⬜ Crear `src/components/sections/` y mover Hero, AboutMe, Projects, Contact
-- ⬜ Crear `src/components/layout/` y mover Header, Footer, SplashScreen, ScrollToTop
-- ⬜ Crear `src/components/ui/` (vacío por ahora — se puebla en fases siguientes)
-- ⬜ Crear `src/types/portfolio.ts` y centralizar los tipos `Project`, `SocialLink`, `SkillCategory`
-- ⬜ Actualizar todos los imports tras el movimiento
+### 1.6 — Reorganización de carpetas (estructura propuesta) ✅
+> ✅ **Completada — 2026-05-07. Build/lint verificados: OK. Verificación manual: OK.**
+- ✅ Crear `src/components/sections/` y mover Hero, AboutMe, Projects, Contact
+- ✅ Crear `src/components/layout/` y mover Header, Footer, SplashScreen, ScrollToTop
+- ✅ Crear `src/components/ui/` (vacío por ahora — se puebla en fases siguientes)
+- ✅ Crear `src/types/portfolio.ts` y centralizar los tipos `Project`, `SocialLink`, `SkillCategory`
+- ✅ Actualizar todos los imports tras el movimiento
+
+#### ✅ VERIFICACIÓN MANUAL — 1.6
+
+> **Resultado:** OK manual confirmado por Marcos el 2026-05-07.
+> **Cuándo verificar:** inmediatamente, antes de marcar la sub-fase como completada.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** la URL indicada por Next.js en consola, normalmente `http://localhost:3000`.
+> **Qué debes ver:**
+> - La SplashScreen aparece al cargar.
+> - Al pulsar START, cargan Header, Hero, About, Projects, Contact, Footer y ScrollToTop.
+> - El portfolio se ve visualmente igual que antes de la reorganización.
+> - Al hacer scroll, el item activo del Header cambia correctamente.
+> - El menú mobile abre y cierra correctamente.
+> - La consola del navegador no muestra errores rojos.
+> **Qué NO debe pasar:**
+> - Pantalla en blanco.
+> - Error `Module not found`.
+> - Error de hidratación.
+> - Pérdida de estilos, fuentes o animaciones.
+> **Si algo falla:** pantallazo de consola del navegador y parar.
 
 ---
 

@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
+import type { SkillCategory } from "@/types/portfolio";
+
 interface AboutMeProps {
   data: {
     title: string;
@@ -11,7 +13,7 @@ interface AboutMeProps {
     bio: string[];
     cvButton: string;
     skillsTitle: string;
-    skillCategories: Array<{ title: string; items: string[] }>;
+    skillCategories: SkillCategory[];
   };
 }
 

@@ -1,9 +1,11 @@
 import { Github, Linkedin } from "lucide-react";
 
+import type { SocialLink } from "@/types/portfolio";
+
 interface FooterProps {
   name: string;
   credit: string;
-  socialLinks: { name: string; url: string }[];
+  socialLinks: SocialLink[];
 }
 
 const Footer = ({ name, credit, socialLinks }: FooterProps) => {
