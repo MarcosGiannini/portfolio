@@ -500,7 +500,7 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 ---
 
 ## FASE 3 — REDISEÑO DE SECCIONES
-> **Estado: ⬜ No iniciada. Prerequisito: Fase 2 completada al 100%.**
+> **Estado: 🟡 En progreso.**
 > Objetivo: aplicar el nuevo sistema de diseño a cada sección existente.
 > Hacerlo sección por sección para evitar regressions.
 > Estimación: 4–5 sesiones de trabajo.
@@ -563,11 +563,12 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Respetar `prefers-reduced-motion`
 
 ### 3.4 — About
-- ⬜ Añadir "chips" de datos rápidos (9 años, NTT DATA, Open Source)
-- ⬜ Actualizar bio con contenido real
-- ⬜ Añadir categoría `"En producción"` en skills grid
-- ⬜ Diferenciar colores de borde por categoría de skill
-- ⬜ Aplicar nuevos tokens de color
+> ✅ **Completada — 2026-05-07. Build/lint verificados: OK. Verificación manual: OK Marcos.**
+- ✅ Dividir About en bloques claros: intro, bio, datos rápidos y skills
+- ✅ Añadir chips de datos rápidos: `8+ años experiencia`, `NTT DATA`, `SaaS builder`, `Freelance selectivo`
+- ✅ Mantener bio y skills desde `portfolioData`
+- ✅ Mejorar jerarquía visual de bio y skills grid
+- ✅ Aplicar tokens existentes con estética CRT / brutalist coherente con Splash y Hero
 
 ### 3.5 — Projects
 - ⬜ Reordenar proyectos destacados: Super Teacher → Lenoy Editorial → Portfolio Marcos Giannini → Ines Game

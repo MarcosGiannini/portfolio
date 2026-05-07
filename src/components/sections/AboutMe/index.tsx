@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
+import Badge from "@/components/ui/Badge";
+import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
 import type { SkillCategory } from "@/types/portfolio";
 
 interface AboutMeProps {
@@ -17,16 +19,26 @@ interface AboutMeProps {
   };
 }
 
-// Variants para animaciones de las categorías de habilidades
 const skillsContainer: Variants = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } }
+  show: { opacity: 1, transition: { staggerChildren: 0.06 } },
 };
 
 const skillItem: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 0.84, 0.44, 1] } }
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.16, 0.84, 0.44, 1] },
+  },
 };
+
+const quickFacts = [
+  { label: "8+ años experiencia", variant: "cyan" },
+  { label: "NTT DATA", variant: "magenta" },
+  { label: "SaaS builder", variant: "green" },
+  { label: "Freelance selectivo", variant: "yellow" },
+] as const;
 
 const renderBio = (paragraph: string) => {
   const parts = paragraph.split(/(\*\*[^*]+\*\*)/g);
@@ -43,110 +55,140 @@ const renderBio = (paragraph: string) => {
 
 const AboutMe = ({ data }: AboutMeProps) => {
   return (
-  <section id="about" className="min-h-screen py-24 flex items-center justify-center bg-white border-b-4 border-black scroll-snap-align-start">
-      <div className="container mx-auto px-4">
-        {/* Fila superior: dos columnas (foto izquierda, texto+CTA derecha) */}
-  <div className="grid md:grid-cols-2 items-center md:items-start justify-center gap-12 md:gap-20 max-w-6xl mx-auto">
-          <div className="w-full flex justify-center mb-8 md:mb-0">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
-              <div className="relative w-full h-full border-4 border-black rounded-lg overflow-hidden flex items-center justify-center bg-gray-200">
+    <section
+      id="about"
+      className="relative min-h-screen overflow-hidden border-b-4 border-[var(--border)] bg-[var(--bg-base)] py-24 text-[var(--text-primary)] scroll-snap-align-start"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_3px,color-mix(in_srgb,var(--text-primary)_7%,transparent)_4px)] opacity-25 mix-blend-screen"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,color-mix(in_srgb,var(--accent-cyan)_12%,transparent),transparent_28%),radial-gradient(circle_at_82%_62%,color-mix(in_srgb,var(--accent-magenta)_12%,transparent),transparent_34%)]"
+      />
+
+      <div className="container relative z-10 mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 flex flex-col gap-3">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.24em] text-[var(--accent-cyan)]">
+              &gt; CREDIBILITY MODULE
+            </p>
+            <h2 className="font-heading text-4xl font-black uppercase leading-none text-[var(--text-primary)] sm:text-5xl">
+              {data.title}
+            </h2>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+            <Card className="flex flex-col gap-6 border-4 bg-[color-mix(in_srgb,var(--bg-surface)_86%,transparent)] p-5 sm:p-6">
+              <div className="relative aspect-square w-full overflow-hidden border-4 border-[var(--border)] bg-[var(--bg-elevated)] shadow-[var(--glow-cyan)]">
                 <Image
                   src="/mifoto.jpg"
                   alt={data.imageAlt}
                   fill
-                  sizes="(max-width: 768px) 256px, 320px"
-                  className="object-cover rounded-lg"
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                  className="object-cover"
                   priority
                 />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_4px,color-mix(in_srgb,var(--bg-base)_24%,transparent)_5px)]"
+                />
               </div>
-              <div className="absolute -top-4 -left-4 bg-yellow-300 rounded-full p-2 border-4 border-black shadow-lg">
-                  <motion.div
-                    drag
-                    dragConstraints={{ top: -40, left: -40, right: 40, bottom: 40 }}
-                    dragTransition={{ bounceStiffness: 200, bounceDamping: 10 }}
-                    whileHover={{ scale: 1.2, rotate: 12, boxShadow: "0 0 16px #fde047" }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{ cursor: "grab" }}
-                  >
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" fill="#fde047"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-                  </motion.div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-[#D8B4FE] transform rotate-45 border-4 border-black shadow-lg"></div>
-              <motion.div
-                className="absolute -bottom-4 -right-4 w-16 h-16 bg-[#D8B4FE] transform rotate-45 border-4 border-black shadow-lg"
-                drag
-                dragConstraints={{ top: -40, left: -40, right: 40, bottom: 40 }}
-                dragTransition={{ bounceStiffness: 200, bounceDamping: 10 }}
-                whileHover={{ scale: 1.2, rotate: 20, boxShadow: "0 0 16px #a78bfa" }}
-                whileTap={{ scale: 0.95 }}
-                style={{ cursor: "grab" }}
-              ></motion.div>
-            </div>
-          </div>
-          <div className="w-full flex flex-col justify-center items-center md:items-start">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center md:text-left">{data.title}</h2>
-            {/* Grupo de presentación + CTA */}
-            <div className="w-full max-w-xl space-y-6 text-center md:text-left">
-              {data.bio.map((paragraph) => (
-                <p key={paragraph} className="text-lg text-gray-700">
-                  {renderBio(paragraph)}
+
+              <div>
+                <p className="font-heading text-3xl font-black uppercase leading-none text-[var(--text-primary)]">
+                  Marcos Giannini
                 </p>
-              ))}
-              <a
+                <p className="mt-3 font-mono text-sm font-bold uppercase tracking-[0.18em] text-[var(--accent-green)]">
+                  Frontend Engineer
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {quickFacts.map((fact) => (
+                  <Badge
+                    key={fact.label}
+                    label={fact.label}
+                    variant={fact.variant}
+                  />
+                ))}
+              </div>
+            </Card>
+
+            <Card className="flex flex-col justify-between gap-8 border-4 bg-[color-mix(in_srgb,var(--bg-surface)_78%,transparent)] p-6 sm:p-8">
+              <div>
+                <p className="mb-5 font-mono text-xs font-bold uppercase tracking-[0.22em] text-[var(--accent-magenta)]">
+                  BIO / CONTEXTO PROFESIONAL
+                </p>
+                <div className="space-y-5 text-lg leading-8 text-[var(--text-secondary)]">
+                  {data.bio.map((paragraph) => (
+                    <p key={paragraph} className="[&_strong]:text-[var(--text-primary)]">
+                      {renderBio(paragraph)}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              <Button
                 href="/CV_MarcosGiannini_Frontend.pdf"
                 download
-                className="inline-block bg-blue-500 text-white font-bold px-8 py-4 rounded-full border-4 border-black shadow hover:bg-blue-600 transition-colors duration-300"
+                size="lg"
+                className="w-full font-mono uppercase tracking-[0.14em] sm:w-fit"
               >
                 {data.cvButton}
-              </a>
-            </div>
+              </Button>
+            </Card>
           </div>
-        </div>
-        {/* Fila inferior: habilidades a ancho completo */}
-        <div id="skills" className="w-full mt-16">
-          <motion.h3
-            className="text-2xl md:text-3xl font-bold mb-10 text-center"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.9 }}
-          >
-            {data.skillsTitle}
-          </motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 auto-rows-fr">
-            {data.skillCategories.map((cat, i) => (
-              <motion.div
-                key={cat.title}
-                className="h-full p-4 rounded-xl border-2 border-black bg-white shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col"
-                variants={skillItem}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
-                  <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                  {cat.title}
-                </h4>
-                <motion.ul
-                  className="flex flex-wrap gap-2"
-                  variants={skillsContainer}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: false, amount: 0.3 }}
+
+          <div id="skills" className="mt-14">
+            <div className="mb-7 flex flex-col gap-2">
+              <div>
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[var(--accent-cyan)]">
+                  STACK / TOOLING
+                </p>
+                <h3 className="mt-2 font-heading text-3xl font-black uppercase text-[var(--text-primary)]">
+                  {data.skillsTitle}
+                </h3>
+              </div>
+            </div>
+
+            <motion.div
+              className="grid auto-rows-fr grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+              variants={skillsContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {data.skillCategories.map((cat) => (
+                <motion.div
+                  key={cat.title}
+                  className="h-full"
+                  variants={skillItem}
                 >
-                  {cat.items.map((tech) => (
-                    <motion.li
-                      key={tech}
-                      className="px-3 py-1 rounded-full border border-gray-300 bg-gray-100 text-xs font-medium hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-colors duration-300"
-                      variants={skillItem}
+                  <Card className="flex h-full flex-col gap-5 border-4 bg-[var(--bg-surface)] p-5">
+                    <h4 className="flex items-center gap-3 font-mono text-base font-black uppercase tracking-[0.12em] text-[var(--text-primary)]">
+                      <span className="h-3 w-3 bg-[var(--accent-cyan)] shadow-[var(--glow-cyan)]" />
+                      {cat.title}
+                    </h4>
+                    <motion.ul
+                      className="flex flex-wrap gap-2"
+                      variants={skillsContainer}
                     >
-                      {tech}
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </motion.div>
-            ))}
+                      {cat.items.map((tech) => (
+                        <motion.li
+                          key={tech}
+                          className="border-2 border-[var(--border-accent)] bg-[color-mix(in_srgb,var(--accent-cyan)_10%,var(--bg-base))] px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-[0.08em] text-[var(--text-secondary)] transition-colors duration-200 hover:bg-[var(--accent-cyan)] hover:text-[var(--bg-base)]"
+                          variants={skillItem}
+                        >
+                          {tech}
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>
