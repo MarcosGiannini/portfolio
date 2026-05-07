@@ -43,6 +43,8 @@ const variantStyles: Record<
     body: string;
     stack: string;
     actions: string;
+    hover: string;
+    titleHover: string;
   }
 > = {
   hero: {
@@ -56,6 +58,8 @@ const variantStyles: Record<
     body: "text-base leading-7 sm:text-lg sm:leading-8",
     stack: "text-sm",
     actions: "p-6 sm:p-8",
+    hover: "motion-safe:hover:shadow-[var(--shadow-brutal),0_0_34px_color-mix(in_srgb,var(--accent-magenta)_56%,transparent)]",
+    titleHover: "group-hover/project:text-[var(--accent-magenta)]",
   },
   primary: {
     card: "border-[var(--accent-cyan)] shadow-[var(--shadow-brutal),var(--glow-cyan)]",
@@ -68,6 +72,8 @@ const variantStyles: Record<
     body: "text-sm leading-6",
     stack: "text-xs",
     actions: "p-5",
+    hover: "motion-safe:hover:shadow-[var(--shadow-brutal),0_0_34px_color-mix(in_srgb,var(--accent-cyan)_58%,transparent)]",
+    titleHover: "group-hover/project:text-[var(--accent-cyan)]",
   },
   secondary: {
     card: "",
@@ -79,6 +85,8 @@ const variantStyles: Record<
     body: "text-sm leading-6",
     stack: "text-xs",
     actions: "p-5",
+    hover: "motion-safe:hover:shadow-[var(--shadow-brutal),var(--glow-cyan)]",
+    titleHover: "group-hover/project:text-[var(--accent-cyan)]",
   },
 };
 
@@ -94,7 +102,7 @@ export default function ProjectCard({
   return (
     <Card
       as="article"
-      className={`flex h-full flex-col gap-0 border-4 p-0 ${styles.card}`}
+      className={`group/project flex h-full cursor-pointer flex-col gap-0 border-4 p-0 transition-[transform,box-shadow,border-color] duration-200 ease-out motion-safe:hover:-translate-y-1 motion-reduce:transition-colors ${styles.hover} ${styles.card}`}
     >
       <header
         className={`border-b-2 border-[color-mix(in_srgb,var(--border)_62%,transparent)] ${styles.header}`}
@@ -109,7 +117,7 @@ export default function ProjectCard({
         </div>
 
         <h3
-          className={`font-heading font-black uppercase leading-tight text-[var(--text-primary)] ${styles.title}`}
+          className={`font-heading font-black uppercase leading-tight text-[var(--text-primary)] transition-colors duration-200 ${styles.titleHover} ${styles.title}`}
         >
           {project.title}
         </h3>
@@ -151,7 +159,7 @@ export default function ProjectCard({
               size="sm"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono uppercase tracking-[0.14em]"
+              className="font-mono uppercase tracking-[0.14em] hover:shadow-[var(--shadow-brutal),var(--glow-cyan)] motion-safe:hover:scale-[1.03] motion-safe:active:scale-[0.97] motion-reduce:transition-colors"
             >
               [ View Project ]
             </Button>
@@ -163,7 +171,7 @@ export default function ProjectCard({
               size="sm"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono uppercase tracking-[0.14em]"
+              className="font-mono uppercase tracking-[0.14em] hover:shadow-[var(--shadow-brutal),var(--glow-cyan)] motion-safe:hover:scale-[1.03] motion-safe:active:scale-[0.97] motion-reduce:transition-colors"
             >
               [ Open Repo ]
             </Button>

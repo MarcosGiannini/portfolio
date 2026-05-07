@@ -588,6 +588,14 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ✅ Añadir variante `hero | primary | secondary` en `ProjectCard`
 - ✅ Mantener responsive y ancla compatible `#projects`
 
+#### 3.5.C — Micro-interacciones orientadas a conversión
+> ✅ **Completada — 2026-05-07. Build/lint verificados: OK. Verificación manual: OK Marcos.**
+- ✅ Añadir hover sutil en ProjectCard con elevación y glow
+- ✅ Añadir refuerzo de color en título por variante
+- ✅ Añadir feedback de hover/active en acciones de Projects
+- ✅ Mantener interacciones en CSS, sin animaciones JS nuevas
+- ✅ Respetar `prefers-reduced-motion` evitando transformaciones
+
 - ⬜ Reordenar proyectos destacados: Super Teacher → Lenoy Editorial → Portfolio Marcos Giannini → Ines Game
 - ⬜ Añadir badge de estado (`EN PRODUCCIÓN`, `EN DESARROLLO`, `OPEN SOURCE`)
 - ⬜ Añadir campo `repo` visible en tarjetas (icono GitHub + link)
