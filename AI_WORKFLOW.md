@@ -130,6 +130,70 @@ Si la IA detecta algo fuera del alcance que merece atención, lo **anota y lo re
   - Indicar si conviene separar código y documentación
   - No asumir que el usuario ha commitado
 
+---
+
+## REGLA 11 — VALIDACIÓN PRE-CÓDIGO
+
+Antes de escribir o modificar código, la IA debe hacer una validación breve y explícita.
+
+Debe confirmar que:
+- La sub-fase está aprobada por Marcos en el ROADMAP o en el chat.
+- La ejecución no rompe el orden definido en `ROADMAP.md`.
+- El cambio tiene un impacto claro sobre el objetivo de la sub-fase.
+
+Debe indicar antes de editar:
+- Qué archivo o archivos se van a tocar.
+- Por qué esos archivos son los correctos.
+- Qué riesgo evita el cambio o la validación previa.
+
+Esta regla aplica especialmente a cambios en componentes, estilos, datos, configuración, rutas, scripts y documentación que afecte el flujo del proyecto.
+
+---
+
+## REGLA 12 — CONSISTENCIA VISUAL
+
+Toda UI nueva o modificación visual debe alinearse con las decisiones ya aprobadas.
+
+La IA debe verificar que el cambio respeta:
+- Los tokens existentes (`--bg-base`, `--text-primary`, `--accent-cyan`, `--accent-magenta`, etc.).
+- La estética CRT / arcade / system boot definida para la experiencia actual.
+- Las decisiones previas de diseño, sin reabrir colores, tipografías, layout o narrativa salvo aprobación explícita de Marcos.
+
+Si una propuesta visual necesita cambiar una decisión ya aprobada, la IA debe detenerse, explicar el motivo y pedir confirmación antes de implementarla.
+
+---
+
+## REGLA 13 — CONTROL DE RAMAS
+
+La IA no crea una rama nueva por defecto.
+
+Solo debe proponer o crear una rama nueva cuando:
+- Sea una funcionalidad grande.
+- Sea un cambio aislado que conviene separar claramente.
+- Marcos lo pida explícitamente.
+
+Durante una fase activa, la IA debe mantener coherencia de rama y evitar dividir trabajo relacionado en ramas innecesarias.
+
+Si hay dudas sobre si corresponde rama nueva, la IA debe explicar las opciones y esperar decisión de Marcos.
+
+---
+
+## REGLA 14 — CHECK DE FINAL DE SUB-FASE
+
+Antes de cerrar una sub-fase, la IA debe comprobar y reportar el estado de cierre.
+
+Checklist mínimo:
+- `build` OK, si aplica al tipo de cambio.
+- `lint` OK, si aplica al tipo de cambio.
+- Verificación manual generada, si hay UI visible o flujo navegable.
+- Verificación manual confirmada por Marcos antes de dar la sub-fase por completada.
+- Commit creado solo si Marcos lo autorizó.
+- Documentación actualizada, si aplica al alcance.
+
+Si algún punto no aplica, la IA debe decirlo explícitamente en el cierre para evitar ambigüedad.
+
+---
+
 ## FLUJO ESTÁNDAR DE CADA SUB-FASE
 
 ```
