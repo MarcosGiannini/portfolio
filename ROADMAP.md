@@ -571,6 +571,14 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ✅ Aplicar tokens existentes con estética CRT / brutalist coherente con Splash y Hero
 
 ### 3.5 — Projects
+#### 3.5.A — ProjectCard system module style
+> ✅ **Completada — 2026-05-07. Build/lint verificados: OK. Verificación manual: OK Marcos.**
+- ✅ Añadir línea técnica `> PROJECT / SYSTEM MODULE`
+- ✅ Separar header, descripción, stack y acciones con divisiones visuales
+- ✅ Convertir stack a formato técnico `/ NEXTJS / TYPESCRIPT / ...`
+- ✅ Cambiar acciones a `[ View Project ]` y `[ Open Repo ]`
+- ✅ Mantener layout, responsive y datos existentes
+
 - ⬜ Reordenar proyectos destacados: Super Teacher → Lenoy Editorial → Portfolio Marcos Giannini → Ines Game
 - ⬜ Añadir badge de estado (`EN PRODUCCIÓN`, `EN DESARROLLO`, `OPEN SOURCE`)
 - ⬜ Añadir campo `repo` visible en tarjetas (icono GitHub + link)

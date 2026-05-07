@@ -34,36 +34,53 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const hasActions = Boolean(hasDemo || project.repo);
 
   return (
-    <Card as="article" className="flex h-full flex-col gap-6">
-      <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <h3 className="text-2xl font-bold leading-tight text-[var(--text-primary)]">
+    <Card as="article" className="flex h-full flex-col gap-0 border-4 p-0">
+      <header className="border-b-2 border-[color-mix(in_srgb,var(--border)_62%,transparent)] bg-[color-mix(in_srgb,var(--bg-elevated)_78%,var(--bg-base))] p-5">
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <p className="font-mono text-xs font-black uppercase tracking-[0.2em] text-[var(--accent-cyan)]">
+            &gt; PROJECT / SYSTEM MODULE
+          </p>
+          <Badge label={status} variant={getStatusVariant(status)} />
+        </div>
+
+        <h3 className="font-heading text-2xl font-black uppercase leading-tight text-[var(--text-primary)] sm:text-3xl">
           {project.title}
         </h3>
-        <Badge label={status} variant={getStatusVariant(status)} />
       </header>
 
-      <p className="text-sm leading-6 text-[var(--text-secondary)]">
-        {project.desc}
-      </p>
+      <div className="border-b-2 border-[color-mix(in_srgb,var(--border)_36%,transparent)] p-5">
+        <p className="text-sm leading-6 text-[var(--text-secondary)]">
+          {project.desc}
+        </p>
+      </div>
 
       {project.tech && project.tech.length > 0 && (
-        <ul className="flex flex-wrap gap-x-3 gap-y-2 border-t-2 border-[var(--border)] pt-4 font-mono text-xs uppercase tracking-[0.12em] text-[var(--text-secondary)]">
-          {project.tech.map((tech) => (
-            <li
-              key={tech}
-              className="before:mr-2 before:text-[var(--text-primary)] before:content-['/']"
-            >
-              {tech}
-            </li>
-          ))}
-        </ul>
+        <div className="border-b-2 border-[color-mix(in_srgb,var(--border)_36%,transparent)] p-5">
+          <p className="mb-3 font-mono text-[0.68rem] font-black uppercase tracking-[0.18em] text-[var(--text-muted)]">
+            Stack
+          </p>
+          <ul className="flex flex-wrap gap-x-2 gap-y-2 font-mono text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-green)]">
+            {project.tech.map((tech) => (
+              <li key={tech}>
+                <span className="text-[var(--text-primary)]">/</span>{" "}
+                {tech.toUpperCase()}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
 
       {hasActions && (
-        <div className="mt-auto flex flex-wrap gap-4 pt-2">
+        <div className="mt-auto flex flex-wrap gap-4 p-5">
           {hasDemo && (
-            <Button href={project.url} size="sm" target="_blank" rel="noopener noreferrer">
-              Ver proyecto
+            <Button
+              href={project.url}
+              size="sm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono uppercase tracking-[0.14em]"
+            >
+              [ View Project ]
             </Button>
           )}
           {project.repo && (
@@ -73,8 +90,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               size="sm"
               target="_blank"
               rel="noopener noreferrer"
+              className="font-mono uppercase tracking-[0.14em]"
             >
-              GitHub
+              [ Open Repo ]
             </Button>
           )}
         </div>
