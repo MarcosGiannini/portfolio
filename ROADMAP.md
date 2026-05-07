@@ -579,6 +579,15 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ✅ Cambiar acciones a `[ View Project ]` y `[ Open Repo ]`
 - ✅ Mantener layout, responsive y datos existentes
 
+#### 3.5.B — Jerarquía de proyectos y roles
+> ✅ **Completada — 2026-05-07. Build/lint verificados: OK. Verificación manual: OK Marcos.**
+- ✅ Asignar roles por título sin modificar `portfolioData`
+- ✅ Renderizar `Ines Game` como proyecto hero destacado arriba
+- ✅ Renderizar `Super Teacher` como proyecto primary / production
+- ✅ Mantener Lenoy Editorial y Portfolio como support projects
+- ✅ Añadir variante `hero | primary | secondary` en `ProjectCard`
+- ✅ Mantener responsive y ancla compatible `#projects`
+
 - ⬜ Reordenar proyectos destacados: Super Teacher → Lenoy Editorial → Portfolio Marcos Giannini → Ines Game
 - ⬜ Añadir badge de estado (`EN PRODUCCIÓN`, `EN DESARROLLO`, `OPEN SOURCE`)
 - ⬜ Añadir campo `repo` visible en tarjetas (icono GitHub + link)
