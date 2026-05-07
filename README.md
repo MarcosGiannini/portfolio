@@ -11,10 +11,11 @@ React, TypeScript y Tailwind CSS.
 
 La fuente de verdad del proyecto es [ROADMAP.md](./ROADMAP.md).
 
-- Ultima sub-fase completada: 2.2 - Tokens de color y tipografia.
-- UI atoms: Button completado; siguiente componente: Badge.
+- Ultima sub-fase completada: 2.4 - Badge UI atomico.
+- UI atoms: Button y Badge completados; siguiente componente: Card.
 - Rama activa: `chore/1.1-app-router-prep`.
-- Siguiente paso segun roadmap: crear `src/components/ui/Badge.tsx`.
+- Siguiente paso segun roadmap: crear `src/components/ui/Card.tsx`.
+- Sistema UI atomico iniciado con Button y Badge, basado en los tokens definidos en Fase 2.2.
 
 ## Stack
 
@@ -73,6 +74,8 @@ src/
 - Los estilos globales viven en `src/styles/globals.css`.
 - Tailwind CSS v4 se configura desde `src/styles/globals.css` con
   `@import "tailwindcss"` y tokens definidos mediante CSS.
+- Los componentes UI atomicos viven en `src/components/ui/` y deben consumir
+  tokens de `globals.css` sin colores hardcodeados.
 - El formulario usa `@formspree/react` con el ID configurado en
   `src/components/sections/Contact/index.tsx`. Se migrara a API Route propia en Fase 4.
 

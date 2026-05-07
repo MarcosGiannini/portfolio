@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-07 — pre-flight 2.2 documentado
-> Estado general: 🟡 Fase 2 en progreso — siguiente sub-fase: 2.2
+> Última actualización: 2026-05-07 — Badge documentado
+> Estado general: 🟡 Fase 2 en progreso — siguiente sub-fase: 2.4 Card
 
 ## CONTEXTO DEL PROYECTO
 
@@ -393,15 +393,15 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 > - Cambio visual evidente en tipografías, layout o colores.
 
 ### 2.1.B — Definición de identidad y posicionamiento
-> ⬜ **Pendiente — obligatoria antes de 2.2.**
+> ✅ **Completada — integrada en el pre-flight 2.2 y en los tokens aprobados.**
 > Objetivo: alinear diseño, negocio, posicionamiento y narrativa visual antes de definir tokens.
 > No modifica código de app.
-- ⬜ Definir posicionamiento del portfolio como producto de negocio
-- ⬜ Definir público objetivo y propuesta de valor
-- ⬜ Definir estructura de packs de servicio (3 niveles)
-- ⬜ Traducir posicionamiento a dirección visual base
+- ✅ Definir posicionamiento del portfolio como producto de negocio
+- ✅ Definir público objetivo y propuesta de valor
+- ✅ Definir estructura de packs de servicio (3 niveles)
+- ✅ Traducir posicionamiento a dirección visual base
 
-🚨 Esta sub-fase es obligatoria antes de implementar tokens (2.2).
+✅ Esta sub-fase quedó resuelta antes de cerrar tokens (2.2).
 
 ### Pre-flight 2.2 — Revisión final + plan técnico
 > ✅ **Completada — 2026-05-07. No modifica código de app.**
@@ -463,16 +463,17 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - En 2.2 solo se crean y mapean tokens; reemplazar clases visuales por tokens se hará de forma gradual en 2.3, 2.4 y Fase 3.
 
 ### 2.2 — Tokens de color y tipografía
-- ⬜ Definir todas las CSS custom properties en `globals.css`:
+> ✅ **Completada — tokens definidos en `globals.css` y fuentes configuradas en `layout`.**
+- ✅ Definir todas las CSS custom properties en `globals.css`:
   - `--bg-base`, `--bg-surface`, `--bg-elevated`
   - `--border`, `--border-accent`
   - `--text-primary`, `--text-secondary`, `--text-muted`
   - `--accent-cyan`, `--accent-magenta`, `--accent-yellow`, `--accent-green`
   - `--shadow-brutal`, `--glow-cyan`, `--glow-magenta`
-- ⬜ Crear variante light mode con las mismas variables en `[data-theme="light"]`
-- ⬜ Cargar **Space Grotesk** y **JetBrains Mono** con `next/font`
-- ⬜ Mapear fuentes a tokens en `globals.css`
-- ⬜ Mantener el cambio visual al mínimo: preparar tokens sin rediseñar secciones
+- ✅ Crear variante light mode con las mismas variables en `[data-theme="light"]`
+- ✅ Cargar **Space Grotesk** y **JetBrains Mono** con `next/font`
+- ✅ Mapear fuentes a tokens en `globals.css`
+- ✅ Mantener el cambio visual al mínimo: preparar tokens sin rediseñar secciones
 
 ### 2.3 — Dark/Light mode
 - ⬜ Instalar `next-themes`
@@ -483,11 +484,12 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 
 ### 2.4 — Componentes UI atómicos
 - ✅ Crear `components/ui/Button.tsx` (primary, secondary, ghost — tokens OK, accesible, soporta link y button)
-- ⬜ Crear `components/ui/Badge.tsx` (variantes: cyan, magenta, yellow, green)
+- ✅ Crear `components/ui/Badge.tsx` (variantes cyan/magenta/yellow/green, basado en tokens, fondo con color-mix, sin hardcoded colors)
 - ⬜ Crear `components/ui/Card.tsx` (con sombra offset brutalist)
 - ⬜ Crear `components/ui/SectionTitle.tsx` (h2 con estilo unificado)
 
 > ✅ Button implementado siguiendo sistema de tokens (2.2), con variantes primary/secondary/ghost, tamaños y soporte dual (button/link). Preparado para uso en Hero, Packs y Contact.
+> ✅ Badge implementado siguiendo sistema de tokens (2.2), con variantes cyan/magenta/yellow/green y fondo sutil mediante `color-mix`. Preparado para estados de Projects, Packs y futuras etiquetas.
 
 ### 2.5 — Efectos visuales CSS
 - ⬜ Implementar efecto scanlines CRT (pseudoelemento CSS, pointer-events none)
@@ -710,6 +712,7 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
   - Si hay cambios de código y documentación, usar commits separados:
     - `feat`/`fix`/`chore` → código
     - `docs` → documentación
+- Al cerrar sesión, verificar que los cambios importantes quedan commiteados antes de continuar en otra sesión.
 - Nunca cerrar una sesión con cambios sin commit.
 
 ### Reglas de verificación humana
