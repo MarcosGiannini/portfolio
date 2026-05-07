@@ -160,6 +160,14 @@ Cualquier decisión de diseño o desarrollo debe respetar esto.
 - No se deben reabrir decisiones de arquitectura ni negocio
 - Continuar en modo ejecución directa
 
+### ✅ Reglas de validación
+
+Antes de avanzar:
+- Comprobar si el componente afecta a UI visible.
+- Si afecta a UI visible o se va a integrar después en UI, generar bloque de verificación manual.
+- Marcos debe ejecutar `npm run dev`, abrir la URL indicada y confirmar que el comportamiento visual es correcto.
+- No continuar a integración ni al siguiente componente sin validación explícita del usuario.
+
 ### ✅ Estado de persistencia
 
 Antes de cerrar sesión:

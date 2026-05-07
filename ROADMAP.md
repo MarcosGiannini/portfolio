@@ -719,12 +719,18 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 
 - **Marcos ejecuta `npm run dev` ÚNICAMENTE cuando la IA lo indique de forma explícita.**
 - La IA es responsable de decidir si la verificación es visual, de consola, o ambas.
+- Toda sub-fase que implique cambios visuales o de UI debe incluir un bloque de verificación manual obligatoria.
+- La implementación NO se considera completada hasta que:
+  - Marcos ejecuta `npm run dev`.
+  - Marcos abre la URL indicada.
+  - Marcos confirma que el comportamiento visual es correcto.
 - Antes de cerrar cada sub-fase, la IA debe proporcionar:
   1. El comando exacto a ejecutar.
   2. La URL exacta que abrir en el navegador.
   3. Una lista clara de lo que debe verse.
   4. Una lista de lo que NO debe ocurrir.
 - La IA se detiene hasta recibir confirmación de Marcos de que la verificación fue exitosa.
+- Si la verificación manual no se confirma, no se puede avanzar a la siguiente sub-fase.
 - Si Marcos detecta algo inesperado, describe el síntoma y la IA analiza antes de continuar.
 
 ---

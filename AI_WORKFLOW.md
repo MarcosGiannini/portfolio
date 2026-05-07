@@ -42,6 +42,11 @@ Si algo falla: describe el síntoma y para. No continúes.
 
 - **Marcos ejecuta `npm run dev` SOLO cuando la IA lo indique en este bloque.**
 - La IA no avanza a la siguiente sub-fase hasta recibir confirmación de que la verificación fue exitosa.
+- Toda implementación que afecte UI visible, o que posteriormente vaya a integrarse en UI, debe terminar con:
+  1. Generar bloque de `VERIFICACIÓN MANUAL`.
+  2. Esperar confirmación explícita de Marcos.
+  3. Solo entonces actualizar documentación de cierre, sugerir o crear el commit autorizado y avanzar.
+- Si Marcos no confirma la verificación, la sub-fase no se considera completada y no se puede iniciar la siguiente.
 
 ---
 
