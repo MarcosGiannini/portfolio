@@ -86,6 +86,36 @@ Si la IA detecta algo fuera del alcance que merece atención, lo **anota y lo re
 
 ---
 
+## REGLA 7 — TRES OPCIONES EXPERTAS PARA DECIDIR
+
+- Siempre que la IA responda y exista una decisión posible, debe ofrecer **3 opciones concretas** para elegir.
+- Las opciones deben ser las 3 mejores desde criterio experto web/producto:
+  - una opción recomendada,
+  - una opción conservadora,
+  - una opción más ambiciosa o estratégica.
+- Cada opción debe explicar brevemente qué implica y cuándo conviene elegirla.
+- Las opciones deben estar ordenadas por recomendación experta, no por azar.
+- No se deben inventar opciones de relleno. Si la respuesta es puramente informativa, un error crítico o una verificación cerrada, puede ser breve, pero debe incluir 3 próximos caminos si hay continuidad posible.
+
+---
+
+## REGLA 8 — GUARDAR EL ÚLTIMO CIERRE EN REHIDRATACIÓN
+
+- Cada vez que la IA actualice `REHIDRATACION.md`, debe añadir también el último mensaje de cierre escrito por la IA.
+- Ese cierre debe quedar en una sección clara, por ejemplo `Último cierre de sesión`, para que la siguiente sesión recupere no solo el estado técnico, sino también el contexto conversacional.
+- Si ya existe un cierre anterior, se reemplaza por el cierre más reciente para evitar ruido acumulado.
+
+---
+
+## REGLA 9 — DECISIONES DE DISEÑO DEPENDEN DE NEGOCIO
+
+- Ninguna decisión de diseño (colores, tipografía, layout) puede tomarse sin estar alineada con:
+  - posicionamiento
+  - público objetivo
+  - objetivo de negocio
+
+- Si esta información no está definida, la IA debe detener la implementación y solicitarla.
+
 ## FLUJO ESTÁNDAR DE CADA SUB-FASE
 
 ```
@@ -110,3 +140,4 @@ Ver `ROADMAP.md` para el estado actualizado de cada sub-fase.
 
 *Versión: 1.0 — 2026-05-05*
 *Proyecto: Portfolio Marcos Giannini*
+

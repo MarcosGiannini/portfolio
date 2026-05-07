@@ -1,14 +1,90 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+:root {
+  --bg-base: #050608;
+  --bg-surface: #10131A;
+  --bg-elevated: #181B24;
+  --border: #F8FAFC;
+  --border-accent: #00E5FF;
+  --text-primary: #F8FAFC;
+  --text-secondary: #B7C0D8;
+  --text-muted: #7E879E;
+  --accent-cyan: #00E5FF;
+  --accent-magenta: #FF3DF2;
+  --accent-yellow: #FFE45E;
+  --accent-green: #45FF8A;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --shadow-brutal: 6px 6px 0 #000000;
+  --glow-cyan: 0 0 24px rgba(0, 229, 255, 0.55);
+  --glow-magenta: 0 0 24px rgba(255, 61, 242, 0.45);
+}
+
+[data-theme="light"] {
+  --bg-base: #F7F8FA;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #EEF1F6;
+  --border: #07080D;
+  --border-accent: #008EA3;
+  --text-primary: #08090F;
+  --text-secondary: #3F4658;
+  --text-muted: #6B7280;
+  --accent-cyan: #008EA3;
+  --accent-magenta: #C026D3;
+  --accent-yellow: #B77900;
+  --accent-green: #15803D;
+  --shadow-brutal: 6px 6px 0 #07080D;
+  --glow-cyan: 0 0 18px rgba(0, 142, 163, 0.28);
+  --glow-magenta: 0 0 18px rgba(192, 38, 211, 0.25);
+}
+
+@theme {
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-border: var(--border);
+  --color-border-accent: var(--border-accent);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-magenta: var(--accent-magenta);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-green: var(--accent-green);
+  --animate-pulse-glow: pulse-glow 1.5s infinite;
+  --animate-blink: blink 1.2s infinite;
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px #0ff, 0 0 40px #fff;
+      opacity: 1;
+    }
+    50% {
+      box-shadow: 0 0 40px #0ff, 0 0 80px #fff;
+      opacity: 0.8;
+    }
   }
-  body {
-    @apply font-sans;
+
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
+    }
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+body {
+  font-family: var(--font-sans);
 }
 
 html {

@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-07 — Fase 1 completada
-> Estado general: 🟢 Fase 1 completada — siguiente sub-fase: 2.1
+> Última actualización: 2026-05-07 — pre-flight 2.2 documentado
+> Estado general: 🟡 Fase 2 en progreso — siguiente sub-fase: 2.2
 
 ## CONTEXTO DEL PROYECTO
 
@@ -363,25 +363,116 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 ---
 
 ## FASE 2 — SISTEMA DE DISEÑO BASE
-> **Estado: ⬜ No iniciada. Prerequisito: Fase 1 completada al 100%.**
+> **Estado: 🟡 EN PROGRESO. Prerequisito: Fase 1 completada al 100%.**
 > Objetivo: implementar la nueva identidad visual (CRT Brutalism) de forma atómica.
 > No se toca contenido. Solo estilos, tokens y componentes ui/.
 > Estimación: 3–4 sesiones de trabajo.
 
 ### 2.1 — Actualizar Tailwind a v4
-- ⬜ Instalar Tailwind CSS v4
-- ⬜ Migrar configuración de `tailwind.config.ts` a `@import "tailwindcss"` en CSS
-- ⬜ Verificar que las clases custom (pulse-glow, blink) siguen funcionando
+> ✅ **Completada — 2026-05-07. Build/lint verificados: OK. Verificación manual: OK tras reinicio/hard refresh.**
+- ✅ Instalar Tailwind CSS v4
+- ✅ Migrar configuración de `tailwind.config.ts` a `@import "tailwindcss"` en CSS
+- ✅ Verificar que las clases custom (pulse-glow, blink) siguen funcionando
+
+#### ✅ VERIFICACIÓN MANUAL — 2.1
+
+> **Resultado:** OK manual confirmado por Marcos el 2026-05-07 tras reiniciar el servidor dev y hacer hard refresh.
+> **Comando exacto:** `npm run dev`
+> **URL a abrir:** la URL indicada por Next.js en consola, normalmente `http://localhost:3000`.
+> **Qué se verificó:**
+> - La SplashScreen aparece al cargar.
+> - El botón START mantiene su glow animado.
+> - El texto `PRESS START TO CONTINUE` sigue parpadeando.
+> - Al pulsar START, cargan Header, Hero, About, Projects, Contact, Footer y ScrollToTop.
+> - Las fuentes y estilos generales se ven visualmente igual que antes de actualizar Tailwind.
+> - La consola del navegador no muestra errores rojos.
+> **Qué no ocurrió:**
+> - Pantalla sin estilos.
+> - Error de CSS, PostCSS o Tailwind en consola.
+> - Pérdida de la animación `pulse-glow` o `blink`.
+> - Cambio visual evidente en tipografías, layout o colores.
+
+### 2.1.B — Definición de identidad y posicionamiento
+> ⬜ **Pendiente — obligatoria antes de 2.2.**
+> Objetivo: alinear diseño, negocio, posicionamiento y narrativa visual antes de definir tokens.
+> No modifica código de app.
+- ⬜ Definir posicionamiento del portfolio como producto de negocio
+- ⬜ Definir público objetivo y propuesta de valor
+- ⬜ Definir estructura de packs de servicio (3 niveles)
+- ⬜ Traducir posicionamiento a dirección visual base
+
+🚨 Esta sub-fase es obligatoria antes de implementar tokens (2.2).
+
+### Pre-flight 2.2 — Revisión final + plan técnico
+> ✅ **Completada — 2026-05-07. No modifica código de app.**
+- ✅ Revisar diff pendiente de 2.1: migración Tailwind v4, PostCSS, `globals.css`, `layout.tsx`, docs y eliminación de `tailwind.config.ts`.
+- ✅ Confirmar que no hay hallazgos bloqueantes antes de 2.2.
+- ✅ Dejar definido el plan técnico de tokens para implementar 2.2 sin decisiones abiertas.
+
+#### Plan técnico aprobado para 2.2
+
+> Objetivo: definir tokens visuales alineados con freelance selectivo, no agencia, captación limitada y estética retrofuturista profesional.
+> Restricción: preparar el sistema visual sin rediseñar secciones ni introducir contenido comercial todavía.
+
+- `globals.css` será la fuente de verdad de tokens globales: colores semánticos, fuentes, fondos, bordes y acentos.
+- Los tokens se definirán como CSS custom properties en `:root`; la variante light se preparará en `[data-theme="light"]`, aunque el toggle real queda para 2.3.
+- `@theme` de Tailwind v4 mapeará los tokens principales para poder usar clases `font-sans`, `font-heading`, `font-mono` y colores tokenizados en fases posteriores.
+- `app/layout.tsx` cargará `Inter`, `Space_Grotesk` y `JetBrains_Mono` con `next/font`; no se introducen fuentes externas por CSS manual.
+- No se rediseñan secciones ni componentes en 2.2: Header, Hero, About, Projects, Contact, Footer y SplashScreen deben seguir viéndose funcionalmente igual.
+- No se instala `next-themes` en 2.2; eso pertenece a 2.3.
+- Criterio visual: base oscura CRT Brutalism preparada por tokens, pero sin aplicar todavía el rediseño completo de Fase 3.
+
+#### Tokens base propuestos para 2.2
+
+- Fondos: `--bg-base`, `--bg-surface`, `--bg-elevated`.
+- Bordes: `--border`, `--border-accent`.
+- Texto: `--text-primary`, `--text-secondary`, `--text-muted`.
+- Acentos: `--accent-cyan`, `--accent-magenta`, `--accent-yellow`, `--accent-green`.
+- Fuentes: `--font-sans`, `--font-heading`, `--font-mono`.
+- Sombras/glow base: `--shadow-brutal`, `--glow-cyan`, `--glow-magenta`.
+
+#### Valores visuales aprobados antes de implementar 2.2
+
+> Decisión: el tema oscuro será el tema visual principal. El tema light se prepara como variante técnica para 2.3, no como rediseño final.
+
+| Token | Dark default | Light variant | Uso previsto |
+|---|---:|---:|---|
+| `--bg-base` | `#050608` | `#F7F8FA` | Fondo global de la página |
+| `--bg-surface` | `#10131A` | `#FFFFFF` | Superficies principales y secciones |
+| `--bg-elevated` | `#181B24` | `#EEF1F6` | Cards, formularios y bloques elevados |
+| `--border` | `#F8FAFC` | `#07080D` | Bordes brutalistas principales |
+| `--border-accent` | `#00E5FF` | `#008EA3` | Bordes interactivos o de énfasis |
+| `--text-primary` | `#F8FAFC` | `#08090F` | Texto principal |
+| `--text-secondary` | `#B7C0D8` | `#3F4658` | Texto descriptivo |
+| `--text-muted` | `#7E879E` | `#6B7280` | Texto auxiliar y metadatos |
+| `--accent-cyan` | `#00E5FF` | `#008EA3` | Acción principal, foco, glow CRT |
+| `--accent-magenta` | `#FF3DF2` | `#C026D3` | Contrapunto visual, highlights |
+| `--accent-yellow` | `#FFE45E` | `#B77900` | Avisos, energía arcade, detalles |
+| `--accent-green` | `#45FF8A` | `#15803D` | Estados positivos y confirmaciones |
+| `--shadow-brutal` | `6px 6px 0 #000000` | `6px 6px 0 #07080D` | Sombra offset brutalista |
+| `--glow-cyan` | `0 0 24px rgba(0, 229, 255, 0.55)` | `0 0 18px rgba(0, 142, 163, 0.28)` | Glow principal |
+| `--glow-magenta` | `0 0 24px rgba(255, 61, 242, 0.45)` | `0 0 18px rgba(192, 38, 211, 0.25)` | Glow secundario |
+
+#### Criterio de uso de color
+
+- Cian será el acento primario para acciones, foco y elementos CRT.
+- Magenta será acento secundario, usado con moderación para evitar una UI dominada por púrpuras.
+- Amarillo queda reservado para energía arcade, avisos y pequeños elementos decorativos.
+- Verde queda reservado para estados positivos, nunca como color principal de marca.
+- Los fondos oscuros deben apoyarse en contraste fuerte y bordes claros para mantener el lenguaje brutalista.
+- En 2.2 solo se crean y mapean tokens; reemplazar clases visuales por tokens se hará de forma gradual en 2.3, 2.4 y Fase 3.
 
 ### 2.2 — Tokens de color y tipografía
 - ⬜ Definir todas las CSS custom properties en `globals.css`:
   - `--bg-base`, `--bg-surface`, `--bg-elevated`
   - `--border`, `--border-accent`
-  - `--text-primary`, `--text-secondary`
+  - `--text-primary`, `--text-secondary`, `--text-muted`
   - `--accent-cyan`, `--accent-magenta`, `--accent-yellow`, `--accent-green`
+  - `--shadow-brutal`, `--glow-cyan`, `--glow-magenta`
 - ⬜ Crear variante light mode con las mismas variables en `[data-theme="light"]`
 - ⬜ Cargar **Space Grotesk** y **JetBrains Mono** con `next/font`
 - ⬜ Mapear fuentes a tokens en `globals.css`
+- ⬜ Mantener el cambio visual al mínimo: preparar tokens sin rediseñar secciones
 
 ### 2.3 — Dark/Light mode
 - ⬜ Instalar `next-themes`
@@ -391,10 +482,12 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Verificar contraste WCAG AA en ambos modos
 
 ### 2.4 — Componentes UI atómicos
-- ⬜ Crear `components/ui/Button.tsx` (variantes: primary, secondary, ghost)
+- ✅ Crear `components/ui/Button.tsx` (primary, secondary, ghost — tokens OK, accesible, soporta link y button)
 - ⬜ Crear `components/ui/Badge.tsx` (variantes: cyan, magenta, yellow, green)
 - ⬜ Crear `components/ui/Card.tsx` (con sombra offset brutalist)
 - ⬜ Crear `components/ui/SectionTitle.tsx` (h2 con estilo unificado)
+
+> ✅ Button implementado siguiendo sistema de tokens (2.2), con variantes primary/secondary/ghost, tamaños y soporte dual (button/link). Preparado para uso en Hero, Packs y Contact.
 
 ### 2.5 — Efectos visuales CSS
 - ⬜ Implementar efecto scanlines CRT (pseudoelemento CSS, pointer-events none)
@@ -451,6 +544,7 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Mostrar fondo `--bg-base` con efecto transparencia en scroll (CSS scroll-driven)
 - ⬜ Integrar `ThemeToggle`
 - ⬜ Integrar Language Switcher (placeholder, sin lógica de i18n todavía)
+- ⬜ Añadir `"Servicios"` al menú de navegación del Header con link a `#packs`
 - ⬜ Corregir comportamiento del menú mobile (cerrar al hacer scroll)
 - ⬜ Aplicar nuevos tokens de color y tipografía
 
@@ -493,6 +587,13 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Añadir año dinámico (`new Date().getFullYear()`)
 - ⬜ Verificar que no requiere cambios de fondo (ya es sólido y semántico)
 
+### 3.8 — Packs
+- ⬜ Crear sección Packs en home (entre Projects y Contact)
+- ⬜ Crear PackCard
+- ⬜ Mostrar 3 packs (Esencial, Profesional, Signature)
+- ⬜ Destacar Web Profesional
+- ⬜ Incluir mensajes de filtrado y disponibilidad limitada
+
 ---
 
 ## FASE 4 — FORMULARIO DE CONTACTO (sin Formspree)
@@ -508,31 +609,6 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Desinstalar `@formspree/react` del proyecto
 - ⬜ Actualizar el componente `Contact` para apuntar a la API Route propia
 - ⬜ Verificar que la API key nunca llega al cliente
-
----
-
-## FASE 5 — SECCIÓN WEBSITE PACKS
-> **Estado: ⬜ No iniciada. Prerequisito: Fases 1 y 3 completadas.**
-> Objetivo: añadir la sección de packs de servicios web.
-> Es la feature de mayor impacto para la dimensión de negocio.
-> Estimación: 2–3 sesiones de trabajo.
-
-### 5.1 — Datos
-- ⬜ Crear `src/types/packs.ts` con tipos `Pack`, `PackFeature`, `PackTier`
-- ⬜ Crear `src/data/packs.ts` con los 3 packs + el pack de mantenimiento
-
-### 5.2 — Componentes
-- ⬜ Crear `components/sections/Packs.tsx` (sección resumen en página principal)
-- ⬜ Crear `components/ui/PackCard.tsx` (tarjeta individual de pack)
-
-### 5.3 — Ruta dedicada
-- ⬜ Crear `src/app/packs/page.tsx` con metadata SEO propia
-- ⬜ Implementar la vista detallada de los 3 packs
-- ⬜ Añadir CTAs de cada pack (formulario contacto / Cal.com)
-
-### 5.4 — Integración en página principal
-- ⬜ Añadir sección `<Packs />` en `app/page.tsx` (entre Projects y Contact)
-- ⬜ Añadir `"Servicios"` al menú de navegación del Header con link a `#packs`
 
 ---
 
@@ -572,7 +648,7 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 ---
 
 ## FASE 7 — ACCESIBILIDAD Y RENDIMIENTO
-> **Estado: ⬜ No iniciada. Prerequisito: Fases 3, 4 y 5 completadas.**
+> **Estado: ⬜ No iniciada. Prerequisito: Fases 3 y 4 completadas.**
 > Objetivo: pasar auditoría Lighthouse ≥ 90 en las 4 categorías.
 > Estimación: 1–2 sesiones de trabajo.
 
