@@ -116,6 +116,15 @@ Si la IA detecta algo fuera del alcance que merece atención, lo **anota y lo re
 
 - Si esta información no está definida, la IA debe detener la implementación y solicitarla.
 
+---
+
+## REGLA 10 — COMMITS CONSISTENTES
+
+- Cuando se complete una tarea importante:
+  - Sugerir commit explícitamente
+  - Indicar si conviene separar código y documentación
+  - No asumir que el usuario ha commitado
+
 ## FLUJO ESTÁNDAR DE CADA SUB-FASE
 
 ```
@@ -140,4 +149,3 @@ Ver `ROADMAP.md` para el estado actualizado de cada sub-fase.
 
 *Versión: 1.0 — 2026-05-05*
 *Proyecto: Portfolio Marcos Giannini*
-

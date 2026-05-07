@@ -160,3 +160,11 @@ Cualquier decisión de diseño o desarrollo debe respetar esto.
 
 - No se deben reabrir decisiones de arquitectura ni negocio
 - Continuar en modo ejecución directa
+
+### ✅ Estado de persistencia
+
+Antes de cerrar sesión:
+- Verificar que todos los cambios están commiteados
+- Hacer push de la rama activa
+- NO mergear automáticamente a main
+- Dejar un commit claro que defina el estado del proyecto

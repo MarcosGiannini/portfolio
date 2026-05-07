@@ -705,6 +705,12 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - Si surge un bloqueante, se documenta aquí con ❌ y la razón.
 - El ROADMAP se actualiza al inicio y al cierre de cada sesión de trabajo.
 - **Ninguna fase posterior puede iniciarse si la anterior tiene pasos ⬜ no decididos.**
+- Después de cada sub-fase completada:
+  - Crear commit con mensaje claro y semántico
+  - Si hay cambios de código y documentación, usar commits separados:
+    - `feat`/`fix`/`chore` → código
+    - `docs` → documentación
+- Nunca cerrar una sesión con cambios sin commit.
 
 ### Reglas de verificación humana
 
