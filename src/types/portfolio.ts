@@ -8,6 +8,18 @@ export interface Project {
   badge?: string;
 }
 
+export interface Pack {
+  name: string;
+  price: string;
+  description: string;
+  idealFor: string[];
+  features: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  highlighted?: boolean;
+  badge?: string;
+}
+
 export interface SocialLink {
   name: string;
   url: string;

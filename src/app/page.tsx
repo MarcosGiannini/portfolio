@@ -10,12 +10,13 @@ import SplashScreen from "@/components/layout/SplashScreen";
 import AboutMe from "@/components/sections/AboutMe";
 import Contact from "@/components/sections/Contact";
 import Hero from "@/components/sections/Hero";
+import Packs from "@/components/sections/Packs";
 import ProjectPortfolio from "@/components/sections/ProjectPortfolio";
 import { portfolioData } from "@/data/portfolioData";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-const SECTION_IDS = ["home", "about", "portfolio", "contact"];
+const SECTION_IDS = ["home", "about", "portfolio", "packs", "contact"];
 
 export default function Page() {
   const [showSplash, setShowSplash] = useState(true);
@@ -47,6 +48,7 @@ export default function Page() {
               underConstructionLabel={portfolioData.sections.projects.underConstructionLabel}
               underConstructionAriaLabel={portfolioData.sections.projects.underConstructionAriaLabel}
             />
+            <Packs data={portfolioData.sections.packs} />
             <Contact data={portfolioData.sections.contact} contactInfo={portfolioData.contact} />
             <Footer name={portfolioData.name} credit={portfolioData.footer.credit} socialLinks={portfolioData.footer.socialLinks} />
             <ScrollToTop />

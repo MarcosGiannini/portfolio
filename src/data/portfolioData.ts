@@ -1,4 +1,4 @@
-import type { Project, SkillCategory, SocialLink } from "@/types/portfolio";
+import type { Pack, Project, SkillCategory, SocialLink } from "@/types/portfolio";
 
 // Translatable fields for Phase 6.
 export const portfolioData = {
@@ -23,6 +23,7 @@ export const portfolioData = {
       { id: "home", label: "Inicio" },
       { id: "about", label: "Sobre Mí" },
       { id: "portfolio", label: "Proyectos" },
+      { id: "packs", label: "Packs" },
       { id: "contact", label: "Contacto" },
     ],
   },
@@ -135,6 +136,78 @@ export const portfolioData = {
           badge: "LARGO PLAZO",
         },
       ] satisfies Project[],
+    },
+    packs: {
+      eyebrow: "> PACKS / CONVERSION FUNNEL",
+      title: "Packs Web",
+      description:
+        "Tres niveles claros para transformar una idea, marca o producto en una presencia web seria, rápida y lista para convertir.",
+      availabilityNote:
+        "Trabajo con un número limitado de proyectos cada mes para asegurar foco y calidad en cada uno.",
+      items: [
+        {
+          name: "Web Esencial",
+          price: "Desde 800€",
+          description:
+            "Landing page directa para validar una idea, presentar un servicio o lanzar un proyecto pequeño sin ruido innecesario.",
+          idealFor: [
+            "Lanzar un producto o servicio",
+            "Validar una idea",
+            "Mejorar presencia online",
+          ],
+          features: [
+            "Landing page básica",
+            "Diseño responsive",
+            "Estructura de contenido clara",
+            "Formulario o CTA de contacto",
+          ],
+          ctaLabel: "Solicitar este pack",
+          ctaHref: "#contact",
+        },
+        {
+          name: "Web Profesional",
+          price: "Desde 1.500€",
+          description:
+            "Web completa multi-sección para negocios que necesitan comunicar mejor, generar confianza y preparar crecimiento.",
+          idealFor: [
+            "Negocios que necesitan captar clientes",
+            "Servicios con varias líneas de oferta",
+            "Marcas que quieren proyectar más confianza",
+          ],
+          features: [
+            "Web completa multi-sección",
+            "SEO básico",
+            "Optimización y performance",
+            "Arquitectura escalable",
+            "Integración con formulario o Calendly",
+          ],
+          ctaLabel: "Solicitar este pack",
+          ctaHref: "https://calendly.com/marcosgianninidev",
+          highlighted: true,
+          badge: "RECOMENDADO",
+        },
+        {
+          name: "Web Signature",
+          price: "Desde 3.000€",
+          description:
+            "Proyecto premium para productos serios que necesitan criterio de diseño, desarrollo sólido y estrategia digital.",
+          idealFor: [
+            "Productos digitales con visión a largo plazo",
+            "Lanzamientos que necesitan estrategia",
+            "Equipos que buscan una base web robusta",
+          ],
+          features: [
+            "Diseño + desarrollo + estrategia",
+            "Dirección visual personalizada",
+            "Performance avanzada",
+            "Soporte en decisiones de producto",
+            "Base preparada para evolución futura",
+          ],
+          ctaLabel: "Solicitar este pack",
+          ctaHref: "https://calendly.com/marcosgianninidev",
+          badge: "PREMIUM",
+        },
+      ] satisfies Pack[],
     },
   },
   footer: {

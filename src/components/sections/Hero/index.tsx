@@ -124,7 +124,7 @@ const Hero = ({ data }: HeroProps) => {
               aria-label="Navegar a la sección de contacto"
               className="w-full font-mono uppercase tracking-[0.16em] sm:w-auto"
             >
-              Contratar
+              Iniciar proyecto
             </Button>
           </motion.div>
         </div>
