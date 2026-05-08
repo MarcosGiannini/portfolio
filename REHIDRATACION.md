@@ -22,9 +22,10 @@ Después debe confirmar:
 ✅ He leído README.md
 
 Estado actual del proyecto:
-- Último bloque completado: 3.6 Contact + 3.6.B Calendly integration
+- Último bloque completado: 3.8.B Packs Conversion
 - Rama activa: chore/1.1-app-router-prep
-- Siguiente paso recomendado: Fase 3.8 — Packs
+- Estado actual: funnel completo operativo
+- Siguiente paso sugerido: Fase 3.9 (optimización continua) o Fase 4 (formulario real con Resend)
 
 ¿Confirmas que empecemos ese paso?
 ```
@@ -40,17 +41,16 @@ Reglas clave:
 
 ## Estado Actual del Proyecto
 
-Última actualización: 2026-05-07
+Última actualización: 2026-05-08
 
 Fases completadas:
 - Fase 0 ✅ Estabilización
 - Fase 1 ✅ Arquitectura base con App Router
 - Fase 2 ✅ Tokens + base UI operativa
-- Fase 3 🟡 Rediseño de secciones en progreso, completado hasta 3.6 Contact ✅
+- Fase 3 🟢 Funnel completo operativo, pendiente mejoras visuales no críticas
 
 Último bloque completado:
-- 3.6 Contact
-- 3.6.B Calendly integration
+- 3.8.B Packs Conversion
 
 Rama activa:
 - `chore/1.1-app-router-prep`
@@ -63,7 +63,9 @@ Estado de persistencia:
   - `44f00ae feat(hero): redesign hero for splash continuity`
   - `0cf4176 feat(about): redesign credibility section`
 - Contact + Calendly está funcional y documentado.
-- Queda pendiente crear commit si Marcos lo autoriza para los cambios de Contact/Calendly y documentación de cierre.
+- Packs está implementado y optimizado para decisión comercial.
+- El portfolio ya funciona como sistema de captación real.
+- Queda pendiente crear commit final si Marcos lo autoriza para los cambios de funnel y documentación de cierre.
 
 ---
 
@@ -100,22 +102,20 @@ Contact:
 - Copy alineado con captación profesional.
 
 Flujo de captación:
-- Projects → Contact → Calendly.
-- Sistema de captación ya funcional.
+- Hero → Projects → Packs → Contact → Calendly.
+- Sistema de captación completo y operativo.
 
 ---
 
 ## Siguiente Paso Claro
 
 Recomendado:
-- Fase 3.8 — Packs (monetización directa)
+- Fase 3.9 (optimización continua) o Fase 4 (formulario real con Resend)
 
 Objetivo de esa fase:
-- Crear sección Packs entre Projects y Contact.
-- Mostrar oferta comercial de servicios.
-- Conectar el posicionamiento del portfolio con conversión directa.
+- Ajustar detalles de conversión sin reabrir layout, o avanzar al formulario propio con API Route y Resend.
 
-No iniciar Fase 3.8 sin aprobación explícita de Marcos.
+No iniciar una nueva fase sin aprobación explícita de Marcos.
 
 ---
 
@@ -123,7 +123,8 @@ No iniciar Fase 3.8 sin aprobación explícita de Marcos.
 
 - No usar el proveedor anterior de agenda. Queda descartado.
 - Calendly activo: `https://calendly.com/marcosgianninidev`
-- El sistema de captación ya funciona con email + formulario + Calendly.
+- El portfolio ya funciona como sistema de captación real.
+- El sistema de captación funciona con Hero, Projects, Packs, Contact y Calendly.
 - No reabrir decisiones visuales de Splash, Hero, About, Projects o Contact sin autorización.
 - Mantener estética CRT / brutalist con tokens existentes.
 - Mantener textos editables centralizados en `portfolioData.ts`.
@@ -132,19 +133,18 @@ No iniciar Fase 3.8 sin aprobación explícita de Marcos.
 
 ## Último Cierre de Sesión
 
-✅ ROADMAP actualizado con Fase 3.6 Contact completada.
+✅ ROADMAP actualizado con Packs y funnel optimizado.
 ✅ REHIDRATACION sincronizado con estado actual.
-✅ Proyecto listo para retomar en siguiente sesión.
+✅ Proyecto listo para commit final de cierre de fase.
 
 Estado final documentado:
-- Contact tiene formulario responsive único.
-- `tipo_proyecto` está integrado.
-- Calendly reemplaza al proveedor anterior de agenda.
-- CTA de conversión: `Agendar sesión`.
-- Siguiente paso recomendado: Fase 3.8 — Packs.
+- Último bloque completado: 3.8.B Packs Conversion.
+- Estado actual: funnel completo operativo.
+- Hero, Projects, Packs, Contact y Calendly forman un flujo de captación real.
+- Siguiente paso sugerido: Fase 3.9 (optimización continua) o Fase 4 (formulario real con Resend).
 
 Verificación documental:
-- No deben quedar referencias activas al proveedor anterior de agenda.
+- La documentación debe reflejar que el portfolio ya funciona como sistema de captación real.
 - No se introdujeron nuevas features durante el cierre documental.
 
 STOP.

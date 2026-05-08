@@ -1,6 +1,6 @@
 # ROADMAP — Portfolio de Marcos Giannini
-> Última actualización: 2026-05-07 — Contact + Calendly documentado
-> Estado general: 🟡 Fase 3 en progreso — completado hasta 3.6 Contact
+> Última actualización: 2026-05-08 — Packs + funnel optimizado
+> Estado general: 🟢 Funnel completo implementado (Hero → Calendly)
 
 ## CONTEXTO DEL PROYECTO
 
@@ -500,10 +500,17 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 ---
 
 ## FASE 3 — REDISEÑO DE SECCIONES
-> **Estado: 🟡 En progreso.**
+> **Estado: 🟢 Funcionalmente completa (pendiente mejoras visuales no críticas).**
 > Objetivo: aplicar el nuevo sistema de diseño a cada sección existente.
 > Hacerlo sección por sección para evitar regressions.
 > Estimación: 4–5 sesiones de trabajo.
+>
+> ✅ Funnel de captación completo:
+> - Hero con CTA de entrada
+> - Projects como validación
+> - Packs como decisión económica
+> - Contact como punto de acción
+> - Calendly como conversión directa
 
 ### 3.1 — SplashScreen
 - ⬜ Añadir auto-dismiss a los 8 segundos
@@ -556,7 +563,7 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
   - Línea 2 display: `MARCOS GIANNINI` con efecto glitch al cargar
   - Línea 3: `Frontend Engineer`
   - Línea 4: frase de propuesta de valor
-  - CTAs: `[ Ver proyectos ]` + `[ Contratar ]`
+  - CTAs: `[ Ver proyectos ]` + `[ Iniciar proyecto ]`
 - ⬜ Eliminar foto del Hero (pasa a About)
 - ⬜ Añadir grid CRT de fondo
 - ⬜ Añadir scroll indicator animado
@@ -619,11 +626,19 @@ Ningún cambio de código se realiza sin haber marcado el paso correspondiente c
 - ⬜ Verificar que no requiere cambios de fondo (ya es sólido y semántico)
 
 ### 3.8 — Packs
-- ⬜ Crear sección Packs en home (entre Projects y Contact)
-- ⬜ Crear PackCard
-- ⬜ Mostrar 3 packs (Esencial, Profesional, Signature)
-- ⬜ Destacar Web Profesional
-- ⬜ Incluir mensajes de filtrado y disponibilidad limitada
+> ✅ **Completada — 2026-05-08. Build/lint verificados: OK.**
+- ✅ Sección Packs implementada entre Projects y Contact
+- ✅ 3 packs definidos: Esencial, Profesional (destacado), Signature
+- ✅ Precios orientativos añadidos
+- ✅ CTA funcional hacia Contact y Calendly
+- ✅ Jerarquía visual clara con pack recomendado destacado
+
+### 3.8.B — Optimización de conversión (Packs)
+- 🔵 Mejorar copy de CTA (ej: "Solicitar este pack")
+- 🔵 Mejorar mensaje de valor en cada pack
+- 🔵 Añadir bloques "Ideal para..."
+- 🔵 Añadir mensaje de escasez (capacidad limitada)
+- 🔵 Alinear CTA con flujo real (Contact / Calendly)
 
 ---
 
